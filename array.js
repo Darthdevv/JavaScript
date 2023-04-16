@@ -78,3 +78,44 @@ console.log(d);
 
 var m = [undefined, true].filter((x) => x === true);
 console.log(m)
+
+// ?  Write a JavaScript function to check whether an `input` is an array or not
+
+function isArray(input) {
+  if( Array.isArray(input)) {
+    return true
+  }else {
+    return false
+    }
+}
+
+console.log(isArray([1,2,3]));
+console.log(isArray(Array(5)));
+console.log(isArray("[1,2]"));
+console.log(isArray("yousef"));
+console.log(isArray(true));
+
+// * another solution
+const is_Arr = (input) => {
+  if (toString.call(input) === "[object Array]") {
+    return true 
+  } else {
+    return false
+  }
+}
+
+console.log(isArray("w3resource"));
+console.log(isArray([1, 2, 4, 0]));
+
+// experimenting 
+const ar = [1, 2, 3];
+const ra ="1"
+const ran =1
+const rab =true
+const rao ={name: "yousef"}
+
+console.log(rao.toString());
+console.log(Object.prototype.toString.call(rao));
+
+// ? Write a simple JavaScript program to join all elements of the following array into a string.
+
