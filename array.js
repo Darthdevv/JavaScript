@@ -119,3 +119,4 @@ console.log(Object.prototype.toString.call(rao));
 
 // ? Write a simple JavaScript program to join all elements of the following array into a string.
 
+console.log("hello world")
