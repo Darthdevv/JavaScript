@@ -119,4 +119,26 @@ console.log(Object.prototype.toString.call(rao));
 
 // ? Write a simple JavaScript program to join all elements of the following array into a string.
 
-console.log("hello world")
+function joinElements(arr) {
+  return arr.join(",");
+}
+
+console.log(joinElements(["Red", "Green", "White", "Black"]));
+
+// experimenting
+const myColor = ["Red", "Green", "White", "Black"];
+console.log(myColor.toString());
+console.log(myColor.join());
+console.log(myColor.join('+'));
+
+// ?  Write a JavaScript program to sort numbers of an array in accending order 
+
+function compareNumbers(a, b) {
+  return a - b;
+}
+
+function sortArray(arr) {
+  return arr.sort(compareNumbers);
+}
+
+console.log(sortArray([-1, 6, 5, 3, -2, 2, 7, 9, -3, 10, 0]));
