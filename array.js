@@ -143,4 +143,6 @@ function sortArray(arr) {
 
 console.log(sortArray([-1, 6, 5, 3, -2, 2, 7, 9, -3, 10, 0]));
 
-console.log('hello world');
+// * this is called the Guard Operator it can stop the code from running
+false && console.log('hello world'); 
+

@@ -14,4 +14,9 @@ for (let i = 0; i < users.length; i++) {
 }
 console.log(filteredUsers);
 
-
+const products = {
+    name: 'yousef',
+    age: 23,
+}
+delete products.age;
+console.log(products);
