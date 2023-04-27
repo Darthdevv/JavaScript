@@ -20,3 +20,4 @@ const products = {
 }
 delete products.age;
 console.log(products);
+console.log(products['age']); 
