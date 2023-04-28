@@ -30,7 +30,7 @@ function calculateTax() {
         } else {
             cost
         }
-    result.innerHTML = `${cost}`
+    result.innerHTML = `$${cost}`
     document.body.appendChild(result)
     console.log(cost)
 }
@@ -42,4 +42,6 @@ function calcTotal(event) {
         return null
     }
 }
+
+
 

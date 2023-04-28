@@ -7,6 +7,8 @@ let Score = JSON.parse(localStorage.getItem('Score')) || {
     tie: 0,
 };
 
+updateScore();
+
 function generateRandomNum() {
     return randomNumber;
 }
@@ -39,6 +41,7 @@ function resetScore() {
     Score.tie = 0;
     Score.win = 0;
     localStorage.removeItem('Score');
+    updateScore();
 }
 
 function playGame(playerMove) {
@@ -80,9 +83,21 @@ function playGame(playerMove) {
     }
     keepScore();
     localStorage.setItem("Score", JSON.stringify(Score));
-    alert(
-        `You picked ${playerMove} and the Computer picked ${computerMove} so ${result}
-        Wins: ${Score.win} Losses: ${Score.loss} ties:${Score.tie}`
-    );
+
+    document.querySelector('.result').innerHTML = result;
+
+    document.querySelector(".moves").innerHTML = `You
+        <img class="move-Icon" src="images/${playerMove}-emoji.png" alt="">
+        <img class="move-Icon" src="images/${computerMove}-emoji.png" alt="">
+        Computer`;
+
+    updateScore();
+
+}
+
+function updateScore() {
+    document.querySelector(
+        ".score"
+    ).innerHTML = ` Wins: ${Score.win} Losses: ${Score.loss} ties:${Score.tie}`;
 }
 
