@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <script defer src="rock-paper-scissors.js"></script>
+    <script defer src="dom.js"></script>
 </head>
 <body>
     <!-- <div id="container"></div>
@@ -18,9 +18,15 @@
     <button onclick="resetCart()">Reset Cart</button>
     <button onclick="Add2()">+2</button>
     <button onclick="Add3()">+3</button> -->
-    <button onclick="playGame('Rock')">Rock</button>
+    <!-- <button onclick="playGame('Rock')">Rock</button>
     <button onclick="playGame('Paper')">Paper</button>
     <button onclick="playGame('Scissors')">Scissors</button>
-    <button onclick="resetScore()">Reset Score</button>
+    <button onclick="resetScore()">Reset Score</button> -->
+    <h4>Amazon Shipping Calculator</h4>
+    <p>Orders under $40 = +$10 shipping.</p>
+    <p>Orders over $40 = FREE shipping.</p>
+    <input placeholder="Cost of order" onkeydown="calcTotal(event)" class="input-box">
+    <button onclick="calculateTax()">Calculate</button>
+    <p class="input-result"></p>
 </body>
 </html>
