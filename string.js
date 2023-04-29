@@ -16,11 +16,6 @@ console.log(`my name is ${myName}`)
 let introduction = intro + myName;
 console.log(introduction);
 
-// var container = document.getElementById("container");
-// var content = document.createElement("span");
-// content.innerHTML = "Hello";
-// container.appendChild(content);
-
 let cartQuantity = 0;
 
 function showQuantity() {
