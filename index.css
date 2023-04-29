@@ -79,3 +79,34 @@ body{
 .score{
     margin-top: 60px;
 }
+
+.input{
+    font-size: 15px;
+    padding: 6px;
+}
+
+.todoBtn{
+    background-color: green;
+    color: white;
+    border: none;
+    font-size: 15px;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.deleteBtn{
+    background-color: darkred;
+    color: white;
+    border: none;
+    font-size: 15px;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.todo-grid{
+    display: grid;
+    grid-template-columns: 250px 150px 100px;
+    column-gap: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+}
