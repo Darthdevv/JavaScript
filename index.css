@@ -9,7 +9,8 @@ body{
     font-weight: bold;
 }
 
-.reset{
+.reset,
+.autoplay{
     background-image: linear-gradient(#ffc800, #ff8c00);
     border: 0;
     border-radius: 4px;

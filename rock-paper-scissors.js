@@ -1,6 +1,3 @@
-const randomNumber = Math.random();
-let computerMove = '';
-let result = ''
 let Score = JSON.parse(localStorage.getItem('Score')) || {
     win: 0,
     loss: 0,
@@ -9,11 +6,9 @@ let Score = JSON.parse(localStorage.getItem('Score')) || {
 
 updateScore();
 
-function generateRandomNum() {
-    return randomNumber;
-}
-
 function computerMoveLogic() {
+    const randomNumber = Math.random();
+    let computerMove = "";
     if (randomNumber >= 0 && randomNumber < 1 / 3) {
         computerMove = "Rock";
     } else if (randomNumber >= 1 / 3 && randomNumber < 2 / 3) {
@@ -24,18 +19,6 @@ function computerMoveLogic() {
         return computerMove;
 }
 
-function keepScore() {
-    if (result==='Tie') {
-        Score.tie += 1;
-    } else if (result==='You Lost') {
-        Score.loss += 1;
-    } else if (result==='You Won') {
-        Score.win += 1;
-    }
-}
-
-
-
 function resetScore() {
     Score.loss = 0;
     Score.tie = 0;
@@ -44,9 +27,16 @@ function resetScore() {
     updateScore();
 }
 
+function autoPlay() {
+    setInterval(() => {
+        const playerMove = computerMoveLogic();
+        playGame(playerMove);
+    }, 1000);
+}
+
 function playGame(playerMove) {
-    generateRandomNum();
-    computerMoveLogic();
+    const computerMove = computerMoveLogic();
+    let result = "";
     if (playerMove==='Rock') {
         if (computerMove === 'Rock') {
             result = 'Tie';
@@ -81,7 +71,13 @@ function playGame(playerMove) {
             console.log(result);
         }
     }
-    keepScore();
+    if (result === "Tie") {
+        Score.tie += 1;
+    } else if (result === "You Lost") {
+        Score.loss += 1;
+    } else if (result === "You Won") {
+        Score.win += 1;
+    }
     localStorage.setItem("Score", JSON.stringify(Score));
 
     document.querySelector('.result').innerHTML = result;
