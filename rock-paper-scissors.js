@@ -27,11 +27,26 @@ function resetScore() {
     updateScore();
 }
 
+let isAutoPlaying = false;
+let intervalId;
+
 function autoPlay() {
-    setInterval(() => {
-        const playerMove = computerMoveLogic();
-        playGame(playerMove);
-    }, 1000);
+    let text = document.querySelector('.autoplay').innerHTML;
+    if (text === "AutoPlay") {
+        document.querySelector(".autoplay").innerHTML='Stop'
+    } else {
+        document.querySelector(".autoplay").innerHTML = 'AutoPlay';
+    }
+    if (!isAutoPlaying) {
+        intervalId = setInterval(() => {
+            const playerMove = computerMoveLogic();
+            playGame(playerMove);
+        }, 1000);
+        isAutoPlaying = true;
+    } else {
+        clearInterval(intervalId);
+        isAutoPlaying = false;
+    }
 }
 
 function playGame(playerMove) {

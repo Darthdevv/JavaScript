@@ -11,22 +11,20 @@ const todoList = [{
 renderTodo();
 
 function renderTodo() {
-    let todoListHtml=''
-    for (let i = 0; i < todoList.length; i++) {
-        const todoObject = todoList[i];
+    let todoListHtml = '';
+    todoList.forEach((todoObject, index) => {
         const { name, dueDate } = todoObject;
-        const html = 
-        `<div class='todo-grid'>
+        const html = `<div class='todo-grid'>
             <p>${name}</p>
             <p>${dueDate}</p>
-            <button onclick='todoList.splice(${i},1)
+            <button onclick='todoList.splice(${index},1)
             renderTodo();'
             class='deleteBtn'>Delete
             </button>
         </div>
         `;
         todoListHtml += html;
-    }
+    });
     document.querySelector(".Result").innerHTML=todoListHtml;
 }
 
