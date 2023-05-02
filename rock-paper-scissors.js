@@ -4,9 +4,15 @@ let Score = JSON.parse(localStorage.getItem('Score')) || {
     tie: 0,
 };
 
+const updateScore = () => {
+    document.querySelector(
+        ".score"
+    ).innerHTML = ` Wins: ${Score.win} Losses: ${Score.loss} ties:${Score.tie}`;
+};
+
 updateScore();
 
-function computerMoveLogic() {
+const computerMoveLogic = () => {
     const randomNumber = Math.random();
     let computerMove = "";
     if (randomNumber >= 0 && randomNumber < 1 / 3) {
@@ -19,7 +25,12 @@ function computerMoveLogic() {
         return computerMove;
 }
 
-function resetScore() {
+const resetBtn = document.querySelector('.reset');
+resetBtn.addEventListener('click', () => {
+    resetScore();
+})
+
+const resetScore = () => {
     Score.loss = 0;
     Score.tie = 0;
     Score.win = 0;
@@ -29,8 +40,12 @@ function resetScore() {
 
 let isAutoPlaying = false;
 let intervalId;
+const autoplayBtn = document.querySelector('.autoplay');
+autoplayBtn.addEventListener('click', () => {
+    autoPlay();
+})
 
-function autoPlay() {
+const autoPlay = () => {
     let text = document.querySelector('.autoplay').innerHTML;
     if (text === "AutoPlay") {
         document.querySelector(".autoplay").innerHTML='Stop'
@@ -49,7 +64,30 @@ function autoPlay() {
     }
 }
 
-function playGame(playerMove) {
+const rockBtn = document.querySelector('.rockBtn');
+const paperBtn = document.querySelector('.paperBtn');
+const scissorsBtn = document.querySelector('.scissorsBtn');
+rockBtn.addEventListener('click', () => {
+    playGame('Rock');
+})
+paperBtn.addEventListener('click', () => {
+    playGame('Paper');
+})
+scissorsBtn.addEventListener('click', () => {
+    playGame('Scissors');
+})
+document.body.addEventListener("keydown", (event) => {
+    if (event.key === "r") {
+        playGame("Rock");
+    } else if (event.key === "p") {
+        playGame("Paper");
+    } else if (event.key === "s") {
+        playGame("Scissors");
+    }
+});
+
+
+const playGame = playerMove => {
     const computerMove = computerMoveLogic();
     let result = "";
     if (playerMove==='Rock') {
@@ -104,11 +142,5 @@ function playGame(playerMove) {
 
     updateScore();
 
-}
-
-function updateScore() {
-    document.querySelector(
-        ".score"
-    ).innerHTML = ` Wins: ${Score.win} Losses: ${Score.loss} ties:${Score.tie}`;
 }
 

@@ -8,27 +8,39 @@ const todoList = [{
         dueDate: '22-12-2022'
     }];
 
-renderTodo();
-
-function renderTodo() {
+const renderTodo = () => {
     let todoListHtml = '';
     todoList.forEach((todoObject, index) => {
         const { name, dueDate } = todoObject;
         const html = `<div class='todo-grid'>
             <p>${name}</p>
             <p>${dueDate}</p>
-            <button onclick='todoList.splice(${index},1)
-            renderTodo();'
+            <button 
             class='deleteBtn'>Delete
             </button>
         </div>
         `;
         todoListHtml += html;
     });
-    document.querySelector(".Result").innerHTML=todoListHtml;
+    document.querySelector(".Result").innerHTML = todoListHtml;
+    document
+    .querySelectorAll(".deleteBtn")
+    .forEach((deleteButton, index) => {
+        deleteButton.addEventListener("click", () => {
+        todoList.splice(index, 1);
+        renderTodo();
+        });
+    });
 }
 
-function addTodo() {
+renderTodo();
+
+const todoBtn = document.querySelector('.todoBtn');
+todoBtn.addEventListener('click', () => {
+    addTodo();
+})
+
+const addTodo = () => {
     const inputElement = document.querySelector(".inputText");
     const inputDate = document.querySelector(".inputDate");
     const name = inputElement.value;
