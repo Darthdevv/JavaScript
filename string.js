@@ -42,4 +42,7 @@ function resetCart() {
     console.log(`Cart Quantity is: ${cartQuantity}`);
 }
 
-
+const text = 'please visit Microsoft';
+const newText = text.replace('Microsoft', 'FaceBook');
+console.log(text);
+console.log(newText);

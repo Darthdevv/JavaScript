@@ -1,2 +1,2 @@
 # JavaScript
-Practicing JavaScript and implementing new patterns and algorithms and data structures 
+Practicing JavaScript and implementing new patterns and algorithms and data structures and Problem Solving
