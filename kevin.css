@@ -1,0 +1,22 @@
+body{
+    background-color: black;
+    color: white;
+}
+
+.quick-example{
+    margin: 1rem;
+    padding: 1rem;
+    background: hsl(200 50% 50% /.4);
+    border-radius: .5rem;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 500ms;
+}
+
+.quick-example > div {
+    overflow: hidden;
+}
+
+.quick-example:hover{
+    grid-template-rows: 1fr;
+}

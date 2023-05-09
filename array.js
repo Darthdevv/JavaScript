@@ -146,11 +146,7 @@ console.log(sortArray([-1, 6, 5, 3, -2, 2, 7, 9, -3, 10, 0]));
 // * this is called the Guard Operator it can stop the code from running
 false && console.log('hello world'); 
 
-let arrayIntegers = [1, 2, 3, 4, 5];
-let arrayIntegers1 = arrayIntegers.slice(0, 2); // returns [1,2]
-let arrayIntegers2 = arrayIntegers.slice(2, 3); // returns [3]
-let arrayIntegers3 = arrayIntegers.slice(4); //returns [5]
-console.log(arrayIntegers);
-console.log(arrayIntegers1);
-console.log(arrayIntegers2);
-console.log(arrayIntegers3);
+  let arrayIntegers = [1, 2, 3, 4, 5];
+  let arrayIntegers1 = arrayIntegers.slice(0, 2); // returns [1,2]
+  let arrayIntegers2 = arrayIntegers.slice(2, 3); // returns [3]
+  let arrayIntegers3 = arrayIntegers.slice(4); //returns [5]
