@@ -11,3 +11,9 @@ console.log( "A" - "B" + "2"); //ans: NaN2
 console.log( "A" - "B" + 2); //ans: NaN
 // “10,11” == [[[[10]],11]] //10,11 == 10,11, and: true
 // "[object Object]" == {name: "test"} //ans true
+
+function foo(){
+	return
+	{ name: 2 }
+}
+foo() //return undefined
