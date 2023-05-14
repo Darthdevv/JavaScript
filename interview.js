@@ -16,4 +16,11 @@ function foo(){
 	return
 	{ name: 2 }
 }
-foo() //return undefined
+foo()
+ //return undefined
+
+function payTaxes() {
+	return 5;
+}
+
+console.log(payTaxes());
