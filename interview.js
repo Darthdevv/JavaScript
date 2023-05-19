@@ -24,3 +24,5 @@ function payTaxes() {
 }
 
 console.log(payTaxes());
+
+console.log('hello world');
