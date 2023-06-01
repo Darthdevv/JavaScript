@@ -36,3 +36,36 @@ if (index > -1) {
 
 // array = [2, 9]
 console.log(array); 
+
+// Return value of specific item in an object 
+let foods = {
+  apples: 25,
+  oranges: 32,
+  plums: 28,
+  bananas: 13,
+  grapes: 35,
+  strawberries: 27,
+};
+
+function checkInventory(scannedItem) {
+	return foods[scannedItem];
+}
+
+console.log(checkInventory("apples"));
+console.log(checkInventory("oranges"));
+console.log(checkInventory("mangos"));
+
+
+
+var arr = [6, 89, 3, 45];
+var maximus = Math.max.apply(null, arr);
+var maxi = Math.max(...arr);
+console.log(maximus);
+console.log(maxi);
+
+
+const array11 = ["a", "b"];
+const elements = [0, 1, 2];
+// array11.push.apply(array11, elements); => ['a','b',0,1,2]
+// array11.push(elements); => ['a','b',[0,1,2]]
+console.info(array11);
