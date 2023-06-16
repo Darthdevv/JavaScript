@@ -69,3 +69,11 @@ const elements = [0, 1, 2];
 // array11.push.apply(array11, elements); => ['a','b',0,1,2]
 // array11.push(elements); => ['a','b',[0,1,2]]
 console.info(array11);
+
+
+
+for (var i = 0; i < 5; i++){
+  setTimeout(()=>{
+    console.log(i);
+  },)
+}
