@@ -83,3 +83,20 @@ for (let i = 0; i < 5; i++) {
     console.log(i);
   });
 }
+
+const kelvin = 293;
+const celsius = kelvin - 273;
+
+// convert Celsius to Fahrenheit
+let fahrenheit = celsius  * (9 / 5) + 32;
+
+// rounding down the number
+fahrenheit = Math.floor(fahrenheit);
+
+// tring interpolation to log the temperature in fahrenheit
+console.log(`the temperature is ${fahrenheit} degrees Fahrenheit.`);
+
+// Convert celsius to the Newton
+let newton = celsius * (33 / 100);
+newton = Math.floor(newton);
+console.log(`The temperature is ${newton} degrees Newton.`);
