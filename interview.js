@@ -106,3 +106,5 @@ let a = 1
 if (a) {
   console.log('hello world');
 }
+
+console.log('dffdd');
