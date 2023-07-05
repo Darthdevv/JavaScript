@@ -107,4 +107,11 @@ if (a) {
   console.log('hello world');
 }
 
-console.log('dffdd');
+let bird = {
+  name: 'snoowpic',
+  type: 'mockingbird',
+  numOfLegs: 2
+}
+
+console.log(bird);
+console.log(bird.type);
