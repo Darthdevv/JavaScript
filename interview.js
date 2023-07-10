@@ -118,4 +118,4 @@ console.log(bird.type);
 console.log(bird.numOfLegs);
 console.log(bird.name);
 console.log('yousef');
-console.log(Array.from({length:20}))
+console.log(Array.from({ length: 20 },(_,i)=> i+1).map(num=> num*2));
