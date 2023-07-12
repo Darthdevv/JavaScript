@@ -72,11 +72,11 @@ console.info(array11);
 
 
 
-for (var i = 0; i < 5; i++){
-  setTimeout(()=>{
-    console.log(i);
-  },)
-}
+    for (var i = 0; i < 5; i++){
+      setTimeout(()=>{
+        console.log(i);
+      },)
+    }
 
 for (let i = 0; i < 5; i++) {
   setTimeout(() => {
@@ -119,4 +119,12 @@ console.log(bird.numOfLegs);
 console.log(bird.name);
 console.log('yousef');
 console.log(Array.from({ length: 20 },(_,i)=> i+1).map(num=> num*2));
-console.log(Array.from({ length: 20 },(_,i)=> i+1).map(num=> 1));
+console.log(Array.from({ length: 20 }, (_, i) => i + 1).map(num => 1));
+console.log({} === []);
+console.log({} == []);
+console.log(typeof {} == typeof[]);
+console.log(typeof {} === typeof []);
+console.log(null === '')
+console.log(false === !true)
+console.log(1 == true)
+console.log(0 == false)
