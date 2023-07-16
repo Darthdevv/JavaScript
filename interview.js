@@ -156,4 +156,37 @@ function NumOfTrues(arr) {
   return filteredArr.length
 }
 
-console.log(NumOfTrues([true, false, true,true]))
+console.log(NumOfTrues([true, false, true, true]))
+
+// which Generation are you ? 
+function whichGeneration(num, char) {
+  if (num == -3 && char === 'm') {
+    return "great grandfather"
+  } else if (num == -3 && char === "f") {
+    return "great grandmother";
+  } else if (num == -2 && char === "m") {
+    return "grandfather";
+  } else if (num == -2 && char === "f") {
+    return "grandmother";
+  }else if (num == -1 && char === "m") {
+    return "father";
+  }else if (num == -1 && char === "f") {
+    return "mother";
+  }else if (num == 0 && (char === "f" || char === "m")) {
+    return "me!";
+  } else if (num == 1 && char === "m") {
+    return 'son'
+  } else if (num == 1 && char === "f") {
+    return 'daughter'
+  } else if (num == 2 && char === "m") {
+    return 'grandson'
+  } else if (num == 2 && char === "f") {
+    return 'granddaughter'
+  }else if (num == 3 && char === "m") {
+    return 'great grandson'
+  } else if (num == 3 && char === "f") {
+    return 'great granddaughter'
+  }
+}
+
+console.log(whichGeneration(0,'m'));
