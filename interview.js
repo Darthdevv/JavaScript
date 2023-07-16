@@ -151,6 +151,9 @@ function isEqualToHundred(num1, num2) {
 console.log(isEqualToHundred(50, 10));
 
 
-// function NumOfTrues(arr) {
-  
-// }
+function NumOfTrues(arr) {
+  const filteredArr =  arr.filter(Boolean)
+  return filteredArr.length
+}
+
+console.log(NumOfTrues([true, false, true,true]))
