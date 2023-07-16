@@ -129,3 +129,16 @@ console.log(false === !true)
 console.log(1 == true)
 console.log(0 == false)
 console.log('nice job')
+
+
+// write a function tat returns first element in an array :
+function getFirstValue(arr) {
+  const firstValue = arr.shift()
+  return firstValue;
+}
+
+console.log(getFirstValue([5, 2, 3]));
+console.log(getFirstValue([-500, 0, 500]));
+
+let aa = [8,5,4,3,2,1];
+console.log(aa.values().next().value);
