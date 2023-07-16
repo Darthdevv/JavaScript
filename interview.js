@@ -142,3 +142,15 @@ console.log(getFirstValue([-500, 0, 500]));
 
 let aa = [8,5,4,3,2,1];
 console.log(aa.values().next().value);
+
+// write a function that returns true if the sum of both numbers are 100 else return false
+function isEqualToHundred(num1, num2) {
+  return num1 + num2 === 100 ? true : false
+}
+
+console.log(isEqualToHundred(50, 10));
+
+
+// function NumOfTrues(arr) {
+  
+// }
