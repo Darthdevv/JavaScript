@@ -189,4 +189,6 @@ function whichGeneration(num, char) {
   }
 }
 
-console.log(whichGeneration(0,'m'));
+console.log(whichGeneration(0, 'm'));
+
+console.log('hello world');
