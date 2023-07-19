@@ -192,3 +192,13 @@ function whichGeneration(num, char) {
 console.log(whichGeneration(0, 'm'));
 
 console.log('hello world');
+
+// function factory
+function makePlusFunction(baseNum) {
+  return function (num) {
+    return baseNum + num;
+  }
+}
+
+// function factory in arrow function syntax
+const makePlusFunction = (baseNum) => (num) => baseNum + num;
