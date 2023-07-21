@@ -194,11 +194,15 @@ console.log(whichGeneration(0, 'm'));
 console.log('hello world');
 
 // function factory
-function makePlusFunction(baseNum) {
+function makePlusFunction1(baseNum) {
   return function (num) {
     return baseNum + num;
   }
 }
 
 // function factory in arrow function syntax
-const makePlusFunction = (baseNum) => (num) => baseNum + num;
+const makePlusFunction2 = (baseNum) => (num) => baseNum + num;
+
+console.log(100 / 2);
+console.log(100 / 0);
+console.log(-100 / 0);
