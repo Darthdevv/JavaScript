@@ -4,6 +4,7 @@
 
 let number = [1,2,3,4,5];
 let len = number.length - 1;
+console.log(len)
 for (let i = 0; i <= len; i++) {
   console.log(number[i]);
 }
@@ -204,5 +205,5 @@ function makePlusFunction1(baseNum) {
 const makePlusFunction2 = (baseNum) => (num) => baseNum + num;
 
 console.log(100 / 2);
-console.log(100 / 0);
-console.log(-100 / 0);
+console.log(100 / 0);  // Infinity
+console.log(-100 / 0);  // -Infinity
