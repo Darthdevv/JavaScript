@@ -219,4 +219,12 @@ const fly = Object.create(organism);
 console.log(fly.dna);
 console.log(Object.getPrototypeOf(fly));
 
-// const obj = Object.create({});
+const obj = Object.create({});
+Object.defineProperty(obj, 'animal', { value: '🦄' });
+console.log(obj.animal);
+
+const object = Object.create({});
+Object.defineProperty(object, 'animal', {
+  get: () => '🐙'
+})
+console.log(object.animal);
