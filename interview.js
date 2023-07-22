@@ -207,3 +207,16 @@ const makePlusFunction2 = (baseNum) => (num) => baseNum + num;
 console.log(100 / 2);
 console.log(100 / 0);  // Infinity
 console.log(-100 / 0);  // -Infinity
+
+
+// OOP : 
+
+const organism = {
+  dna: Math.random()
+}
+
+const fly = Object.create(organism);
+console.log(fly.dna);
+console.log(Object.getPrototypeOf(fly));
+
+// const obj = Object.create({});
