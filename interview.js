@@ -228,3 +228,4 @@ Object.defineProperty(object, 'animal', {
   get: () => '🐙'
 })
 console.log(object.animal);
+console.log('this is an object')
