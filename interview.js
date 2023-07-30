@@ -229,3 +229,4 @@ Object.defineProperty(object, 'animal', {
 })
 console.log(object.animal);
 console.log('this is an object')
+console.log('this is an object')
