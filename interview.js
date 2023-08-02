@@ -245,3 +245,17 @@ function opposite(number) {
   return number > 0 ? -number : Math.abs(number);
 }
 console.log(opposite(-1));
+
+
+var twoSum = function (nums, target) {
+  let obj = {};
+  for (let i = 0; i < nums.length; i++) {
+    obj[nums[i]] = i;
+  }
+  for (let i = 0; i < nums.length; i++) {
+    let curr = target - nums[i];
+    if (obj[curr] && i != obj[curr]) return [i, obj[curr]];
+  }
+};
+
+console.log(twoSum([1, 2, 3, 4], 7));
