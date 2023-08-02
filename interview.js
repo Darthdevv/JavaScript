@@ -239,3 +239,9 @@ console.log(repeatedString);
 const makesTen = (a, b) => [a, b, a + b].includes(10);
 console.log(makesTen(1, 9));
 console.log(makesTen(1, 10));
+
+//Opposite numbers:
+function opposite(number) {
+  return number > 0 ? -number : Math.abs(number);
+}
+console.log(opposite(-1));
