@@ -235,3 +235,7 @@ let string = 'fire';
 repeatedString = string.repeat(2);
 console.log(repeatedString);
 
+//Two Makes Ten :
+const makesTen = (a, b) => [a, b, a + b].includes(10);
+console.log(makesTen(1, 9));
+console.log(makesTen(1, 10));
