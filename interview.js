@@ -259,3 +259,9 @@ var twoSum = function (nums, target) {
 };
 
 console.log(twoSum([1, 2, 3, 4], 7));
+
+// write a function that returns Basic Mathematical Operations:
+
+function basicOp(operation, value1, value2) {
+  return eval(value1 + operation + value2);
+}
