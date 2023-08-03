@@ -265,3 +265,13 @@ console.log(twoSum([1, 2, 3, 4], 7));
 function basicOp(operation, value1, value2) {
   return eval(value1 + operation + value2);
 }
+
+// another solution:
+const basicOperations = {
+  "+": (a, b) => a + b,
+  "-": (a, b) => a - b,
+  "*": (a, b) => a * b,
+  "/": (a, b) => a / b,
+};
+
+const basicOp = (op, x, y) => basicOperations[op](x, y);
