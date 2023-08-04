@@ -274,4 +274,12 @@ const basicOperations = {
   "/": (a, b) => a / b,
 };
 
-const basicOp = (op, x, y) => basicOperations[op](x, y);
+const basicOpe = (op, x, y) => basicOperations[op](x, y);
+
+function squareSum(numbers) {
+  let poweredBy = numbers.map((num) => num ** 2);
+  let sum= poweredBy.reduce((acc, cur) => acc + cur,0);
+  return sum;
+}
+
+console.log(squareSum([1, 3]));
