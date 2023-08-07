@@ -299,4 +299,6 @@ const divide = function (element) {
   return element / 2;
 }
 
-console.log(map([10,20,30], divide));
+console.log(map([10, 20, 30], divide));
+
+console.log('programmig is cool');
