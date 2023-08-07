@@ -284,3 +284,19 @@ function squareSum(numbers) {
 
 console.log(squareSum([1, 3]));
 
+// function that mutates array without using Array.map() :
+let arrayy = [1, 2, 3];
+
+const map = function (arr, fn) {
+  let transformedArray = [];
+  for (let i = 0; i < arr.length; i++) {
+    transformedArray[i] = fn(arr[i], i);
+  }
+      return transformedArray;
+};
+
+const divide = function (element) {
+  return element / 2;
+}
+
+console.log(map([10,20,30], divide));
