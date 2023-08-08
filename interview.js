@@ -302,3 +302,4 @@ const divide = function (element) {
 console.log(map([10, 20, 30], divide));
 
 console.log('programmig is cool');
+console.warn('please check the console');
