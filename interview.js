@@ -308,5 +308,7 @@ console.error('Something went wrong :(');
 
 const fullname = { first: "yousef", last: "gohary" };
 const title = { role: "frontend developer", company: "google" };
-const applicantInfo = Object.assign({}, fullname, title);
-console.log(applicantInfo);
+const applicantInfo1 = Object.assign({}, fullname, title);
+const applicantInfo2 = { ...fullname, ...title };
+console.log(applicantInfo1);
+console.log(applicantInfo2);
