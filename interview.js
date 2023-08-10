@@ -304,4 +304,3 @@ console.log(map([10, 20, 30], divide));
 console.log('programmig is cool');
 console.warn('please check the console');
 console.error('Something went wrong :(');
-console.error('Something went wrong :(');
