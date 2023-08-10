@@ -304,3 +304,9 @@ console.log(map([10, 20, 30], divide));
 console.log('programmig is cool');
 console.warn('please check the console');
 console.error('Something went wrong :(');
+
+
+const fullname = { first: "yousef", last: "gohary" };
+const title = { role: "frontend developer", company: "google" };
+const applicantInfo = Object.assign({}, fullname, title);
+console.log(applicantInfo);
