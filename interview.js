@@ -312,3 +312,4 @@ const applicantInfo1 = Object.assign({}, fullname, title);
 const applicantInfo2 = { ...fullname, ...title };
 console.log(applicantInfo1);
 console.log(applicantInfo2);
+console.log(6,7,8,9,10,11,17, 18, 25, 26);
