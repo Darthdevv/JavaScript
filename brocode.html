@@ -6,7 +6,7 @@
   <title>Document</title>
 </head>
 <body>
-  <form action="index.php" method="post">
+  <form action="index.php" method="post" enctype="multipart/form-data">
     <label for="username">username</label>
     <input type="text" id="username">
     <label for="password">password</label>
@@ -17,6 +17,21 @@
     <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" id="phone">
     <input type="reset" value="reset">
     <input type="submit" value="submit">
+    <br>
+    <label for="male">male</label>
+    <input type="radio" name="gender" id="male">
+    <label for="female">female</label>
+    <input type="radio" name="gender" id="female">
+
+    <label for="payment">payment</label>
+    <select name="payment" id="payment">
+      <option value="credit card">credit card</option>
+      <option value="master card">master card</option>
+      <option value="cash on delivery">cash on delivery</option>
+    </select>
+
+    <label for="file">file</label>
+    <input type="file" accept="images/jpeg, images/png" id="file">
   </form>
 
   <h1>Never Gonna Give You Up</h1>
