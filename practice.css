@@ -1,5 +1,11 @@
+@font-face {
+  font-family:Roboto ;
+  src: url(fonts/Roboto/Roboto-Regular.ttf);
+}
+
 body{
   background-color: black;
+  font-family: Roboto;
 }
 
 p{
@@ -12,4 +18,20 @@ dl{
 
 a{
   background-color: azure;
+}
+
+#p1{color: tomato;}
+#p2{color: orange;}
+#p3{color: yellowgreen;}
+#p4{color: darkgreen;}
+#p5{color: purple;}
+
+h5{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: aquamarine;
+  font-size: 20px;
+}
+
+p{
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
