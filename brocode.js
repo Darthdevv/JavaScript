@@ -13,4 +13,6 @@ document.getElementById("submit").onclick=() => {
   console.log(valb);
   console.log('the hypotenuse is ' + valc);
 }
-
+let word = 'Yousef';
+let adjutedword = word.toLowerCase().trim();
+console.log(adjutedword);
