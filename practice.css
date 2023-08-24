@@ -17,9 +17,20 @@ dl{
   background-color: beige;
 }
 
-a{
-  background-color: azure;
+a:link{
+  color:lightblue;
 }
+a:hover{
+  color:mediumblue;
+}
+a:active{
+  color:indigo;
+}
+a:visited{
+  color:red;
+}
+
+
 
 #p1{color: tomato;}
 #p2{color: orange;}
