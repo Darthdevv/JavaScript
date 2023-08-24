@@ -313,5 +313,7 @@ const applicantInfo2 = { ...fullname, ...title };
 console.log(applicantInfo1);
 console.log(applicantInfo2);
 
+let students = 1;
+students += 1; // augmented assignment opperator
 
 
