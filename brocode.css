@@ -1,0 +1,42 @@
+body{
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.title{
+  text-align: center;
+}
+
+.nav{
+  background-color: rgb(59, 53, 53);
+}
+
+.nav .list{
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+.nav a{
+  color: white;
+  text-decoration: none;
+  padding: 15px;
+  display: block;
+  cursor: pointer;
+  border-right: 2px solid black;
+}
+
+.nav a:hover{
+  background-color: grey;
+}
+
+main{
+  margin: 10px;
+}
+
+main{
+  direction: rtl;
+}
