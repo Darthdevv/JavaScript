@@ -20,11 +20,19 @@ console.log(nameString("yousef"));
 
 
 function greeting(name) {
-  if (name == "Mubashir") {
-    return "Hello, my Love!";
-  }
+  if (name == "Mubashir") return "Hello, my Love!";
   return "Hello, " + name + "!";
 }
 
 console.log(greeting('Mubashir'));
 console.log(greeting('Yousef'));
+
+
+function boolToString(flag) {
+  return String(flag);
+}
+
+console.log(typeof true)
+console.log(boolToString(true));
+console.log(typeof boolToString(true))
+console.log(boolToString(false));
