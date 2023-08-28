@@ -11,3 +11,20 @@ function isPrime(n) {
 
 isPrime(2) ? console.log("true") : console.log("false");
   
+
+function nameString(name){
+	return name+"Edabit"
+}
+
+console.log(nameString("yousef"));
+
+
+function greeting(name) {
+  if (name == "Mubashir") {
+    return "Hello, my Love!";
+  }
+  return "Hello, " + name + "!";
+}
+
+console.log(greeting('Mubashir'));
+console.log(greeting('Yousef'));
