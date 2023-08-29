@@ -51,3 +51,9 @@ function currying(a) {
   }
 }
 console.log(currying(4)(5));
+
+//local storage:
+localStorage.setItem('name', 'bob');
+console.log(localStorage.getItem('name'));
+localStorage.removeItem('name');
+console.log(localStorage.getItem('name'));
