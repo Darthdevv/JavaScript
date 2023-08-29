@@ -57,3 +57,11 @@ localStorage.setItem('name', 'bob');
 console.log(localStorage.getItem('name'));
 localStorage.removeItem('name');
 console.log(localStorage.getItem('name'));
+
+//session storage:
+sessionStorage.setItem('job', 'manager');
+console.log(sessionStorage.getItem('job'));
+
+//cookies:
+document.cookie = 'name=Yousef; expires=' + new Date(2024, 1, 1).toUTCString();
+document.cookie = 'job=manager; expires=' + new Date(9999, 0, 1).toUTCString();
