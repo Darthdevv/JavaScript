@@ -36,3 +36,18 @@ console.log(typeof true)
 console.log(boolToString(true));
 console.log(typeof boolToString(true))
 console.log(boolToString(false));
+
+
+function normal(a, b) {
+  console.log(a, b);
+}
+
+console.log(normal("a", "b"));
+
+
+function currying(a) {
+  return function (b) {
+    console.log(a, b);
+  }
+}
+console.log(currying(4)(5));
