@@ -80,3 +80,27 @@ function cubic(number) {
 }
 
 console.log(cubic(5));
+
+
+function minMax(arr) {
+  
+  let largest = arr[0];
+  let smallest = arr[0];
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > largest) {
+      largest = arr[i];
+    }
+  }
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] < smallest) {
+      smallest = arr[i];
+    }
+  }
+  
+  return [smallest, largest];
+  
+}
+console.log(minMax([1,2, 4, 6, 8,10]));
+
