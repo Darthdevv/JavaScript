@@ -67,3 +67,16 @@ console.log(sessionStorage.getItem('job'));
 //cookies:
 document.cookie = 'name=Yousef; expires=' + new Date(2024, 1, 1).toUTCString();
 document.cookie = 'job=manager; expires=' + new Date(9999, 0, 1).toUTCString();
+
+
+function area(base,height) {
+  return (base * height) / 2;
+}
+
+console.log(area(2, 3));
+
+function cubic(number) {
+  return number ** 3;
+}
+
+console.log(cubic(5));
