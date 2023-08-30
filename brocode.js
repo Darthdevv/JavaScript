@@ -1,15 +1,15 @@
-function isPrime(n) {
+function isPrime(number) {
 
-    if (n <= 1) return false;
+    if (number <= 1) return false;
 
-    for (let i = 2; i < n; i++){
-      if (n % i == 0) return false;
+    for (let i = 2; i < number; i++){
+      if (number % i == 0) return false;
     }
     return true;
   }
 
 
-isPrime(2) ? console.log("true") : console.log("false");
+isPrime(11) ? console.log("true") : console.log("false");
   
 
 function nameString(name) {
