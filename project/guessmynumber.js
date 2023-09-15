@@ -6,7 +6,7 @@ const highScore = document.querySelector('.highscore');
 const guess = document.querySelector('.guess').value;
 const checkBtn = document.querySelectorAll('.btn')[1];
 const againBtn = document.querySelectorAll('.btn')[0];
-let secretNumber = Math.trunc(Math.random() * 20) + 1;
+let secretNumber = generateRandomNum();
 let markBox = document.querySelector('.number');
 let scoreCounter = 20;
 let HighScore = 0;
@@ -21,6 +21,10 @@ function setColor(color) {
 
 function setWidth(width) {
   document.querySelector('.number').style.width = width ;
+}
+
+function generateRandomNum() {
+  return Math.trunc(Math.random() * 20) + 1;
 }
 
 checkBtn.addEventListener('click', function () {
@@ -49,7 +53,7 @@ checkBtn.addEventListener('click', function () {
 );
 
 function reset() {
-  secretNumber = Math.trunc(Math.random() * 20) + 1;
+  secretNumber = generateRandomNum();
   scoreCounter = 20;
   score.textContent = scoreCounter;
   setColor('#222');
