@@ -22,7 +22,8 @@ body {
   justify-content: center;
 }
 
-main{
+/* LAYOUT */
+main {
   position: relative;
   width: 100rem;
   height: 60rem;
@@ -35,9 +36,8 @@ main{
   display: flex;
 }
 
-.player{
+.player {
   flex: 50%;
-  background-color: #fde7ff;
   padding: 9rem;
   display: flex;
   flex-direction: column;
@@ -45,20 +45,7 @@ main{
   transition: all 0.75s;
 }
 
-.player--active {
-  background-color: rgba(255, 255, 255, 0.4);
-}
-.player--active .name {
-  font-weight: 700;
-}
-.player--active .score {
-  font-weight: 400;
-}
-
-.player--active .current {
-  opacity: 1;
-}
-
+/* ELEMENTS */
 .name {
   position: relative;
   font-size: 4rem;
@@ -74,6 +61,20 @@ main{
   font-weight: 300;
   color: #c7365f;
   margin-bottom: auto;
+}
+
+.player--active {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+.player--active .name {
+  font-weight: 700;
+}
+.player--active .score {
+  font-weight: 400;
+}
+
+.player--active .current {
+  opacity: 1;
 }
 
 .current {
@@ -98,6 +99,7 @@ main{
   font-size: 3.5rem;
 }
 
+/* ABSOLUTE POSITIONED ELEMENTS */
 .btn {
   position: absolute;
   left: 50%;
@@ -153,4 +155,13 @@ main{
   transform: translateX(-50%);
   height: 10rem;
   box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2);
+}
+
+.player--winner {
+  background-color: #2f2f2f;
+}
+
+.player--winner .name {
+  font-weight: 700;
+  color: #c7365f;
 }
