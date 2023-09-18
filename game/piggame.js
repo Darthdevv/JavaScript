@@ -37,8 +37,6 @@ const switchPlayer = function () {
   player2.classList.toggle('player--active');
 }
 
-diceEl.classList.add('hidden');
-
 btnRoll.addEventListener('click', function () {
   if (playing) {
     // Genereating a random dice roll
@@ -57,30 +55,8 @@ btnRoll.addEventListener('click', function () {
     } else {
       switchPlayer();
     }
-    // if (randomNum === 1) {
-    //   diceEl.classList.remove('hidden');
-    //   diceEl.setAttribute('src', '/game/dice-1.png')
-    //   player1.classList.toggle('player--active');
-    //   player2.classList.toggle('player--active');
-    // } else if (randomNum === 2) {
-    //   diceEl.classList.remove('hidden');
-    //   diceEl.setAttribute('src', '/game/dice-2.png');
-    // } else if (randomNum === 3) {
-    //   diceEl.classList.remove('hidden');
-    //   diceEl.setAttribute('src', '/game/dice-3.png');
-    // } else if (randomNum === 4) {
-    //   diceEl.classList.remove('hidden');
-    //   diceEl.setAttribute('src', '/game/dice-4.png');
-    // } else if (randomNum === 5) {
-    //   diceEl.classList.remove('hidden');
-    //   diceEl.setAttribute('src', '/game/dice-5.png');
-    // } else {
-    //   diceEl.classList.remove('hidden');
-    //   diceEl.setAttribute('src', '/game/dice-6.png')
-    // }
   }
 })
-
 
 btnHold.addEventListener('click', function () {
   if (playing) {
@@ -102,3 +78,24 @@ btnHold.addEventListener('click', function () {
 btnNew.addEventListener('click', init);
 
 
+  // if (randomNum === 1) {
+    //   diceEl.classList.remove('hidden');
+    //   diceEl.setAttribute('src', '/game/dice-1.png')
+    //   player1.classList.toggle('player--active');
+    //   player2.classList.toggle('player--active');
+    // } else if (randomNum === 2) {
+    //   diceEl.classList.remove('hidden');
+    //   diceEl.setAttribute('src', '/game/dice-2.png');
+    // } else if (randomNum === 3) {
+    //   diceEl.classList.remove('hidden');
+    //   diceEl.setAttribute('src', '/game/dice-3.png');
+    // } else if (randomNum === 4) {
+    //   diceEl.classList.remove('hidden');
+    //   diceEl.setAttribute('src', '/game/dice-4.png');
+    // } else if (randomNum === 5) {
+    //   diceEl.classList.remove('hidden');
+    //   diceEl.setAttribute('src', '/game/dice-5.png');
+    // } else {
+    //   diceEl.classList.remove('hidden');
+    //   diceEl.setAttribute('src', '/game/dice-6.png')
+    // }
