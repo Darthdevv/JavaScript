@@ -1,4 +1,4 @@
-
+'use strict';
 
 
 
@@ -232,7 +232,7 @@ console.log('this is an object')
 console.log('this is an object')
 
 let string = 'fire';
-repeatedString = string.repeat(2);
+let repeatedString = string.repeat(2);
 console.log(repeatedString);
 
 //Two Makes Ten :
@@ -301,9 +301,9 @@ const divide = function (element) {
 
 console.log(map([10, 20, 30], divide));
 
-console.log('programmig is cool');
-console.warn('please check the console');
-console.error('Something went wrong :(');
+// console.log('programmig is cool');
+// console.warn('please check the console');
+// console.error('Something went wrong :(');
 
 
 const fullname = { first: "yousef", last: "gohary" };
@@ -608,4 +608,23 @@ function printForecast(arr) {
 
 console.log(printForecast([17, 21, 23]));
 console.log(printForecast([12, 5, -5, 0, 4]));
+
+const y = ' yousef';
+first();
+
+function first() {
+  const h = 'hello';
+  second();
+
+  function second() {
+    const z = 'hi';
+    console.log(h + z + y)
+    third();
+  
+    function third() {
+      const i = 'hey';
+      console.log(i + y + z + h);
+    }
+  }
+}
 
