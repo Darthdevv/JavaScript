@@ -619,8 +619,21 @@ function print1() {
 console.log(print1('samy', 1, 2));
 
 
-const print2 = () => {
-  console.log(arguments);
-};
+// const print2 = () => {
+//   console.log(arguments);
+// };
 
-print2('hello', 400, false);
+// print2('hello', 400, false);
+
+
+const me = {
+  name: 'yousef',
+  age: 24
+}
+
+const friend = new Object;
+friend.age = 27;
+
+console.log(me);
+console.log(friend);
+
