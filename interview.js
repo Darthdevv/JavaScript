@@ -609,22 +609,18 @@ function printForecast(arr) {
 console.log(printForecast([17, 21, 23]));
 console.log(printForecast([12, 5, -5, 0, 4]));
 
-const y = ' yousef';
-first();
 
-function first() {
-  const h = 'hello';
-  second();
 
-  function second() {
-    const z = 'hi';
-    console.log(h + z + y)
-    third();
-  
-    function third() {
-      const i = 'hey';
-      console.log(i + y + z + h);
-    }
-  }
+// difference between arrow functions and regular functions
+function print1() {
+  console.log(arguments);
 }
 
+console.log(print1('samy', 1, 2));
+
+
+const print2 = () => {
+  console.log(arguments);
+};
+
+print2('hello', 400, false);
