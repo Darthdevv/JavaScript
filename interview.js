@@ -628,12 +628,31 @@ console.log(print1('samy', 1, 2));
 
 const me = {
   name: 'yousef',
-  age: 24
+  age: 24,
+  job: 'pharmacist'
 }
 
-const friend = new Object;
-friend.age = 27;
+console.log('Before graduation: ',me);
 
-console.log(me);
-console.log(friend);
 
+// shallow copy
+const copyOfMe = Object.assign(me);
+copyOfMe.job = 'web developer';
+console.log('After graduation: ', copyOfMe);
+
+const obje1 = { a: 0, b: { c: 0 } };
+const obje2 = Object.assign({}, obje1);
+console.log(obje2);
+
+obje1.a = 3;
+console.log(obje1);
+console.log(obje2);
+
+// deep copy
+const ob1 = { a: 0, b: { c: 0 } };
+const ob2 = Object.assign({}, ob1);
+const ob3 = structuredClone(ob1);
+ob1.b.c = 4;
+console.log(ob1);  // {a:0, b:{c:4}}
+console.log(ob2);  // {a:0, b:{c:4}}
+console.log(ob3);  // {a:0, b:{c:0}}
