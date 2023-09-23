@@ -656,3 +656,21 @@ ob1.b.c = 4;
 console.log(ob1);  // {a:0, b:{c:4}}
 console.log(ob2);  // {a:0, b:{c:4}}
 console.log(ob3);  // {a:0, b:{c:0}}
+
+
+const nested = [1, 2, [3, 4]];
+const [first, , [third, fourth]] = nested;
+console.log(first); 
+console.log(third); 
+console.log(fourth); 
+// const [val1, val2] = third;
+// console.log(val1);
+// console.log(val2);
+
+
+// mutating variables by destructuring in objects :
+let p = 111;
+let q = 222;
+const objectNow = { p: 1, q: 2, r: 3 };
+({ p, q } = objectNow);
+console.log(p, q);
