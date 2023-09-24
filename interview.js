@@ -674,3 +674,11 @@ let q = 222;
 const objectNow = { p: 1, q: 2, r: 3 };
 ({ p, q } = objectNow);
 console.log(p, q);
+
+
+const mainMenu = ['pizza', 'pasta', 'fried chicken'];
+const starterMenu = ['salad', 'water', 'wine'];
+const menu = [...mainMenu, ...starterMenu];
+console.log(menu);
+
+
