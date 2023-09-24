@@ -682,3 +682,9 @@ const menu = [...mainMenu, ...starterMenu];
 console.log(menu);
 
 
+console.log(3 && 4);               // => 4
+console.log(3 && 'Yousef');        // => 'yousef'
+console.log(0 && null);            // => 0
+console.log(null && undefined);    // => null
+console.log('Hello' && 23 && true && undefined && 'Yousef');   // => undefined
+console.log(true && false);   // => false
