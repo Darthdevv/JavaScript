@@ -755,14 +755,15 @@ let player1 = [...game.players[0]];
 let player2 = [...game.players[1]];
 console.log(player1, player2);
 // 2)
-let gk = 'Neuer';
-let fieldPlayers;
-[gk, ...fieldPlayers] = player1;
+
+const [gk, ...fieldPlayers] = player1;
 console.log(gk);
 console.log(fieldPlayers);
 // 3)
 const allPlayers = [...player1, ...player2];
 console.log(allPlayers, allPlayers.length);
+for (const player of allPlayers) console.log(player);
+for (const player of allPlayers.entries()) console.log(player);
 // 4)
 const players1Final = [...player1, 'Thiago', 'Coutinho', 'Perisic'];
 console.log(players1Final);
