@@ -1,0 +1,13 @@
+.test{
+  width: 200px;
+  height: 200px;
+  background-color: #09c;
+  float: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clearfix{
+  clear: both;
+}
