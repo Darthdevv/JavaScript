@@ -1,3 +1,5 @@
+
+
 .test{
   width: 200px;
   height: 200px;
@@ -10,4 +12,34 @@
 
 .clearfix{
   clear: both;
+}
+
+.one, .two, .three{
+  width: 200px;
+  height: 200px;
+  color: white;
+}
+
+.one{
+  background-color: yellow;
+  position: absolute;
+  top: 100px;
+  left: 100px;
+  z-index: 3;
+}
+
+.two{
+  background-color: red;
+  position: absolute;
+  top: 120px;
+  left: 120px;
+  z-index: 2;
+}
+
+.three{
+  background-color: blue;
+  position: absolute;
+  top: 140px;
+  left: 140px;
+  z-index: 1;
 }
