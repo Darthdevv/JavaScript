@@ -1,45 +1,10 @@
-
-
-.test{
+img{
   width: 200px;
   height: 200px;
-  background-color: #09c;
-  float: left;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  border-radius: 50%;
+  transition: 1s all;
 }
 
-.clearfix{
-  clear: both;
-}
-
-.one, .two, .three{
-  width: 200px;
-  height: 200px;
-  color: white;
-}
-
-.one{
-  background-color: yellow;
-  position: absolute;
-  top: 100px;
-  left: 100px;
-  z-index: 3;
-}
-
-.two{
-  background-color: red;
-  position: absolute;
-  top: 120px;
-  left: 120px;
-  z-index: 2;
-}
-
-.three{
-  background-color: blue;
-  position: absolute;
-  top: 140px;
-  left: 140px;
-  z-index: 1;
+img:hover{
+  transform: scale(2) rotate(360deg) translate(60px, 80px);
 }
