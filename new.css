@@ -1,10 +1,35 @@
-img{
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  transition: 1s all;
+.contact{
+  border: 1px solid rgb(255, 255, 255);
+  width: fit-content;
+  padding: 70px auto;
 }
 
-img:hover{
-  transform: scale(2) rotate(360deg) translate(60px, 80px);
+
+.contact::after{
+  content: '';
+  height: 10px;
+  width: 2px;
+  background-color: rgb(0, 0, 0);
+  position: absolute;
+  top: 1px;
+  left: 20px;
+}
+
+contact::after{
+  content: '';
+  height: 10px;
+  width: 2px;
+  background-color: rgb(0, 0, 0);
+  position: absolute;
+  top: 1px;
+  left: 20px;
+}
+.contact::before{
+  content: '';
+  height: 10px;
+  width: 10px;
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  top: 1px;
+  left: 15px;
 }
