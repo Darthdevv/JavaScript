@@ -779,3 +779,28 @@ printGoals(...game.scored)
 // 7)
 game.odds.team1 < game.odds.team2 && console.log(`${game.team1} is more likely to win`);
 game.odds.team1 > game.odds.team2 && console.log(`${game.team2} is more likely to win`);
+
+function findLongestWordLength(str) {
+  let longest = '';
+  let words = str.split(' ');
+  for (let i = 0; i < words.length; i++) {
+    if (longest.length < words[i].length) longest = words[i];
+  }
+  return longest;
+}
+
+console.log(
+  findLongestWordLength('The quick brown fox jumped over the lazy dog'));
+
+function confirmEnding(str, target) {
+  let myArr = str.split('');
+  let lastLetter = myArr[myArr.length - 1];
+  if (lastLetter=== target) {
+    return true
+  } else {
+    return false;
+  }
+}
+
+console.log(confirmEnding('Bastian', 'n'));
+console.log(confirmEnding('Bastian', 'q'));
