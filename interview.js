@@ -804,3 +804,21 @@ function confirmEnding(str, target) {
 
 console.log(confirmEnding('Bastian', 'n'));
 console.log(confirmEnding('Bastian', 'q'));
+
+const users = [
+  { id: 1, name: 'user1', age: 19 },
+  { id: 2, name: 'user2', age: 14 },
+  { id: 3, name: 'user3', age: 22 },
+  { id: 4, name: 'user4', age: 13 },
+];
+
+const lastUser = users.findLast(user => user.age < 22);
+console.log(lastUser);
+
+
+let num1 = Number(prompt('enter a number'));
+let num2 = Number(prompt('enter a number'));
+
+let result = num1 + num2;
+console.log(result);
+
