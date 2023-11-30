@@ -822,3 +822,5 @@ let num2 = Number(prompt('enter a number'));
 let result = num1 + num2;
 console.log(result);
 
+let abc = 'abc';
+console.log(abc.repeat(3));
