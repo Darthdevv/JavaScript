@@ -816,11 +816,13 @@ const lastUser = users.findLast(user => user.age < 22);
 console.log(lastUser);
 
 
-let num1 = Number(prompt('enter a number'));
-let num2 = Number(prompt('enter a number'));
+// let num1 = Number(prompt('enter a number'));
+// let num2 = Number(prompt('enter a number'));
 
-let result = num1 + num2;
-console.log(result);
+// let result = num1 + num2;
+// console.log(result);
 
 let abc = 'abc';
-console.log(abc.repeat(3));
+console.log(abc.repeat(3))
+const replaced =abc.replace(abc[0],'123');
+  console.log(replaced)
