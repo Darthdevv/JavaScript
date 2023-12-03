@@ -24,12 +24,12 @@ console.log(organized);
 const prime = [13,7,17,2];
 
 //using sort()
-const sortPrime1 = prime.sort();
-console.log(prime) //=> [2,7,13,17]; // Original array is mutated
-console.log(sortPrime1) //=> [2,7,13,17];
+// const sortPrime1 = prime.sort();
+// console.log(prime) //=> [2,7,13,17]; // Original array is mutated
+// console.log(sortPrime1) //=> [2,7,13,17];
 
 //using toSorted()
-const sortPrime2 = prime.toSorted();
+const sortPrime2 = prime.toSorted((a,b)=> b-a);
 console.log(prime) //=> [13,7,17,2]; // Original array remains unchanged
 console.log(sortPrime2) //=> [2,7,13,17];
 
@@ -37,9 +37,9 @@ console.log(sortPrime2) //=> [2,7,13,17];
 const months = ['January', 'February', 'March', 'April', 'May'];
 
 //using reverse()
-const reversedMonths1 = months.reverse();
-console.log(months) //=> ['May', 'April', 'March', 'February', 'January']; // Original array is altered
-console.log(reversedMonths1) //=> ['May', 'April', 'March', 'February', 'January'];
+// const reversedMonths1 = months.reverse();
+// console.log(months) //=> ['May', 'April', 'March', 'February', 'January']; // Original array is altered
+// console.log(reversedMonths1) //=> ['May', 'April', 'March', 'February', 'January'];
 
 //using toReversed()
 const reversedMonths2 = months.toReversed();
