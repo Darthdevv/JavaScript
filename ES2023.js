@@ -45,3 +45,19 @@ const months = ['January', 'February', 'March', 'April', 'May'];
 const reversedMonths2 = months.toReversed();
 console.log(months) //=> ['January', 'February', 'March', 'April', 'May']; // Original array remains unchanged
 console.log(reversedMonths2) //=> ['May', 'April', 'March', 'February', 'January'];
+
+console.log([] + {});
+console.log({} + []);
+console.log([] + []);
+console.log({} + {});
+console.log({} - {});
+console.log([] - []);
+console.log([] - {});
+console.log({} - []);
+console.log(0 == []);
+console.log(0 == '');
+console.log(0 == {})
+console.log(0 == null);
+console.log(0 == undefined);
+console.log(null == undefined);
+console.log(null === undefined);
