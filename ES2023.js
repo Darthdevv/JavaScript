@@ -1,65 +1,45 @@
 'use strict';
 
-// groupBy 
-let ppl = [
-  { name: 'micheal', age: 20 },
-  { name: 'jamal', age: 15 },
-  { name: 'jeff', age: 22 },
-  { name: 'mark', age: 25 },
-]
+// function declaration 
 
-function adultsOnly({age}) {
-  if (age >= 21) {
-    return 'adult';
+function showMessage(name, text = 'no') {
+  name = 'samy';
+  console.log(name + ':' + text)
+}
+
+showMessage('yousef', 'yes');
+
+
+function showCount(count) {
+  console.log(count ?? 'unknown')
+}
+
+showCount(null);
+showCount(undefined);
+showCount('');
+showCount(0);
+showCount(!0);
+
+
+function checkAge(age) {
+  if (age >= 18) {
+    return true;
   } else {
-    return 'minor';
+    return confirm('Do you have permission from your parents?');
   }
 }
 
-const organized = Object.groupBy(ppl, adultsOnly)
-console.log(organized);
+let age = prompt('enter your age!',18);
+
+if (checkAge(age)) {
+  alert('Access granted');
+} else {
+  alert('Access denied');
+}
 
 
-// toSorted
-const prime = [13,7,17,2];
+function doNothing() {
+  
+}
 
-//using sort()
-// const sortPrime1 = prime.sort();
-// console.log(prime) //=> [2,7,13,17]; // Original array is mutated
-// console.log(sortPrime1) //=> [2,7,13,17];
-
-//using toSorted()
-const sortPrime2 = prime.toSorted((a,b)=> b-a);
-console.log(prime) //=> [13,7,17,2]; // Original array remains unchanged
-console.log(sortPrime2) //=> [2,7,13,17];
-
-//toReversed
-const months = ['January', 'February', 'March', 'April', 'May'];
-
-//using reverse()
-// const reversedMonths1 = months.reverse();
-// console.log(months) //=> ['May', 'April', 'March', 'February', 'January']; // Original array is altered
-// console.log(reversedMonths1) //=> ['May', 'April', 'March', 'February', 'January'];
-
-//using toReversed()
-const reversedMonths2 = months.toReversed();
-console.log(months) //=> ['January', 'February', 'March', 'April', 'May']; // Original array remains unchanged
-console.log(reversedMonths2) //=> ['May', 'April', 'March', 'February', 'January'];
-
-console.log([] + {});
-console.log({} + []);
-console.log([] + []);
-console.log({} + {});
-console.log({} - {});
-console.log([] - []);
-console.log([] - {});
-console.log({} - []);
-console.log(0 == []);
-console.log(0 == '');
-console.log(0 == {})
-console.log(0 == null);
-console.log(0 == undefined);
-console.log(null == undefined);
-console.log(null === undefined);
-
-//--------------------------------
+console.log(doNothing());
