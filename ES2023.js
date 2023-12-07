@@ -1,11 +1,16 @@
 'use strict';
 
+
 async function randomQuote() {
   const response = await fetch('https://api.quotable.io/random');
   const quote = await response.json();
 
   // Output the quote and author name
-  console.log(quote);
-  console.log(`- ${quote.author}`);
+  document.getElementById('quote').innerHTML = quote.content;
+  document.getElementById('author').innerHTML = quote.author;
 }
-randomQuote();
+
+const quoteBtn = document.getElementById('quote-generator')
+quoteBtn.addEventListener('click', randomQuote)
+// randomQuote();
+
