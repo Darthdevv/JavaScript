@@ -1,16 +1,23 @@
-'use strict';
-
-
-async function randomQuote() {
-  const response = await fetch('https://api.quotable.io/random');
-  const quote = await response.json();
-
-  // Output the quote and author name
-  document.getElementById('quote').innerHTML = quote.content;
-  document.getElementById('author').innerHTML = quote.author;
+const sayHi = function(){
+  return 'hello';
 }
 
-const quoteBtn = document.getElementById('quote-generator')
-quoteBtn.addEventListener('click', randomQuote)
-// randomQuote();
+let func = sayHi();
 
+console.log(func);
+console.log(sayHi());
+
+function ask(question, yes, no) {
+  if (confirm(question)) yes();
+  else no();
+}
+
+ask(
+  'Do you agree?',
+  function () {
+    alert('You agreed.');
+  },
+  function () {
+    alert('You canceled the execution.');
+  }
+);
