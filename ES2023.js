@@ -65,3 +65,13 @@ function generateUniqueNumbers(start, end) {
 // Example usage
 const uniqueNumbers = generateUniqueNumbers(1, 6);
 console.log(uniqueNumbers);
+
+
+function checkPositive(arr) {
+  // Only change code below this line
+  return arr.every(curr => (curr > 0 ? curr : null));
+
+  // Only change code above this line
+}
+
+console.log(checkPositive([1, 2, 3, -4, 5]));
