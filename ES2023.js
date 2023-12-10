@@ -76,3 +76,43 @@ function checkPositive(arr) {
 
 console.log(checkPositive([1, 2, 3, -4, 5]));
 
+
+// 2 ways to make every first letter of a string capital:
+
+//using forEach
+function titleCase(str) {
+  return str
+    .toLoweCase()
+    .split(' ')
+    .forEach(element => {
+    element.charAt(0).toUpperCase();
+  });
+}
+
+console.log(titleCase("I'm a little tea pot"));
+
+
+//using map along with replace
+function titleCase(str) {
+  return str
+    .toLowerCase()
+    .split(' ')
+    .map(val => val.replace(val.charAt(0), val.charAt(0).toUpperCase()))
+    .join(' ');
+}
+
+console.log(titleCase('I am a rockstar not a doctor'));
+
+
+
+function getIndexToIns(arr, num) {
+  let finalArr = [...arr,num];
+  finalArr.sort((a, b) => a - b);
+  return finalArr.map((element, index) => {
+    if (element === num) {
+      return index
+    }
+  }).find(value => typeof value !== 'undefined');
+}
+
+console.log(getIndexToIns([40, 60], 50));
