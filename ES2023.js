@@ -117,4 +117,3 @@ function getIndexToIns(arr, num) {
 
 console.log(getIndexToIns([40, 60], 50));
 
-console.log('hello world');
