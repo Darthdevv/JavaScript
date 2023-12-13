@@ -117,3 +117,12 @@ function getIndexToIns(arr, num) {
 
 console.log(getIndexToIns([40, 60], 50));
 
+async function getUsers() {
+  const response = await fetch('https://jsonplaceholder.typicode.com/users');
+  const users = await response.json();
+  for (let i = 0; i < users.length; i++){
+    console.log(`Full name: ${users[i].name}, Email: ${users[i].email}`);
+  }
+}
+
+getUsers();
