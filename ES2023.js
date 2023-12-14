@@ -126,3 +126,9 @@ async function getUsers() {
 }
 
 getUsers();
+
+
+var color1 = '#111111';
+var color2 = '#770A48';
+var color3 = '#DC143C';
+var color4 = '#4F45E4';
