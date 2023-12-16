@@ -117,18 +117,17 @@ function getIndexToIns(arr, num) {
 
 console.log(getIndexToIns([40, 60], 50));
 
-async function getUsers() {
-  const response = await fetch('https://jsonplaceholder.typicode.com/users');
-  const users = await response.json();
-  for (let i = 0; i < users.length; i++){
-    console.log(`Full name: ${users[i].name}, Email: ${users[i].email}`);
-  }
-}
+// async function getUsers() {
+//   const response = await fetch('https://jsonplaceholder.typicode.com/users');
+//   const users = await response.json();
+//   for (let i = 0; i < users.length; i++){
+//     console.log(`Full name: ${users[i].name}, Email: ${users[i].email}`);
+//   }
+// }
+// getUsers();
 
-getUsers();
+let promise = new Promise(function (resolve, reject) {
+  
+})
+  
 
-
-var color1 = '#111111';
-var color2 = '#770A48';
-var color3 = '#DC143C';
-var color4 = '#4F45E4';
