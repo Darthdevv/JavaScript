@@ -127,7 +127,7 @@ console.log(getIndexToIns([40, 60], 50));
 // getUsers();
 
 let promise = new Promise(function (resolve, reject) {
-  
+  console.log('hello world'); 
 })
   
 
