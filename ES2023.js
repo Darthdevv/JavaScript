@@ -130,3 +130,6 @@ let promise = new Promise(function (resolve, reject) {
   console.log('hello world'); 
 })
   
+var string = 'Amgaderty';
+var regx = /^[A-Z][a-z]{3,8}$/;
+console.log(regx.test(string));
