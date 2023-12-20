@@ -130,4 +130,3 @@ let promise = new Promise(function (resolve, reject) {
   console.log('hello world'); 
 })
   
-console.log('hello world')
