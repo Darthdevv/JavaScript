@@ -117,14 +117,14 @@ function getIndexToIns(arr, num) {
 
 console.log(getIndexToIns([40, 60], 50));
 
-// async function getUsers() {
-//   const response = await fetch('https://jsonplaceholder.typicode.com/users');
-//   const users = await response.json();
-//   for (let i = 0; i < users.length; i++){
-//     console.log(`Full name: ${users[i].name}, Email: ${users[i].email}`);
-//   }
-// }
-// getUsers();
+async function getUsers() {
+  const response = await fetch('https://jsonplaceholder.typicode.com/users');
+  const users = await response.json();
+  for (let i = 0; i < users.length; i++){
+    console.log(`Full name: ${users[i].name}, Email: ${users[i].email}`);
+  }
+}
+getUsers();
 
 let promise = new Promise(function (resolve, reject) {
   console.log('hello world'); 
@@ -133,3 +133,17 @@ let promise = new Promise(function (resolve, reject) {
 var string = 'Amgaderty';
 var regx = /^[A-Z][a-z]{3,8}$/;
 console.log(regx.test(string));
+
+
+// object destructuring + templete literal + object literal
+function addressMaker(address) {
+  const { city, state } = address;
+  const newAddress = {
+    city,
+    state,
+    country: 'united states',
+  }
+  console.log(`I live in ${newAddress.city} ${newAddress.state} ${newAddress.country}`)
+}
+
+addressMaker({ city: 'cairo', state: 'egypt' });
