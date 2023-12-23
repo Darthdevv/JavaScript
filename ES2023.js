@@ -117,14 +117,14 @@ function getIndexToIns(arr, num) {
 
 console.log(getIndexToIns([40, 60], 50));
 
-async function getUsers() {
-  const response = await fetch('https://jsonplaceholder.typicode.com/users');
-  const users = await response.json();
-  for (let i = 0; i < users.length; i++){
-    console.log(`Full name: ${users[i].name}, Email: ${users[i].email}`);
-  }
-}
-getUsers();
+// async function getUsers() {
+//   const response = await fetch('https://jsonplaceholder.typicode.com/users');
+//   const users = await response.json();
+//   for (let i = 0; i < users.length; i++){
+//     console.log(`Full name: ${users[i].name}, Email: ${users[i].email}`);
+//   }
+// }
+// getUsers();
 
 let promise = new Promise(function (resolve, reject) {
   console.log('hello world'); 
@@ -147,3 +147,37 @@ function addressMaker(address) {
 }
 
 addressMaker({ city: 'cairo', state: 'egypt' });
+
+let incomes = [120, 130, 140];
+let sum = 0;
+for (let income of incomes) {
+  income += 500;
+console.log(incomes);
+}
+
+function add(...nums) {
+  return nums.reduce((x,y) => x + y);
+}
+
+console.log(add(1, 2, 3, 4));
+
+
+if (false) {
+  var example34 = 5;
+}
+
+console.log(example34);
+
+
+let letters = 'yousefF ';
+for (let letter of letters) {
+  console.log(letter.replace('F', 'cau'));
+}
+
+var a = 10;
+var b = function () {
+  console.log(a);
+  var a = 20;
+}
+
+console.log(b());
