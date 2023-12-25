@@ -181,3 +181,4 @@ var b = function () {
 }
 
 console.log(b());
+console.log('hello world');
