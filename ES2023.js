@@ -9,37 +9,6 @@ let func = sayHi();
 console.log(func);
 console.log(sayHi());
 
-// function ask(question, yes, no) {
-//   if (confirm(question)) yes();
-//   else no();
-// }
-
-// ask(
-//   'Do you agree?',
-//   function () {
-//     alert('You agreed.');
-//   },
-//   function () {
-//     alert('You canceled the execution.');
-//   }
-// );
-
-// let age = prompt('What is your age?', 18);
-
-// // conditionally declare a function
-// if (age < 18) {
-//   function welcome() {
-//     alert('Hello!');
-//   }
-// } else {
-//   function welcome() {
-//     alert('Greetings!');
-//   }
-// }
-
-// console.log(welcome());
-
-
 console.log(typeof null == 'object'); // error in the language
 console.log(typeof function () { } == 'function'); // functions are treated specially
 
@@ -117,14 +86,14 @@ function getIndexToIns(arr, num) {
 
 console.log(getIndexToIns([40, 60], 50));
 
-// async function getUsers() {
-//   const response = await fetch('https://jsonplaceholder.typicode.com/users');
-//   const users = await response.json();
-//   for (let i = 0; i < users.length; i++){
-//     console.log(`Full name: ${users[i].name}, Email: ${users[i].email}`);
-//   }
-// }
-// getUsers();
+async function getUsers() {
+  const response = await fetch('https://jsonplaceholder.typicode.com/users');
+  const users = await response.json();
+  for (let i = 0; i < users.length; i++){
+    console.log(`Full name: ${users[i].name}, Email: ${users[i].email}`);
+  }
+}
+getUsers();
 
 let promise = new Promise(function (resolve, reject) {
   console.log('hello world'); 
