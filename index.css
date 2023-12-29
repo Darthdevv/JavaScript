@@ -1,6 +1,6 @@
 body{
-    background-color: rgb(25, 25, 25);
-    color: white;
+    background-color:#1f1f1f;
+    color: #eee;
     font-family: Montserrat;
 }
 
@@ -110,4 +110,20 @@ body{
     column-gap: 10px;
     margin-bottom: 10px;
     align-items: center;
+}
+
+.row{
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.col-md-4{
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    background-color: #eee;
+    color: black;
 }
