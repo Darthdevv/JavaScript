@@ -13,6 +13,31 @@
     <script defer src="ES2023.js"></script>
 </head>
 <body>
+        <header class="header">
+        <nav class="navbar">
+        <a href="#" class="nav-logo">WebDev.</a>
+        <ul class="nav-menu" id="list">
+            <li class="nav-item">
+            <a id="pizza" onclick="getData('pizza')" href='#' class="nav-link">Pizza</a>
+            </li>
+            <li class="nav-item">
+            <a id="pasta" onclick="getData('pasta')" href='#' class="nav-link">Pasta</a>
+            </li>
+            <li class="nav-item">
+            <a id="carrot" onclick="getData('chicken')" href='#' class="nav-link">Chicken</a>
+            </li>
+            <li class="nav-item">
+            <a id="lettuce" onclick="getData('beef')" href='#' class="nav-link">Beef</a>
+            </li>
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+    </header>
+    
     <section>
         <div class="container">
             <div id="rowData" class="row">

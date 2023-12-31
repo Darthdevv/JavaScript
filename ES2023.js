@@ -1,5 +1,18 @@
 'use strict';
 
+(function () {
+  const hamburger = document.querySelector('.hamburger');
+  const navMenu = document.querySelector('.nav-menu');
+  const welcomeMessage = document.getElementById('welcome');
+
+  hamburger.addEventListener('click', mobileMenu);
+
+  function mobileMenu() {
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
+  }
+})();
+
 // const sayHi = function () {
 //   return 'hello';
 // }
@@ -153,16 +166,21 @@
 
 let data = [];
 
-let myHttp = new XMLHttpRequest();
-myHttp.open('GET', 'https://jsonplaceholder.typicode.com/posts');
-myHttp.send();
-myHttp.addEventListener('readystatechange', () => {
-  if (myHttp.readyState === 4) {
-    data = JSON.parse(myHttp.response);
-    console.log(data)
-    displayData();
-  }
-})
+// getData('lettuce');
+// displayLinks('lettuce');
+
+function getData(meal) {
+  let myHttp = new XMLHttpRequest();
+  myHttp.open('GET', 'https://forkify-api.herokuapp.com/api/search?q=' + meal);
+  myHttp.send();
+  myHttp.addEventListener('readystatechange', () => {
+    if (myHttp.readyState === 4) {
+      data = JSON.parse(myHttp.response);
+      console.log(data.recipes);
+      displayData();
+    }
+  });
+}
 
 function displayData() {
   let cols = ""
@@ -175,12 +193,27 @@ function displayData() {
 //   </div>
 // `;
   //   }
-  data.map(item => cols += `
+  data.recipes.map(
+    item =>
+      (cols += `
     <div class="col-md-4">
-      <span>${item.id}</span>
+      <img class='pizza' height='200' src=${item.image_url} alt='pizza'>
       <h3>${item.title}</h3 >
-      <p>${item.body}</p>
+      <a target='_blank' href='${item.source_url}'>visit our website</a>
     </div>
-  `);
+  `)
+  );
   document.getElementById('rowData').innerHTML = cols;
 }
+
+// function displayLinks(meal) {
+//   let links = '';
+  
+//   for (let i = 0; i < 4; i++){
+//     links += `  <li class="nav-item">
+//             <a id="pizza" href='https://forkify-api.herokuapp.com/api/search?q=' + ${meal}class="nav-link">${meal}</a>
+//             </li>`;
+//   }
+
+//   document.getElementById('list').innerHTML = links;
+// }
