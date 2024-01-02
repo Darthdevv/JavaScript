@@ -206,4 +206,44 @@ function displayData() {
 //     <p>${data[i].body}</p>
 //   </div>
 // `;
-  //   }
+//   }
+  
+
+const address = 'One Infinite Loop, Cupertino 95014';
+const cityZipCodeRegex = /^[^,\\]+[,\\\s]+(.+?)\s*(\d{5})?$/;
+const [_, city, zipCode] = address.match(cityZipCodeRegex) || [];
+
+function saveCityZipCode(city,zipCode) {
+  return city + zipCode;
+}
+console.log(saveCityZipCode(city, zipCode));
+console.log(address.match(cityZipCodeRegex));
+
+const Car = {
+  make: 'Honda',
+  model: 'Accord',
+  color: 'Blue',
+};
+
+function paintCar(car, color) {
+  car.color = color;
+  return `the ${car.make} is ${car.color}`
+}
+
+console.log(paintCar(Car, 'blue'))
+
+
+function addMonths(date, months) {
+  // Copy the input date to avoid modifying the original date
+  const resultDate = new Date(date);
+
+  // Calculate the new month after adding the specified number of months
+  const newMonth = resultDate.getMonth() + months;
+
+  // Set the month in the new date object
+  resultDate.setMonth(newMonth);
+
+  return resultDate;
+}
+
+console.log(addMonths(Date.now(), 4))
