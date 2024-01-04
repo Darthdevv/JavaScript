@@ -276,4 +276,10 @@ console.log(calcAges([1999, 2004, 1967]));
 
 
 const MYARRAY = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-MYARRAY
+
+function calcYear(birthYear) {
+  console.log(name);
+}
+
+const firstName = 'hamo elsayed';
+calcYear();
