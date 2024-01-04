@@ -247,3 +247,33 @@ function addMonths(date, months) {
 }
 
 console.log(addMonths(Date.now(), 4))
+
+function calcAge(birthYear) {
+  return 2024 - birthYear;
+}
+
+function yearsTillRetirement(birthYear,firstName) {
+  const age = calcAge(birthYear);
+  const retirement = 65 - age;
+
+  return retirement > 0
+    ? `${firstName} has ${retirement} years till retirement`
+    : `${firstName} has retired ${Math.abs(retirement)} years ago`;
+  
+}
+
+console.log(yearsTillRetirement(1999, 'Yousef'));
+console.log(yearsTillRetirement(1955, 'Tarek'));
+
+
+function calcAges(arr) {
+  const ages = arr.map(item => 2024 - item);
+  for (const age in ages) {
+    console.log(ages[age]);
+  }
+}
+console.log(calcAges([1999, 2004, 1967]));
+
+
+const MYARRAY = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+MYARRAY
