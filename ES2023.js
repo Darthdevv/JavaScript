@@ -283,3 +283,21 @@ function calcYear(birthYear) {
 
 const firstName = 'hamo elsayed';
 calcYear();
+
+function playGame1() {
+  console.log(this);
+}
+
+const playGame2 = function () {
+  console.log(this);
+}
+
+const playGame3 = () => {
+  console.log(this);
+}
+
+console.log(this);
+
+playGame1();
+playGame2();
+playGame3();
