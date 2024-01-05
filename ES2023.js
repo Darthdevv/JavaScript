@@ -301,3 +301,5 @@ console.log(this);
 playGame1();
 playGame2();
 playGame3();
+
+console.log('hello world');
