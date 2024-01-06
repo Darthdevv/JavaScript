@@ -318,4 +318,25 @@ function sayHello( userName,userAge = 24,userSalary) {
   console.log(`hello my name is ${userName} my age is ${userAge} and my salary is ${userSalary}`);
 }
 
-sayHello('yousef', undefined ,30000)
+sayHello('yousef', undefined, 30000)
+
+
+// 3 methods to check if a property is in an object
+// 1) in keyword
+let yousef = {
+  job: 'full stack developer',
+  age: 24,
+  salary: 32000
+}
+
+console.log('name' in yousef);
+
+// 2) hasOwnProperty
+const myObject = yousef;
+const propertyName = 'age';
+console.log(yousef.hasOwnProperty('salary'));
+console.log(myObject.hasOwnProperty(propertyName));
+
+// 3) JSON.stringify().includes();
+const stringifiedObject = JSON.stringify(yousef);
+console.log(stringifiedObject.includes('job'));
