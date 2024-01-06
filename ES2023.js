@@ -302,4 +302,20 @@ playGame1();
 playGame2();
 playGame3();
 
-console.log('hello world');
+
+// hoisting
+function nam() {
+  console.log('javascript');
+}
+var nam = function () {
+  console.log('react');
+};
+console.log('hello decoder');
+nam();
+
+//default params
+function sayHello( userName,userAge = 24,userSalary) {
+  console.log(`hello my name is ${userName} my age is ${userAge} and my salary is ${userSalary}`);
+}
+
+sayHello('yousef', undefined ,30000)
