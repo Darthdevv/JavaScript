@@ -134,7 +134,7 @@ section{
 } */
 
 .row{
-    margin-block: 20px;
+    margin-block: 80px;
     display: flex;
     gap: 30px;
     flex-wrap: wrap;
@@ -214,6 +214,11 @@ section{
     color: #121212;
 }
 
+.c-brown{
+    color: brown;
+}
+
+
 @media only screen and (max-width: 768px) {
     .nav-menu {
         position: fixed;
@@ -242,6 +247,3 @@ section{
     }
 }
 
-.c-brown{
-    color: brown;
-}
