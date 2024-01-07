@@ -16,12 +16,16 @@ a{
 }
 
 body{
-    background-color:#1f1f1f;
+    background-color:brown;
     color: #eee;
     font-family: Montserrat;
 }
 
-.title{
+section{
+    width: 85%;
+    margin: auto;
+}
+/* .title{
     font-size: 30px;
     font-weight: bold;
 }
@@ -127,9 +131,10 @@ body{
     column-gap: 10px;
     margin-bottom: 10px;
     align-items: center;
-}
+} */
 
 .row{
+    margin-block: 20px;
     display: flex;
     gap: 30px;
     flex-wrap: wrap;
@@ -150,8 +155,12 @@ body{
 }
 
 .header{
-    background-color: #111827;
-    box-shadow: 0 10px 25px hsla(221, 39%, 11%, 0.801);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #eee;
+    box-shadow: 0 2px 10px hsla(0, 0%, 41%, 0.439);
 }
 
 .navbar {
@@ -172,7 +181,7 @@ body{
     margin: 5px auto;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
-    background-color: #fff;
+    background-color: #121212;
 }
 
 .nav-menu {
@@ -188,17 +197,21 @@ body{
 .nav-link{
     font-size: 1 rem;
     font-weight: 400;
-    color: #fff;
+    color: #121212;
 }
 
 .nav-link:hover{
-    color: #a78bfa;
+    color: #6d6d6d;
+}
+
+.bar:focus{
+    background-color: #eee !important;
 }
 
 .nav-logo {
     font-size: 1.1rem;
     font-weight: 500;
-    color: #a78bfa;
+    color: #121212;
 }
 
 @media only screen and (max-width: 768px) {
@@ -207,13 +220,12 @@ body{
         left: -100%;
         top: 3rem;
         flex-direction: column;
-        background-color: #111827;
+        background-color: #eee;
         width: 100%;
         border-radius: 10px;
         text-align: center;
         transition: 0.3s;
-        box-shadow:
-            0 10px 27px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 2px 10px hsla(0, 0%, 100%, 0.439)
     }
 
     .nav-menu.active {

@@ -340,3 +340,7 @@ console.log(myObject.hasOwnProperty(propertyName));
 // 3) JSON.stringify().includes();
 const stringifiedObject = JSON.stringify(yousef);
 console.log(stringifiedObject.includes('job'));
+
+
+
+document.body.addEventListener('click', () => console.log(this))
