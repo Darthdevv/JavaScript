@@ -156,13 +156,13 @@ for (let letter of letters) {
   console.log(letter.replace('F', 'cau'));
 }
 
-var a = 10;
-var b = function () {
-  console.log(a);
-  var a = 20;
-}
+// var a = 10;
+// var b = function () {
+//   console.log(a);
+//   var a = 20;
+// }
 
-console.log(b());
+// console.log(b());
 
 let data = [];
 
@@ -344,3 +344,10 @@ console.log(stringifiedObject.includes('job'));
 
 
 document.body.addEventListener('click', () => console.log(this))
+
+//destructuring nested arrays
+const arrr = [1, 2, [3, 4]];
+const [x, y, [n,m]] = arrr;
+console.log(x, y, n, m);
+
+//default values 
