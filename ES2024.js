@@ -3,7 +3,6 @@
 (function () {
   const hamburger = document.querySelector('.hamburger');
   const navMenu = document.querySelector('.nav-menu');
-  const welcomeMessage = document.getElementById('welcome');
 
   hamburger.addEventListener('click', mobileMenu);
 
