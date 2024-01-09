@@ -16,26 +16,36 @@
 
 let data = [];
 
-getData('pizza');
+getMeals();
 
-function getData(meal = 'carrot') {
-  let myHttp = new XMLHttpRequest();
-  myHttp.open('GET', 'https://forkify-api.herokuapp.com/api/search?q=' + meal);
-  myHttp.send();
-  myHttp.addEventListener('readystatechange', () => {
-    if (myHttp.readyState === 4) {
-      data = JSON.parse(myHttp.response);
-      console.log(data.recipes);
-      displayData();
-    }
-  });
+// function getData(meal) {
+//   let myHttp = new XMLHttpRequest();
+//   myHttp.open('GET', 'https://forkify-api.herokuapp.com/api/search?q=' + meal);
+//   myHttp.send();
+//   myHttp.addEventListener('readystatechange', () => {
+//     if (myHttp.readyState === 4) {
+//       data = JSON.parse(myHttp.response);
+//       console.log(data.recipes);
+//       displayData();
+//     }
+//   });
 
+// }
+
+async function getMeals(meal = 'carrot') {
+  const response = await fetch(
+    'https://forkify-api.herokuapp.com/api/search?q=' + meal
+  );
+  const meals = await response.json();
+  data = meals.recipes;
+  console.log(data);
+  displayData();
 }
 
 
 function displayData() {
   let cols = ""
-  data.recipes.map(
+  data.map(
     item =>
       (cols += `
     <div class="col-md-4">
