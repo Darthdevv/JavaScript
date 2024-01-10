@@ -1118,3 +1118,41 @@ const arrrr = [1, 2];
 const [v, g, l = 1] = arrrr;
 console.log(v, g, l); 
 
+//using both spread operator and rest parameters 
+
+let starterMenuu = ['salad', 'bread', 'water'];
+let mainMenuu = ['pizza', 'pasta', 'fish', 'corn'];
+// ! spread opearator on right side of assignment operator and rest operator is on the left side
+const [pizza, , fish, ...otherfood] = [...mainMenuu, ...starterMenuu];
+console.log(pizza, fish, otherfood);
+
+
+function addNums(...nums) {
+  let sum = 0;
+  nums.forEach(num => sum += num)
+  console.log(sum);
+}
+
+addNums(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+let ww = [1, 2, 3];
+addNums(...ww);
+
+// nullish values => null and undefined 
+// nullish coallising ignores 0 and '' even though they are falsy values
+
+
+let name = 10;
+// name ??= 10;
+name &&= 20;
+console.log(name);
+
+
+let yousef = {
+  name: 'yousef',
+  wife: {
+    name: 'aya'
+  }
+}
+
+const { name:firstname,  wife:{ name:wifename } } = yousef;
+console.log(firstname,wifename)

@@ -1,3 +1,4 @@
+///<reference types="../@types/jquery" />
 'use strict';
 
 (function () {
@@ -11,7 +12,6 @@
     navMenu.classList.toggle('active');
   }
 })();
-
 
 let data = [];
 
@@ -41,9 +41,8 @@ async function getMeals(meal = 'carrot') {
   displayData();
 }
 
-
 function displayData() {
-  let cols = ""
+  let cols = '';
   data.map(
     item =>
       (cols += `
@@ -66,32 +65,3 @@ function displayData() {
 //   </div>
 // `;
 //   }
-
-
-//using both spread operator and rest parameters 
-
-let starterMenu = ['salad', 'bread', 'water'];
-let mainMenu = ['pizza', 'pasta', 'fish', 'corn'];
-// ! spread opearator on right side of assignment operator and rest operator is on the left side
-const [pizza, , fish, ...otherfood] = [...mainMenu, ...starterMenu];
-console.log(pizza, fish, otherfood);
-
-
-function addNums(...nums) {
-  let sum = 0;
-  nums.forEach(num => sum += num)
-  console.log(sum);
-}
-
-addNums(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-let x = [1, 2, 3];
-addNums(...x);
-
-// nullish values => null and undefined 
-// nullish coallising ignores 0 and '' even though they are falsy values
-
-
-let name = 10;
-// name ??= 10;
-name &&= 20;
-console.log(name);
