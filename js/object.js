@@ -122,6 +122,7 @@ const game = {
         team2: 6.5,
     },
 };
+const teams = [game.team1,game.team2];
 
 // 1)
 for (const [i,player] of Object.entries(game.scored)) {
@@ -138,3 +139,14 @@ for (const averageOdds of Object.values(game.odds)) {
     rounded = Math.abs(average).toFixed(2);
 }
 console.log(rounded);
+
+// 3)
+for (const [team,val] of Object.entries(game.odds)) {
+    if (team === 'x') {
+        console.log(`Odd of draw: ${val}`)
+    } else {
+        console.log(`Odd of victory ${team === 'team1' ? teams[0] : teams[1]}: ${val}`);
+    }
+    
+
+}
