@@ -147,6 +147,23 @@ for (const [team,val] of Object.entries(game.odds)) {
     } else {
         console.log(`Odd of victory ${team === 'team1' ? teams[0] : teams[1]}: ${val}`);
     }
-    
-
 }
+
+function countOccurrences(arr) {
+
+    let itemCount = {};
+
+    arr.forEach(element => {
+        if (!itemCount[element]) {
+            itemCount[element] = 1
+        } else {
+            itemCount[element]++
+        }
+    });
+    return itemCount;
+    
+}
+
+const myArray = game.scored;
+const result = countOccurrences(myArray);
+console.log(result);
