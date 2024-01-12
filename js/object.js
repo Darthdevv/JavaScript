@@ -125,20 +125,27 @@ const game = {
 const teams = [game.team1,game.team2];
 
 // 1)
-for (const [i,player] of Object.entries(game.scored)) {
+// * still works with Object.entries(game.scored)
+for (const [i,player] of game.scored.entries()) {
     console.log(`Goal ${+i + 1}: ${player}`);
 }
 
 // 2)
-let sum = 0;
-let average;
-let rounded;
-for (const averageOdds of Object.values(game.odds)) {
-    sum += averageOdds;
-    average = sum / 3;
-    rounded = Math.abs(average).toFixed(2);
-}
-console.log(rounded);
+// let sum = 0;
+// let average;
+// let rounded;
+// for (const averageOdds of Object.values(game.odds)) {
+//     sum += averageOdds;
+//     average = sum / 3;
+//     rounded = Math.abs(average).toFixed(2);
+// }
+// console.log(rounded);
+// * another solution:
+let average = 0;
+const odds = Object.values(game.odds);
+for (const odd of odds) average += odd;
+average /= odds.length;
+console.log(average);
 
 // 3)
 for (const [team,val] of Object.entries(game.odds)) {
@@ -148,6 +155,11 @@ for (const [team,val] of Object.entries(game.odds)) {
         console.log(`Odd of victory ${team === 'team1' ? teams[0] : teams[1]}: ${val}`);
     }
 }
+// * another solution
+// for (const [team, odd] of Object.entries(game.odds)) {
+//     const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`;
+//     console.log(`Odd of ${teamStr}: ${odd}`);
+// }
 
 function countOccurrences(arr) {
 
@@ -167,3 +179,45 @@ function countOccurrences(arr) {
 const myArray = game.scored;
 const result = countOccurrences(myArray);
 console.log(result);
+
+// * Sets
+const mySet = new Set(['pasta', 'pasta', 'pizza']);
+console.log(mySet);
+console.log(mySet.size);
+console.log(new Set('yousefyousefw').size);
+
+const ordersSet = new Set([
+  'Pasta',
+  'Pizza',
+  'Pizza',
+  'Risotto',
+  'Pasta',
+  'Pizza',
+]);
+console.log(ordersSet);
+
+console.log(new Set('Jonas'));
+
+console.log(ordersSet.size);
+console.log(ordersSet.has('Pizza'));
+console.log(ordersSet.has('Bread'));
+ordersSet.add('Garlic Bread');
+ordersSet.add('Garlic Bread');
+ordersSet.delete('Risotto');
+// ordersSet.clear();
+console.log(ordersSet);
+
+for (const order of ordersSet) console.log(order);
+
+// Example
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+const staffUnique = [...new Set(staff)];
+console.log(staffUnique);
+
+console.log(
+  new Set(['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']).size
+);
+
+console.log(new Set('jonasschmedtmann').size);
+
+// * Maps
