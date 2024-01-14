@@ -221,4 +221,3 @@ console.log(
 console.log(new Set('jonasschmedtmann').size);
 
 // * Maps
-console.log('hello world');
