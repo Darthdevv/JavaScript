@@ -46,3 +46,12 @@ const text = 'please visit Microsoft';
 const newText = text.replace('Microsoft', 'FaceBook');
 console.log(text);
 console.log(newText);
+
+
+console.log(+'1234'[0]);
+
+const airline = 'TAP air Portugal';
+console.log(airline.indexOf('air'));
+console.log(airline.slice(4, 7));
+console.log(airline.slice(-4));
+console.log(airline)
