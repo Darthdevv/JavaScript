@@ -221,3 +221,45 @@ console.log(
 console.log(new Set('jonasschmedtmann').size);
 
 // * Maps
+
+const rest = new Map();
+const ress = new Set();
+rest.set('1', 1);
+console.log(rest, ress);
+
+const question = new Map([
+  ['question', 'What is the best programming language in the world?'],
+  [1, 'C'],
+  [2, 'Java'],
+  [3, 'JavaScript'],
+  ['correct', 3],
+  [true, 'Correct 🎉'],
+  [false, 'Try again!'],
+]);
+console.log(question);
+
+console.log(question.get('question'));
+for (const [key, value] of question) {
+    if (typeof key === 'number') {
+        console.log(`Answer ${key}: ${value}`);
+    }
+}
+const answer = Number(prompt('Your answer'));
+if (answer === question.get('correct' )) {
+    console.log(question.get(true))
+} else {
+    console.log(question.get(false))
+}
+console.log(question.get(question.get('correct') === answer));
+
+// Convert object to map
+console.log(Object.entries(openingHours));
+const hoursMap = new Map(Object.entries(openingHours));
+console.log(hoursMap);
+
+// Convert map to array
+console.log([...question]);
+
+// Convert set to array
+let myArr = Array.from(mySet);
+let myNewArr = [...mySet];
