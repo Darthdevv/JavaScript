@@ -244,17 +244,17 @@ for (const [key, value] of question) {
         console.log(`Answer ${key}: ${value}`);
     }
 }
-const answer = Number(prompt('Your answer'));
-if (answer === question.get('correct' )) {
-    console.log(question.get(true))
-} else {
-    console.log(question.get(false))
-}
-console.log(question.get(question.get('correct') === answer));
+// const answer = Number(prompt('Your answer'));
+// if (answer === question.get('correct' )) {
+//     console.log(question.get(true))
+// } else {
+//     console.log(question.get(false))
+// }
+// console.log(question.get(question.get('correct') === answer));
 
 // Convert object to map
-console.log(Object.entries(openingHours));
-const hoursMap = new Map(Object.entries(openingHours));
+console.log(Object.entries(restaurant.openingHours));
+const hoursMap = new Map(Object.entries(restaurant.openingHours));
 console.log(hoursMap);
 
 // Convert map to array
@@ -263,3 +263,50 @@ console.log([...question]);
 // Convert set to array
 let myArr = Array.from(mySet);
 let myNewArr = [...mySet];
+
+
+const gameEvents = new Map([
+  [17, '⚽️ GOAL'],
+  [36, '🔁 Substitution'],
+  [47, '⚽️ GOAL'],
+  [61, '🔁 Substitution'],
+  [64, '🔶 Yellow card'],
+  [69, '🔴 Red card'],
+  [70, '🔁 Substitution'],
+  [72, '🔁 Substitution'],
+  [76, '⚽️ GOAL'],
+  [80, '⚽️ GOAL'],
+  [92, '🔶 Yellow card'],
+]);
+
+// 1)
+let myArrr = [];
+const gameEventsArr = [...gameEvents];
+for (const [minutes, event] of gameEventsArr.values()) {
+    myArrr.push(event);
+}
+ console.log([...new Set(myArrr)]);
+
+console.log(gameEventsArr)
+
+// 2)
+gameEvents.delete(64);
+console.log(gameEvents);
+
+// 3)
+const time = [...gameEvents.keys()].pop()
+console.log(`An event happened, on average, every ${time/gameEvents.size} minutes`)
+
+// 4)
+// for (const [minute, event] of gameEvents.entries()) {
+//     if (minute <= 45) {
+//         console.log(`[FIRST HALF] ${minute}: ${event}`)
+//     } else {
+//         console.log(`[SECOND HALF] ${minute}: ${event}`)
+//     }
+// }
+
+for (const [min, eve] of gameEvents) {
+    const half = min <= 45 ? 'FIRST' : 'SECOND';
+    console.log(`[${half} HALF] ${min}: ${eve}`)
+}
