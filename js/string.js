@@ -111,20 +111,60 @@ document.body.append(document.createElement('button'));
 
 
 const Btn = document.querySelector('button');
+// Btn.addEventListener('click', function convertVariables() {
+//     const text = document.querySelector('textarea').value;
+//     const Arr = Array.from(text.split('\n'));
+//     console.log(Arr)
+//     const trimmed = Arr.map(item => item.trim());
+//     const req = trimmed.map(item => item.toLowerCase().split('_'))
+//     let rows = '';
+//     for (const [a, b] of req) {
+//         for (let i = 0; i < 1; i++) {
+//             rows += '✅';
+//             console.log(a+b[0].toUpperCase()+b.slice(1).padEnd(35, ' ')+rows);
+//         }
+//     }
+// })
+
 Btn.addEventListener('click', function convertVariables() {
-    const text = document.querySelector('textarea').value;
-    const Arr = Array.from(text.split('\n'));
-    console.log(Arr)
-    const trimmed = Arr.map(item => item.trim());
-    const req = trimmed.map(item => item.toLowerCase().split('_'))
-    let rows = '';
-    for (const [a, b] of req) {
-        for (let i = 0; i < 1; i++) {
-            rows += '✅';
-            console.log(a+b[0].toUpperCase()+b.slice(1)+rows);
-        }
+    const text = document.querySelector('textarea').value; 
+    const rows = text.split('\n');
+    for (const [i,row] of rows.entries()) {
+        const [first, second] = row.toLowerCase().trim().split('_');
+        const output = `${first}${second.replace(
+            second[0],
+            second[0].toUpperCase()
+        )}`;
+        console.log(`${output.padEnd(20)}${'✅'.repeat(i + 1)}`);
     }
-    console.log('hello')
-    console.log(trimmed)
 })
 
+const flights =
+    '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+
+// 🔴 Delayed Departure from FAO to TXL (11h25)
+//              Arrival from BRU to FAO (11h45)
+//   🔴 Delayed Arrival from HEL to FAO (12h05)
+//            Departure from FAO to LIS (12h30)
+
+// const flight = flights.split('+');
+// for (const f of flight) {
+    
+//     console.log(
+//         f.includes('Delayed')
+//             ? '🔴' +
+//             f.replaceAll('_', ' ').replaceAll(';', ' ').replaceAll(':', 'h')
+//         : f.replaceAll('_', ' ').replaceAll(';', ' ').replaceAll(':', 'h')
+//     );
+// }
+
+const getCode = str => str.slice(0, 3).toUpperCase();
+
+for (const flight of flights.split('+')) {
+    const [type, from, to, time] = flight.split(';');
+    const output = `${type.startsWith('_Delayed') ? '🔴' : ''}${type.replaceAll(
+        '_',
+        ' '
+    )} ${getCode(from)} ${getCode(to)} (${time.replace(':', 'h')})`.padStart(36);
+    console.log(output);
+}
