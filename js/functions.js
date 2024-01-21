@@ -134,3 +134,5 @@ function addTaxx(rate) {
 const addVatt = addTaxx(0.23);
 console.log(addVatt(100));
 console.log(addVatt(300));
+
+console.log('end for today')
