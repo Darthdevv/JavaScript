@@ -102,7 +102,7 @@ const bookSW23 = book.bind(swiss, 23) // *called partial application //
 bookSW23('john cena')
 console.log(swiss);
 
-
+// ? with event listeners
 lufthanza.planes = 300;
 lufthanza.buyPlane = function () {
   console.log(this);
@@ -115,3 +115,22 @@ lufthanza.buyPlane = function () {
 const Planes = lufthanza.buyPlane;
 
 document.querySelector('.buy').addEventListener('click', Planes.bind(lufthanza));
+
+// ? partial application
+
+const addTax = (rate, value) => value + value * rate;
+console.log(addTax(0.1, 100));
+const addVat = addTax.bind(null, 0.22);
+console.log(addVat(100))
+
+
+function addTaxx(rate) {
+  return function (value){
+    return value + value * rate;
+  }
+}
+
+// const addTaxx = rate => value => value + value * rate;
+const addVatt = addTaxx(0.23);
+console.log(addVatt(100));
+console.log(addVatt(300));
