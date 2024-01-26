@@ -136,3 +136,5 @@ console.log(addVatt(100));
 console.log(addVatt(300));
 
 console.log('hello world');
+
+console.log(-null == 0);
