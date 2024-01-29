@@ -147,5 +147,5 @@ console.log(NaN == NaN)
 
 let user;
 let userName;
-
+// optional chaining
 console.log( userName = user?.name)
