@@ -138,3 +138,7 @@ console.log(addVatt(300));
 console.log('hello world');
 
 console.log(-null == 0);
+
+const c = -4;
+console.log(~c === 3);
+console.log('' == false);
