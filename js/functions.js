@@ -142,3 +142,10 @@ console.log(-null == 0);
 const c = -4;
 console.log(~c === 3);
 console.log('' == false);
+console.log(0.2 + 0.1)
+console.log(NaN == NaN)
+
+let user;
+let userName;
+
+console.log( userName = user?.name)
