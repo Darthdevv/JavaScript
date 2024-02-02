@@ -149,4 +149,3 @@ let user;
 let userName;
 // optional chaining
 console.log( userName = user?.name)
-console.log('hello')
