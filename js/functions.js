@@ -151,3 +151,16 @@ let userName;
 console.log( userName = user?.name)
 console.log('hello world');
 
+
+
+let arrrr = [1, 2, 3];
+console.log(
+  arrrr.map(num => {
+    if (typeof num === 'number') return;
+    return num * 2;
+  })
+);  // [undefined , undefined , undefined]
+
+
+
+
