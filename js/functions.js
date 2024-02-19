@@ -159,7 +159,8 @@ console.log(
     if (typeof num === 'number') return;
     return num * 2;
   })
-);  // [undefined , undefined , undefined]
+);
+// [undefined , undefined , undefined]
 
 
 
