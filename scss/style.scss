@@ -1,13 +1,8 @@
-
-// sass variables
-$primary-color: #09c;
-$secondary-color: #eee;
-
-
+@import './color';
 
 h1{
-  background-color: $primary-color;
-  color: $secondary-color;
+  background-color: $red;
+  color: $cyan;
   text-align: center;
 }
 
@@ -16,29 +11,44 @@ h1{
 .parent{
 
   &:hover{
-    background-color: rgba(0, 153, 204, 0.859);
+    background-color: $other-blue;
   }
 
   &:hover .child1{
-    color: red;
+    color: $red;
     font-size: x-large;
   }
 
-  background-color: $primary-color;
+  background-color: $periwinkle;
   width: 100%;
-  color: #000;
+  color: $darkester-gray;
 
   .child1{
-    color: #eee;
+    color: $light-gray;
   }
 
 }
 
 
+// mapping using @each
+
+$sizes: (
+  "small": 10px,
+  "normal": 16px,
+  "large": 25px,
+  "x-large": 40px
+);
+
+@each $key, $value in $sizes{
+  .text-#{$key}{
+    font-size: $value;
+  }
+}
+
 // grouping by @extend
 .all{
-  color: black;
-  background-color: green;
+  color: $darkester-gray;
+  background-color: $yellow-green;
   width: 100px;
   height: 100px;
   margin-block: 10px;

@@ -1,28 +1,44 @@
 h1 {
-  background-color: #09c;
-  color: #eee;
+  background-color: #b30015;
+  color: #00b0b3;
   text-align: center;
 }
 
 .parent {
-  background-color: #09c;
+  background-color: #8a7dff;
   width: 100%;
-  color: #000;
+  color: #111;
 }
 .parent:hover {
-  background-color: rgba(0, 153, 204, 0.859);
+  background-color: #0077b3;
 }
 .parent:hover .child1 {
-  color: red;
+  color: #b30015;
   font-size: x-large;
 }
 .parent .child1 {
-  color: #eee;
+  color: #a6a6a6;
+}
+
+.text-small {
+  font-size: 10px;
+}
+
+.text-normal {
+  font-size: 16px;
+}
+
+.text-large {
+  font-size: 25px;
+}
+
+.text-x-large {
+  font-size: 40px;
 }
 
 .all, .single {
-  color: black;
-  background-color: green;
+  color: #111;
+  background-color: #b0eb00;
   width: 100px;
   height: 100px;
   margin-block: 10px;
