@@ -1,3 +1,5 @@
+
+// sass variables
 $primary-color: #09c;
 $secondary-color: #eee;
 
@@ -7,4 +9,44 @@ h1{
   background-color: $primary-color;
   color: $secondary-color;
   text-align: center;
+}
+
+
+// nesting
+.parent{
+
+  &:hover{
+    background-color: rgba(0, 153, 204, 0.859);
+  }
+
+  &:hover .child1{
+    color: red;
+    font-size: x-large;
+  }
+
+  background-color: $primary-color;
+  width: 100%;
+  color: #000;
+
+  .child1{
+    color: #eee;
+  }
+
+}
+
+
+// grouping by @extend
+.all{
+  color: black;
+  background-color: green;
+  width: 100px;
+  height: 100px;
+  margin-block: 10px;
+  display: grid;
+  place-items: center;
+}
+
+.single{
+  border-radius: 10px;
+  @extend .all
 }
