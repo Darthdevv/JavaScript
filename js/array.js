@@ -149,4 +149,13 @@ false && console.log('hello world');
   let arrayIntegers = [1, 2, 3, 4, 5];
   let arrayIntegers1 = arrayIntegers.slice(0, 2); // returns [1,2]
   let arrayIntegers2 = arrayIntegers.slice(2, 3); // returns [3]
-  let arrayIntegers3 = arrayIntegers.slice(4); //returns [5]
+let arrayIntegers3 = arrayIntegers.slice(4); //returns [5]
+
+
+
+// creating shallow copies of array:
+const arr = [1, 2, 3, 4];
+console.log(arr.slice());
+console.log([...arr]);
+
+// * slice and splice are work the same but the fundemental difference between them is that splice mutates the original array whereas slice returns a new one
