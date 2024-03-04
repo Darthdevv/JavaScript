@@ -153,9 +153,52 @@ let arrayIntegers3 = arrayIntegers.slice(4); //returns [5]
 
 
 
-// creating shallow copies of array:
+// ? creating shallow copies of array:
 const arr = [1, 2, 3, 4];
 console.log(arr.slice());
 console.log([...arr]);
 
 // * slice and splice are work the same but the fundemental difference between them is that splice mutates the original array whereas slice returns a new one
+
+
+const myFish = ['angel', 'clown', 'mandarin'];
+// const removed1 = myFish.splice(-1, 0, 'sturgeon');
+const removed2 = myFish.splice(myFish.length, 0, 'sturgeon');
+
+console.log(removed2);
+console.log(myFish);
+
+console.log(myFish.toReversed()); //does not mutate array;
+console.log(myFish.reverse()); // mutates array;
+
+
+// Array.at()
+const numbers = [1, 2, 3, 4, 5];
+console.log(numbers.at(-1)); // 5
+console.log(numbers[-1]);  //undefined
+
+// ? getting last array element
+console.log(numbers[numbers.length - 1]);  //5
+console.log(numbers.slice(-1)[0]);  //5
+console.log(numbers.at(-1));  //5
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+movements.map(movement => {
+  movement > 0
+    ? console.log(`the customer deposited ${movement}`)
+    : console.log(`the customer withdrawed ${Math.abs(movement)}`);
+});
+console.log('----------Map----------');
+for (const movement of movements) {
+  movement > 0
+    ? console.log(`the customer deposited ${movement}`)
+    : console.log(`the customer withdrawed ${Math.abs(movement)}`);
+}
+console.log('----------For Of----------');
+movements.forEach(movement => {
+  movement > 0
+    ? console.log(`the customer deposited ${movement}`)
+    : console.log(`the customer withdrawed ${Math.abs(movement)}`);
+})
+console.log('----------forEach----------');
