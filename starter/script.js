@@ -73,7 +73,7 @@ function displayMovements(movements) {
 }
 displayMovements(account1.movements);
 console.log(containerMovements.innerHTML);
-console.log('hello world');
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
