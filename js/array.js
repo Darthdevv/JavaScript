@@ -199,6 +199,7 @@ console.log('----------forEach----------');
 
 console.log('hello world');
 
+// filter numbers or strings in an array
 const arr24 = [2, 3, 4, 'total', 5, 'price'];
 
 const filteredArray1 = arr24.filter(el => typeof el === 'number');
@@ -206,3 +207,8 @@ console.log(filteredArray1);
 const filteredArray2 = arr24.filter(el => typeof el !== 'number');
 console.log(filteredArray2);
 console.log(arr24);
+
+// refresh the page every N of seconds
+setTimeout(() => {
+  location.reload();
+}, 5000);
