@@ -133,7 +133,9 @@ section{
     align-items: center;
 } */
 
-.row{
+
+/* fetching the content */
+/* .row{
     margin-block: 80px;
     display: flex;
     gap: 30px;
@@ -245,5 +247,5 @@ section{
         display: block;
         cursor: pointer;
     }
-}
+} */
 
