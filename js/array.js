@@ -197,7 +197,7 @@ movements.forEach(movement => {
 });
 console.log('----------forEach----------');
 
-console.log('hello world');
+
 
 // filter numbers or strings in an array
 const arr24 = [2, 3, 4, 'total', 5, 'price'];
