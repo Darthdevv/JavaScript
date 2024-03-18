@@ -212,3 +212,6 @@ console.log(arr24);
 setTimeout(() => {
   location.reload();
 }, 5000);
+
+
+console.log('--------------------------------');
