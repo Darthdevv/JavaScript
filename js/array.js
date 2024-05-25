@@ -215,3 +215,15 @@ setTimeout(() => {
 
 
 console.log('--------------------------------');
+function outer() {
+  const name = 'yousef';
+
+  function inner() {
+    console.log(name);
+  }
+
+  return inner;
+}
+
+const closure = outer();
+console.log(closure());
