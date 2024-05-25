@@ -208,11 +208,6 @@ const filteredArray2 = arr24.filter(el => typeof el !== 'number');
 console.log(filteredArray2);
 console.log(arr24);
 
-// refresh the page every N of seconds
-setTimeout(() => {
-  location.reload();
-}, 5000);
-
 
 console.log('--------------------------------');
 function outer() {
@@ -227,3 +222,10 @@ function outer() {
 
 const closure = outer();
 console.log(closure());
+
+
+const roadmaps = ['JavaScript', 'React', 'Node.js'];
+
+roadmaps.forEach(roadmap => {
+  console.log(roadmap);
+});
