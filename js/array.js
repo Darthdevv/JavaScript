@@ -227,3 +227,5 @@ console.log(closure());
 const roadmaps = ['JavaScript', 'React', 'Node.js'];
 
 roadmaps.forEach(roadmap => roadmap + ' Roadmap');
+
+console.log('hello world');
