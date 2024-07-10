@@ -228,3 +228,43 @@ const roadmaps = ['JavaScript', 'React', 'Node.js'];
 
 roadmaps.forEach(roadmap => roadmap + ' Roadmap');
 
+let apple = 'apple';
+ apple = 'banana';
+console.log(apple);
+
+
+
+const person = {
+  name: 'hamo',
+  age: 2,
+};
+var myO = Object.create(person);
+
+myO.personality = 'good';
+myO.car = 'ferrari';
+
+console.log(myO);
+
+
+var Arr = new Array(2);// 2 is the length of array
+Arr.length; //2
+Arr[0];
+
+console.log(Arr, Arr.length, Arr[0]);
+
+
+var arreay = Array(1,2,3,4,5);
+array; // [1,2,3,4,5]
+console.log(arreay);
+
+
+
+var  myFunction = (a, b) => {
+  return a * b; // Function returns the product of a and b
+}
+var x = myFunction(4, 3);
+
+// Function is called, return value will //end up in x
+
+
+console.log(x);
