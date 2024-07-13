@@ -268,3 +268,7 @@ var x = myFunction(4, 3);
 
 
 console.log(x);
+
+var namer = 'ronaldo';
+var namer = 'hamo';
+console.log(namer);
