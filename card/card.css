@@ -19,6 +19,7 @@ body{
   font-family: "Lato", sans-serif;
   font-weight: 400;
   font-style: normal;
+  color: #909090;
 }
 
 #cards{
@@ -29,6 +30,13 @@ body{
   gap: 8px;
   width: calc(100% - 20px);
   flex-wrap: wrap;
+}
+
+.card-content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
 }
 
 .card{
