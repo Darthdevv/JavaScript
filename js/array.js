@@ -273,3 +273,4 @@ var namer = 'ronaldo';
 var namer = 'hamo';
 console.log(namer);
 
+console.log('hello');
