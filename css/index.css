@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+:root {
+    color-scheme: light dark;
+}
+
 *{
     padding: 0;
     margin: 0;
@@ -7,10 +11,25 @@
 }
 
 body{
-    background-color: #111;
+    display: block;
+    background: light-dark(#eee, #121212);
+    align-content: center;
+    height: 100vh;
 }
 
-.box{
+.centered{
+    background-color: rebeccapurple;
+    color: black;
+    display: block;
+    align-content: center;
+    height: 200px;
+    width: 200px;
+    margin-inline: auto;
+}
+
+
+
+/* .box{
     position: absolute;
     top: 0;
     left: 0;
@@ -74,7 +93,8 @@ body{
     -webkit-text-stroke: 1px transparent;
     opacity: 1;
     text-shadow: 0 0 120px #00ff51;
-}
+} */
+
 
 
 
