@@ -1,0 +1,188 @@
+@font-face {
+  font-family: Akkurat ;
+  src: url('../fonts/Akkurat/FontsFree-Net-Akkurat.ttf');
+}
+
+@font-face {
+  font-family: Gascogne ;
+  src: url('../fonts/Gascogne/gascogne-serial-regular.ttf');
+}
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Akkurat;
+}
+
+html,
+body{
+  width: 100vw;
+  height: 400vh;
+  background-color: #111;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+h1{
+  text-transform: uppercase;
+  line-height: 0.85;
+  font-size: 225px;
+  font-weight:400;
+}
+
+a,
+p{
+  text-decoration: none;
+  color: #fff;
+  line-height: 0.9;
+  font-size: 13px;
+  font-weight:400;
+}
+
+p span {
+  font-family: Gascogne;
+}
+
+.model{
+  position: fixed;
+  z-index: 2;
+}
+
+nav{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  padding: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav a{
+  text-transform: uppercase;
+}
+
+section{
+  width: 100vw;
+  height: 100vh;
+}
+
+.intro{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1em;
+}
+
+.header-row{
+  display: flex;
+  gap: 12em;
+  align-items: center;
+}
+
+.header-row p{
+  width: 20%;
+  text-transform: uppercase;
+}
+
+.archive{
+  height: 200vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 3em;
+}
+
+.archive-header p{
+  font-family: Gascogne;
+  font-style: italic;
+}
+
+.archive h2{
+  font-family: Gascogne;
+  font-size: 120px;
+  font-weight: 300;
+  color: #454545;
+}
+
+.archive-info{
+  display: flex;
+  gap: 1em;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.archive-info p{
+  text-transform: uppercase;
+  color: #454545;
+}
+
+.outro{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 6em 2em 2em 2em;
+}
+
+.outro-copy h2{
+  width: 75%;
+  text-transform: uppercase;
+  font-size: 60px;
+  font-weight: 400;
+  line-height: 1;
+  margin-bottom: 0.5em;
+}
+
+.outro-copy h2 .line{
+  position: relative;
+  display: block;
+  overflow: hidden;
+  clip-path: polygon(0 0 ,100% 0 ,100% 100%, 0% 100%);
+}
+
+.outro-copy h2 .line span{
+  position: relative;
+  will-change: transform;
+  display: flex;
+  transform: translate(70px);
+}
+
+.outro-copy p{
+  display: flex;
+  margin: 1em 0;
+  gap: 2em;
+  text-transform: uppercase;
+}
+
+.outro-copy p span{
+  font-family: Akkurat;
+}
+
+.footer{
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  text-transform: uppercase;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
