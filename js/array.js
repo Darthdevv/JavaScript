@@ -273,5 +273,3 @@ var namer = 'ronaldo';
 var namer = 'hamo';
 console.log(namer);
 
-console.log('hellow world');
-console.log('new world');
