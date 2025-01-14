@@ -27,6 +27,10 @@ body{
     margin-inline: auto;
 }
 
+abbr {
+  color: #a60000;
+}
+
 
 
 /* .box{
