@@ -273,4 +273,17 @@ var namer = 'ronaldo';
 var namer = 'hamo';
 console.log(namer);
 
-console.log('hello world');
+const people = ['yousef', 'hamo', 'ronaldo'];
+
+
+console.log(people);
+console.table(people);
+
+
+console.group('Bio:');
+
+console.log('My name is Kolade');
+console.warn("I don't like to be late");
+console.error('You came late');
+
+console.groupEnd();
