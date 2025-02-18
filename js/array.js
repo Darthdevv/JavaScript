@@ -287,3 +287,9 @@ console.warn("I don't like to be late");
 console.error('You came late');
 
 console.groupEnd();
+
+
+const arry1 = [1, 2, [3, 4]];
+const arry2 = [5, 6];
+const merged = [...arry1, ...arry2].flat();
+console.log(merged);
