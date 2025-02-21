@@ -293,3 +293,5 @@ const arry1 = [1, 2, [3, 4]];
 const arry2 = [5, 6];
 const merged = [...arry1, ...arry2].flat();
 console.log(merged);
+
+console.log('heelo world');
