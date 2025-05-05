@@ -289,10 +289,23 @@ console.error('You came late');
 console.groupEnd();
 
 
-const arry1 = [1, 2, [3, 4]];
-const arry2 = [5, 6];
-const merged = [...arry1, ...arry2].flat();
+const arry111 = [1, 2, [3, 4]];
+const arry222 = [5, 6];
+const merged = [...arry111, ...arry222].flat();
 console.log(merged);
 
 
 console.log('hello world');
+
+let text = 'peter jordanjjjjjjjjkkkkk';
+ 
+let result = text.length;
+ 
+console.log(result);
+ 
+console.log(text.toLowerCase());
+console.log(text.toUpperCase());
+ 
+ 
+console.log(text.charAt(0))
+console.log(text.charAt(text.length-1 ))
