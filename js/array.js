@@ -295,7 +295,6 @@ const merged = [...arry111, ...arry222].flat();
 console.log(merged);
 
 
-console.log('hello world');
 
 let text = 'peter jordanjjjjjjjjkkkkk';
  
