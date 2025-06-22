@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cards</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: "Arial", sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #f9f9f9;
+      padding: 40px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 8px;
+      border: 1px solid #eee;
+      padding: 20px 20px 16px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    .card h2 {
+      font-size: 16px;
+      color: #d93025;
+      margin-bottom: 6px;
+    }
+
+    .card small {
+      color: #666;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .card a.link {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-decoration: none;
+      color: #111;
+      font-size: 14px;
+      padding: 12px 0;
+      border-top: 1px solid #eee;
+    }
+
+    .card a.link:first-of-type {
+      border-top: none;
+    }
+
+    .card a.link::after {
+      content: '→';
+      font-size: 14px;
+      color: #333;
+    }
+
+    .divider {
+      border-top: 1px solid #eee;
+      margin-top: 12px;
+    }
+
+    .show-all-wrapper {
+      margin-top: 12px;
+    }
+
+    .show-all-wrapper a {
+      text-decoration: none;
+    }
+
+    .show-all-wrapper a::after {
+      content: none !important;
+    }
+
+    .show-all {
+      padding: 6px 16px;
+      border: 1px solid #ccc;
+      background: #fff;
+      color: #333;
+      font-size: 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .show-all:hover {
+      background: #f1f1f1;
+    }
+  </style>
+</head>
+<body>
+
+<div class="grid">
+  <!-- Card 1 -->
+  <div class="card">
+    <h2>General Understanding</h2>
+    <small>9 articles</small>
+    <a href="#" class="link">What are KPIs, and what are their types?</a>
+    <a href="#" class="link">Where can employees’ access and view them?</a>
+    <div class="divider"></div>
+    <div class="show-all-wrapper">
+      <a href="#"><button class="show-all">Show All</button></a>
+    </div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="card">
+    <h2>Evaluation Process & Roles</h2>
+    <small>14 articles</small>
+    <a href="#" class="link">Who reviews escalated salary issues?</a>
+    <a href="#" class="link">Who reviews escalated salary issues?</a>
+    <div class="divider"></div>
+    <div class="show-all-wrapper">
+      <a href="#"><button class="show-all">Show All</button></a>
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="card">
+    <h2>KPIs Management</h2>
+    <small>13 articles</small>
+    <a href="#" class="link">Do appraisal results affect promotions or bonuses?</a>
+    <a href="#" class="link">What are the detailed steps of the appraisal process from start to finish?</a>
+    <div class="divider"></div>
+    <div class="show-all-wrapper">
+      <a href="#"><button class="show-all">Show All</button></a>
+    </div>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="card">
+    <h2>HR System Responsibilities</h2>
+    <small>12 articles</small>
+    <a href="#" class="link">How can employees prepare for their performance appraisal?</a>
+    <a href="#" class="link">How frequently are KPIs updated? Can KPIs be modified during the year?</a>
+    <div class="divider"></div>
+    <div class="show-all-wrapper">
+      <a href="#"><button class="show-all">Show All</button></a>
+    </div>
+  </div>
+
+  <!-- Card 5 -->
+  <div class="card">
+    <h2>System Navigation & Notification</h2>
+    <small>3 articles</small>
+    <a href="#" class="link">Who reviews escalated salary issues?</a>
+    <a href="#" class="link">Who reviews escalated salary issues?</a>
+    <div class="divider"></div>
+    <div class="show-all-wrapper">
+      <a href="#"><button class="show-all">Show All</button></a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
