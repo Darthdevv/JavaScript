@@ -11,30 +11,52 @@
       margin: 0;
       padding: 0;
     }
-
+  
     body {
       background-color: #f9f9f9;
-      padding: 40px;
     }
-
+  
     .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-      max-width: 1200px;
-      margin: auto;
-    }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 20px;
+  padding: 20px;
+}
 
-    .card {
-      background: #fff;
-      border-radius: 8px;
-      border: 1px solid #eee;
-      padding: 20px 20px 16px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+.card {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  padding: 24px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  width: calc(50% - 10px); /* Two cards per row with gap */
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .card {
+    width: 100%; /* Full width on small screens */
+  }
+
+  .grid{
+    padding: 5px;
+  }
+}
+
+
+    .linkk {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
     .card h2 {
-      font-size: 16px;
+      font-size: 20px;
       color: #d93025;
       margin-bottom: 6px;
     }
@@ -46,24 +68,38 @@
     }
 
     .card a.link {
+      width: 100%;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       text-decoration: none;
       color: #111;
-      font-size: 14px;
+      font-size: 16px;
       padding: 12px 0;
       border-top: 1px solid #eee;
+      gap: 12px;
     }
 
     .card a.link:first-of-type {
       border-top: none;
     }
 
-    .card a.link::after {
-      content: '→';
-      font-size: 14px;
-      color: #333;
+    .card a.link .icon {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+
+    .card a.link .arrow-icon {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    .card a.link .link-text {
+      flex: 1;
+      margin: 0 8px;
+      text-align: start;
     }
 
     .divider {
@@ -72,15 +108,12 @@
     }
 
     .show-all-wrapper {
-      margin-top: 12px;
+      margin-top: auto;
+      padding-top: 12px;
     }
 
     .show-all-wrapper a {
       text-decoration: none;
-    }
-
-    .show-all-wrapper a::after {
-      content: none !important;
     }
 
     .show-all {
@@ -106,8 +139,52 @@
   <div class="card">
     <h2>General Understanding</h2>
     <small>9 articles</small>
-    <a href="#" class="link">What are KPIs, and what are their types?</a>
-    <a href="#" class="link">Where can employees’ access and view them?</a>
+    <a href="#" class="link">
+      <div class="linkk">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g clip-path="url(#clip0)">
+            <path d="M5.75 5C5.75 4.86193 5.86193 4.75 6 4.75H18C18.1381 4.75 18.25 4.86193 18.25 5V19C18.25 19.1381 18.1381 19.25 18 19.25H6C5.86193 19.25 5.75 19.1381 5.75 19V5Z" stroke="#CF3B27" stroke-width="1.5"/>
+            <path d="M8 8.25H16" stroke="#CF3B27" stroke-width="1.5"/>
+            <path d="M8 11.25H12" stroke="#CF3B27" stroke-width="1.5"/>
+          </g>
+          <defs>
+            <clipPath id="clip0">
+              <rect width="24" height="24" fill="white"/>
+            </clipPath>
+          </defs>
+        </svg>
+        What are KPIs, and what are their types?
+      </div>
+
+      <svg class="arrow-icon" width="20" height="20" viewBox="0 0 20 20" fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <path d="M4.16675 9.99999H15.8334M15.8334 9.99999L10.0001 4.16666M15.8334 9.99999L10.0001 15.8333"
+        stroke="#181D27" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+    </a>
+    <a href="#" class="link">
+      <div class="linkk">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g clip-path="url(#clip0)">
+            <path d="M5.75 5C5.75 4.86193 5.86193 4.75 6 4.75H18C18.1381 4.75 18.25 4.86193 18.25 5V19C18.25 19.1381 18.1381 19.25 18 19.25H6C5.86193 19.25 5.75 19.1381 5.75 19V5Z" stroke="#CF3B27" stroke-width="1.5"/>
+            <path d="M8 8.25H16" stroke="#CF3B27" stroke-width="1.5"/>
+            <path d="M8 11.25H12" stroke="#CF3B27" stroke-width="1.5"/>
+          </g>
+          <defs>
+            <clipPath id="clip0">
+              <rect width="24" height="24" fill="white"/>
+            </clipPath>
+          </defs>
+        </svg>
+        Where can employees’ access and view them?
+      </div>
+
+      <svg class="arrow-icon" width="20" height="20" viewBox="0 0 20 20" fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <path d="M4.16675 9.99999H15.8334M15.8334 9.99999L10.0001 4.16666M15.8334 9.99999L10.0001 15.8333"
+        stroke="#181D27" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+    </a>
     <div class="divider"></div>
     <div class="show-all-wrapper">
       <a href="#"><button class="show-all">Show All</button></a>
@@ -118,8 +195,52 @@
   <div class="card">
     <h2>Evaluation Process & Roles</h2>
     <small>14 articles</small>
-    <a href="#" class="link">Who reviews escalated salary issues?</a>
-    <a href="#" class="link">Who reviews escalated salary issues?</a>
+    <a href="#" class="link">
+      <div class="linkk">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g clip-path="url(#clip0)">
+            <path d="M5.75 5C5.75 4.86193 5.86193 4.75 6 4.75H18C18.1381 4.75 18.25 4.86193 18.25 5V19C18.25 19.1381 18.1381 19.25 18 19.25H6C5.86193 19.25 5.75 19.1381 5.75 19V5Z" stroke="#CF3B27" stroke-width="1.5"/>
+            <path d="M8 8.25H16" stroke="#CF3B27" stroke-width="1.5"/>
+            <path d="M8 11.25H12" stroke="#CF3B27" stroke-width="1.5"/>
+          </g>
+          <defs>
+            <clipPath id="clip0">
+              <rect width="24" height="24" fill="white"/>
+            </clipPath>
+          </defs>
+        </svg>
+        Who reviews escalated salary issues?
+      </div>
+
+      <svg class="arrow-icon" width="20" height="20" viewBox="0 0 20 20" fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <path d="M4.16675 9.99999H15.8334M15.8334 9.99999L10.0001 4.16666M15.8334 9.99999L10.0001 15.8333"
+        stroke="#181D27" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+    </a>
+    <a href="#" class="link">
+      <div class="linkk">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g clip-path="url(#clip0)">
+            <path d="M5.75 5C5.75 4.86193 5.86193 4.75 6 4.75H18C18.1381 4.75 18.25 4.86193 18.25 5V19C18.25 19.1381 18.1381 19.25 18 19.25H6C5.86193 19.25 5.75 19.1381 5.75 19V5Z" stroke="#CF3B27" stroke-width="1.5"/>
+            <path d="M8 8.25H16" stroke="#CF3B27" stroke-width="1.5"/>
+            <path d="M8 11.25H12" stroke="#CF3B27" stroke-width="1.5"/>
+          </g>
+          <defs>
+            <clipPath id="clip0">
+              <rect width="24" height="24" fill="white"/>
+            </clipPath>
+          </defs>
+        </svg>
+        Who reviews escalated salary issues?
+      </div>
+
+      <svg class="arrow-icon" width="20" height="20" viewBox="0 0 20 20" fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <path d="M4.16675 9.99999H15.8334M15.8334 9.99999L10.0001 4.16666M15.8334 9.99999L10.0001 15.8333"
+        stroke="#181D27" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+    </a>
     <div class="divider"></div>
     <div class="show-all-wrapper">
       <a href="#"><button class="show-all">Show All</button></a>
@@ -130,8 +251,52 @@
   <div class="card">
     <h2>KPIs Management</h2>
     <small>13 articles</small>
-    <a href="#" class="link">Do appraisal results affect promotions or bonuses?</a>
-    <a href="#" class="link">What are the detailed steps of the appraisal process from start to finish?</a>
+    <a href="#" class="link">
+      <div class="linkk">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g clip-path="url(#clip0)">
+            <path d="M5.75 5C5.75 4.86193 5.86193 4.75 6 4.75H18C18.1381 4.75 18.25 4.86193 18.25 5V19C18.25 19.1381 18.1381 19.25 18 19.25H6C5.86193 19.25 5.75 19.1381 5.75 19V5Z" stroke="#CF3B27" stroke-width="1.5"/>
+            <path d="M8 8.25H16" stroke="#CF3B27" stroke-width="1.5"/>
+            <path d="M8 11.25H12" stroke="#CF3B27" stroke-width="1.5"/>
+          </g>
+          <defs>
+            <clipPath id="clip0">
+              <rect width="24" height="24" fill="white"/>
+            </clipPath>
+          </defs>
+        </svg>
+        Do appraisal results affect promotions or bonuses?
+      </div>
+
+      <svg class="arrow-icon" width="20" height="20" viewBox="0 0 20 20" fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <path d="M4.16675 9.99999H15.8334M15.8334 9.99999L10.0001 4.16666M15.8334 9.99999L10.0001 15.8333"
+        stroke="#181D27" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+    </a>
+    <a href="#" class="link">
+      <div class="linkk">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g clip-path="url(#clip0)">
+            <path d="M5.75 5C5.75 4.86193 5.86193 4.75 6 4.75H18C18.1381 4.75 18.25 4.86193 18.25 5V19C18.25 19.1381 18.1381 19.25 18 19.25H6C5.86193 19.25 5.75 19.1381 5.75 19V5Z" stroke="#CF3B27" stroke-width="1.5"/>
+            <path d="M8 8.25H16" stroke="#CF3B27" stroke-width="1.5"/>
+            <path d="M8 11.25H12" stroke="#CF3B27" stroke-width="1.5"/>
+          </g>
+          <defs>
+            <clipPath id="clip0">
+              <rect width="24" height="24" fill="white"/>
+            </clipPath>
+          </defs>
+        </svg>
+        What are the detailed steps of the appraisal process from start to finish?
+      </div>
+
+      <svg class="arrow-icon" width="20" height="20" viewBox="0 0 20 20" fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <path d="M4.16675 9.99999H15.8334M15.8334 9.99999L10.0001 4.16666M15.8334 9.99999L10.0001 15.8333"
+        stroke="#181D27" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+    </a>
     <div class="divider"></div>
     <div class="show-all-wrapper">
       <a href="#"><button class="show-all">Show All</button></a>
@@ -142,8 +307,52 @@
   <div class="card">
     <h2>HR System Responsibilities</h2>
     <small>12 articles</small>
-    <a href="#" class="link">How can employees prepare for their performance appraisal?</a>
-    <a href="#" class="link">How frequently are KPIs updated? Can KPIs be modified during the year?</a>
+    <a href="#" class="link">
+      <div class="linkk">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g clip-path="url(#clip0)">
+            <path d="M5.75 5C5.75 4.86193 5.86193 4.75 6 4.75H18C18.1381 4.75 18.25 4.86193 18.25 5V19C18.25 19.1381 18.1381 19.25 18 19.25H6C5.86193 19.25 5.75 19.1381 5.75 19V5Z" stroke="#CF3B27" stroke-width="1.5"/>
+            <path d="M8 8.25H16" stroke="#CF3B27" stroke-width="1.5"/>
+            <path d="M8 11.25H12" stroke="#CF3B27" stroke-width="1.5"/>
+          </g>
+          <defs>
+            <clipPath id="clip0">
+              <rect width="24" height="24" fill="white"/>
+            </clipPath>
+          </defs>
+        </svg>
+        How can employees prepare for their performance appraisal?
+      </div>
+
+      <svg class="arrow-icon" width="20" height="20" viewBox="0 0 20 20" fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <path d="M4.16675 9.99999H15.8334M15.8334 9.99999L10.0001 4.16666M15.8334 9.99999L10.0001 15.8333"
+        stroke="#181D27" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+    </a>
+    <a href="#" class="link">
+      <div class="linkk">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g clip-path="url(#clip0)">
+            <path d="M5.75 5C5.75 4.86193 5.86193 4.75 6 4.75H18C18.1381 4.75 18.25 4.86193 18.25 5V19C18.25 19.1381 18.1381 19.25 18 19.25H6C5.86193 19.25 5.75 19.1381 5.75 19V5Z" stroke="#CF3B27" stroke-width="1.5"/>
+            <path d="M8 8.25H16" stroke="#CF3B27" stroke-width="1.5"/>
+            <path d="M8 11.25H12" stroke="#CF3B27" stroke-width="1.5"/>
+          </g>
+          <defs>
+            <clipPath id="clip0">
+              <rect width="24" height="24" fill="white"/>
+            </clipPath>
+          </defs>
+        </svg>
+        How frequently are KPIs updated? Can KPIs be modified during the year?
+      </div>
+
+      <svg class="arrow-icon" width="20" height="20" viewBox="0 0 20 20" fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <path d="M4.16675 9.99999H15.8334M15.8334 9.99999L10.0001 4.16666M15.8334 9.99999L10.0001 15.8333"
+        stroke="#181D27" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+    </a>
     <div class="divider"></div>
     <div class="show-all-wrapper">
       <a href="#"><button class="show-all">Show All</button></a>
@@ -154,8 +363,52 @@
   <div class="card">
     <h2>System Navigation & Notification</h2>
     <small>3 articles</small>
-    <a href="#" class="link">Who reviews escalated salary issues?</a>
-    <a href="#" class="link">Who reviews escalated salary issues?</a>
+    <a href="#" class="link">
+      <div class="linkk">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g clip-path="url(#clip0)">
+            <path d="M5.75 5C5.75 4.86193 5.86193 4.75 6 4.75H18C18.1381 4.75 18.25 4.86193 18.25 5V19C18.25 19.1381 18.1381 19.25 18 19.25H6C5.86193 19.25 5.75 19.1381 5.75 19V5Z" stroke="#CF3B27" stroke-width="1.5"/>
+            <path d="M8 8.25H16" stroke="#CF3B27" stroke-width="1.5"/>
+            <path d="M8 11.25H12" stroke="#CF3B27" stroke-width="1.5"/>
+          </g>
+          <defs>
+            <clipPath id="clip0">
+              <rect width="24" height="24" fill="white"/>
+            </clipPath>
+          </defs>
+        </svg>
+        Who reviews escalated salary issues?
+      </div>
+ 
+      <svg class="arrow-icon" width="20" height="20" viewBox="0 0 20 20" fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <path d="M4.16675 9.99999H15.8334M15.8334 9.99999L10.0001 4.16666M15.8334 9.99999L10.0001 15.8333"
+        stroke="#181D27" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+    </a>
+    <a href="#" class="link">
+      <div class="linkk">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g clip-path="url(#clip0)">
+            <path d="M5.75 5C5.75 4.86193 5.86193 4.75 6 4.75H18C18.1381 4.75 18.25 4.86193 18.25 5V19C18.25 19.1381 18.1381 19.25 18 19.25H6C5.86193 19.25 5.75 19.1381 5.75 19V5Z" stroke="#CF3B27" stroke-width="1.5"/>
+            <path d="M8 8.25H16" stroke="#CF3B27" stroke-width="1.5"/>
+            <path d="M8 11.25H12" stroke="#CF3B27" stroke-width="1.5"/>
+          </g>
+          <defs>
+            <clipPath id="clip0">
+              <rect width="24" height="24" fill="white"/>
+            </clipPath>
+          </defs>
+        </svg>
+        Who reviews escalated salary issues?
+      </div>
+
+      <svg class="arrow-icon" width="20" height="20" viewBox="0 0 20 20" fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <path d="M4.16675 9.99999H15.8334M15.8334 9.99999L10.0001 4.16666M15.8334 9.99999L10.0001 15.8333"
+        stroke="#181D27" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+    </a>
     <div class="divider"></div>
     <div class="show-all-wrapper">
       <a href="#"><button class="show-all">Show All</button></a>

@@ -8,66 +8,51 @@
   * {
     box-sizing: border-box;
   }
+ 
+  a{
+    text-decoration: none;
+    color: inherit;
+  }
 
+  ol{
+    padding-inline-start: 20px;
+  }
+ 
   body, html {
     margin: 0;
     padding: 0;
-    height: 100%;
     font-family: Arial, sans-serif;
-    overflow: hidden; /* Prevent body scroll */
+    height:100%;
+    overflow: hidden;
   }
-
+ 
   html{
     scroll-behavior: smooth;
   }
-
-  .layout {
-    display: flex;
-    height: 100vh;
-  }
-
-  .sidebar {
-    width: 30%;
-    background-color: #f2f2f2;
+ 
+  header {
     padding: 16px;
-    border-right: 1px solid #ddd;
-  }
-
-  main {
-    width: 50%;
-    overflow-y: auto;
-    padding: 40px;
-    position: relative;
-    scrollbar-width: auto;
-  }
-
-  nav {
-    width: 20%;
-    padding: 16px;
+    position:fixed;
     border-left: 1px solid #ccc;
-    background-color: #fff;
+    align-items: start;
+    text-align: start;
   }
-
-  .sticky-nav {
-    position: sticky;
-    top: 20px;
-  }
-
+ 
+ 
   .nav-buttons {
     display: flex;
     flex-direction: column;
     gap: 8px;
     margin-bottom: 20px;
   }
-
-  .nav-buttons button,
-  .nav-buttons a {
+ 
+  .nav-buttons button {
     display: flex;
     align-items: center;
     gap: 8px;
     padding: 8px 12px;
     font-size: 14px;
-    background-color: #f9f9f9;
+    background-color: #ffffff;
     border: 1px solid #ccc;
     border-radius: 8px;
     cursor: pointer;
@@ -75,50 +60,51 @@
     color: #000;
     white-space: nowrap;
   }
-
+ 
   nav ol {
     padding-left: 20px;
     font-size: 14px;
   }
-
+ 
   nav ol li {
     margin-bottom: 10px;
   }
-
-  section {
-    margin-bottom: 100px;
+  
+  li{
+      padding: 5px;
   }
-
+ 
+ 
   h2 {
     margin-top: 0;
   }
 </style>
-
+ 
 </head>
 <body>
-
+ 
   <div class="layout">
     <!-- Left Sidebar -->
-    <aside class="sidebar">
+    <!-- <aside class="sidebar">
       <h3>Sidebar</h3>
       <p>Extra content here</p>
-    </aside>
-
+    </aside> -->
+ 
     <!-- Main Content (scrollable) -->
-    <main id="main">
-
+    <!-- <main id="main">
+ 
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis labore veritatis voluptatem ex eveniet fugit harum similique est accusantium voluptas corrupti, sed, eaque modi magni architecto provident pariatur officiis. Unde?
       Dicta aspernatur, harum sint hic facere ducimus enim assumenda molestias beatae optio! Distinctio vel iusto, dolor eligendi nobis aperiam laborum voluptatem amet voluptates totam alias ullam velit, veritatis unde ut.
       Quas porro tempore illo laudantium saepe quos quidem asperiores quisquam soluta accusamus eum tempora laboriosam hic rerum optio, corporis praesentium ea est facere dolor voluptatibus perspiciatis magni nam. Adipisci, recusandae?
-
+ 
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis labore veritatis voluptatem ex eveniet fugit harum similique est accusantium voluptas corrupti, sed, eaque modi magni architecto provident pariatur officiis. Unde?
       Dicta aspernatur, harum sint hic facere ducimus enim assumenda molestias beatae optio! Distinctio vel iusto, dolor eligendi nobis aperiam laborum voluptatem amet voluptates totam alias ullam velit, veritatis unde ut.
       Quas porro tempore illo laudantium saepe quos quidem asperiores quisquam soluta accusamus eum tempora laboriosam hic rerum optio, corporis praesentium ea est facere dolor voluptatibus perspiciatis magni nam. Adipisci, recusandae?
-
+ 
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis labore veritatis voluptatem ex eveniet fugit harum similique est accusantium voluptas corrupti, sed, eaque modi magni architecto provident pariatur officiis. Unde?
       Dicta aspernatur, harum sint hic facere ducimus enim assumenda molestias beatae optio! Distinctio vel iusto, dolor eligendi nobis aperiam laborum voluptatem amet voluptates totam alias ullam velit, veritatis unde ut.
       Quas porro tempore illo laudantium saepe quos quidem asperiores quisquam soluta accusamus eum tempora laboriosam hic rerum optio, corporis praesentium ea est facere dolor voluptatibus perspiciatis magni nam. Adipisci, recusandae?
-
+ 
       <section id="description">
         <h2>1. Description</h2>
         <p>Lorem ipsum dolor sit amet...</p>
@@ -129,15 +115,15 @@
         <p>More text for scrolling...</p>
         <p>More text for scrolling...</p>
       </section>
-
+ 
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis labore veritatis voluptatem ex eveniet fugit harum similique est accusantium voluptas corrupti, sed, eaque modi magni architecto provident pariatur officiis. Unde?
       Dicta aspernatur, harum sint hic facere ducimus enim assumenda molestias beatae optio! Distinctio vel iusto, dolor eligendi nobis aperiam laborum voluptatem amet voluptates totam alias ullam velit, veritatis unde ut.
       Quas porro tempore illo laudantium saepe quos quidem asperiores quisquam soluta accusamus eum tempora laboriosam hic rerum optio, corporis praesentium ea est facere dolor voluptatibus perspiciatis magni nam. Adipisci, recusandae?
-
+ 
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis labore veritatis voluptatem ex eveniet fugit harum similique est accusantium voluptas corrupti, sed, eaque modi magni architecto provident pariatur officiis. Unde?
       Dicta aspernatur, harum sint hic facere ducimus enim assumenda molestias beatae optio! Distinctio vel iusto, dolor eligendi nobis aperiam laborum voluptatem amet voluptates totam alias ullam velit, veritatis unde ut.
       Quas porro tempore illo laudantium saepe quos quidem asperiores quisquam soluta accusamus eum tempora laboriosam hic rerum optio, corporis praesentium ea est facere dolor voluptatibus perspiciatis magni nam. Adipisci, recusandae?
-
+ 
       <section id="prerequisites">
         <h2>2. Prerequisites</h2>
         <p>Long content here...</p>
@@ -146,15 +132,15 @@
         <p>More text for scrolling...</p>
         <p>More text for scrolling...</p>
       </section>
-
+ 
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis labore veritatis voluptatem ex eveniet fugit harum similique est accusantium voluptas corrupti, sed, eaque modi magni architecto provident pariatur officiis. Unde?
       Dicta aspernatur, harum sint hic facere ducimus enim assumenda molestias beatae optio! Distinctio vel iusto, dolor eligendi nobis aperiam laborum voluptatem amet voluptates totam alias ullam velit, veritatis unde ut.
       Quas porro tempore illo laudantium saepe quos quidem asperiores quisquam soluta accusamus eum tempora laboriosam hic rerum optio, corporis praesentium ea est facere dolor voluptatibus perspiciatis magni nam. Adipisci, recusandae?
-
+ 
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis labore veritatis voluptatem ex eveniet fugit harum similique est accusantium voluptas corrupti, sed, eaque modi magni architecto provident pariatur officiis. Unde?
       Dicta aspernatur, harum sint hic facere ducimus enim assumenda molestias beatae optio! Distinctio vel iusto, dolor eligendi nobis aperiam laborum voluptatem amet voluptates totam alias ullam velit, veritatis unde ut.
       Quas porro tempore illo laudantium saepe quos quidem asperiores quisquam soluta accusamus eum tempora laboriosam hic rerum optio, corporis praesentium ea est facere dolor voluptatibus perspiciatis magni nam. Adipisci, recusandae?
-
+ 
       <section id="workflow">
         <h2>3. Workflow</h2>
         <p>Workflow explanation and lots of text...</p>
@@ -162,78 +148,80 @@
         <p>More text for scrolling...</p>
         <p>More text for scrolling...</p>
       </section>
-
+ 
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis labore veritatis voluptatem ex eveniet fugit harum similique est accusantium voluptas corrupti, sed, eaque modi magni architecto provident pariatur officiis. Unde?
       Dicta aspernatur, harum sint hic facere ducimus enim assumenda molestias beatae optio! Distinctio vel iusto, dolor eligendi nobis aperiam laborum voluptatem amet voluptates totam alias ullam velit, veritatis unde ut.
       Quas porro tempore illo laudantium saepe quos quidem asperiores quisquam soluta accusamus eum tempora laboriosam hic rerum optio, corporis praesentium ea est facere dolor voluptatibus perspiciatis magni nam. Adipisci, recusandae?
-
+ 
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis labore veritatis voluptatem ex eveniet fugit harum similique est accusantium voluptas corrupti, sed, eaque modi magni architecto provident pariatur officiis. Unde?
       Dicta aspernatur, harum sint hic facere ducimus enim assumenda molestias beatae optio! Distinctio vel iusto, dolor eligendi nobis aperiam laborum voluptatem amet voluptates totam alias ullam velit, veritatis unde ut.
       Quas porro tempore illo laudantium saepe quos quidem asperiores quisquam soluta accusamus eum tempora laboriosam hic rerum optio, corporis praesentium ea est facere dolor voluptatibus perspiciatis magni nam. Adipisci, recusandae?
-
+ 
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis labore veritatis voluptatem ex eveniet fugit harum similique est accusantium voluptas corrupti, sed, eaque modi magni architecto provident pariatur officiis. Unde?
       Dicta aspernatur, harum sint hic facere ducimus enim assumenda molestias beatae optio! Distinctio vel iusto, dolor eligendi nobis aperiam laborum voluptatem amet voluptates totam alias ullam velit, veritatis unde ut.
       Quas porro tempore illo laudantium saepe quos quidem asperiores quisquam soluta accusamus eum tempora laboriosam hic rerum optio, corporis praesentium ea est facere dolor voluptatibus perspiciatis magni nam. Adipisci, recusandae?
-
+ 
       <section id="results">
         <h2>4. Results</h2>
         <p>Results paragraph and analysis...</p>
         <p>More text for scrolling...</p>
         <p>More text for scrolling...</p>
       </section>
-
+ 
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis labore veritatis voluptatem ex eveniet fugit harum similique est accusantium voluptas corrupti, sed, eaque modi magni architecto provident pariatur officiis. Unde?
       Dicta aspernatur, harum sint hic facere ducimus enim assumenda molestias beatae optio! Distinctio vel iusto, dolor eligendi nobis aperiam laborum voluptatem amet voluptates totam alias ullam velit, veritatis unde ut.
       Quas porro tempore illo laudantium saepe quos quidem asperiores quisquam soluta accusamus eum tempora laboriosam hic rerum optio, corporis praesentium ea est facere dolor voluptatibus perspiciatis magni nam. Adipisci, recusandae?
-
+ 
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis labore veritatis voluptatem ex eveniet fugit harum similique est accusantium voluptas corrupti, sed, eaque modi magni architecto provident pariatur officiis. Unde?
       Dicta aspernatur, harum sint hic facere ducimus enim assumenda molestias beatae optio! Distinctio vel iusto, dolor eligendi nobis aperiam laborum voluptatem amet voluptates totam alias ullam velit, veritatis unde ut.
       Quas porro tempore illo laudantium saepe quos quidem asperiores quisquam soluta accusamus eum tempora laboriosam hic rerum optio, corporis praesentium ea est facere dolor voluptatibus perspiciatis magni nam. Adipisci, recusandae?
-
+ 
       <section>
         <h2>Yousef Elgohary</h2>
         <p>Results paragraph and analysis...</p>
         <p>More text for scrolling...</p>
         <p>More text for scrolling...</p>
       </section>
-
+ 
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis labore veritatis voluptatem ex eveniet fugit harum similique est accusantium voluptas corrupti, sed, eaque modi magni architecto provident pariatur officiis. Unde?
       Dicta aspernatur, harum sint hic facere ducimus enim assumenda molestias beatae optio! Distinctio vel iusto, dolor eligendi nobis aperiam laborum voluptatem amet voluptates totam alias ullam velit, veritatis unde ut.
       Quas porro tempore illo laudantium saepe quos quidem asperiores quisquam soluta accusamus eum tempora laboriosam hic rerum optio, corporis praesentium ea est facere dolor voluptatibus perspiciatis magni nam. Adipisci, recusandae?
-
-
+ 
+ 
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis labore veritatis voluptatem ex eveniet fugit harum similique est accusantium voluptas corrupti, sed, eaque modi magni architecto provident pariatur officiis. Unde?
       Dicta aspernatur, harum sint hic facere ducimus enim assumenda molestias beatae optio! Distinctio vel iusto, dolor eligendi nobis aperiam laborum voluptatem amet voluptates totam alias ullam velit, veritatis unde ut.
       Quas porro tempore illo laudantium saepe quos quidem asperiores quisquam soluta accusamus eum tempora laboriosam hic rerum optio, corporis praesentium ea est facere dolor voluptatibus perspiciatis magni nam. Adipisci, recusandae?
-
-
+ 
+ 
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis labore veritatis voluptatem ex eveniet fugit harum similique est accusantium voluptas corrupti, sed, eaque modi magni architecto provident pariatur officiis. Unde?
       Dicta aspernatur, harum sint hic facere ducimus enim assumenda molestias beatae optio! Distinctio vel iusto, dolor eligendi nobis aperiam laborum voluptatem amet voluptates totam alias ullam velit, veritatis unde ut.
       Quas porro tempore illo laudantium saepe quos quidem asperiores quisquam soluta accusamus eum tempora laboriosam hic rerum optio, corporis praesentium ea est facere dolor voluptatibus perspiciatis magni nam. Adipisci, recusandae?
-
-
+ 
+ 
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis labore veritatis voluptatem ex eveniet fugit harum similique est accusantium voluptas corrupti, sed, eaque modi magni architecto provident pariatur officiis. Unde?
       Dicta aspernatur, harum sint hic facere ducimus enim assumenda molestias beatae optio! Distinctio vel iusto, dolor eligendi nobis aperiam laborum voluptatem amet voluptates totam alias ullam velit, veritatis unde ut.
       Quas porro tempore illo laudantium saepe quos quidem asperiores quisquam soluta accusamus eum tempora laboriosam hic rerum optio, corporis praesentium ea est facere dolor voluptatibus perspiciatis magni nam. Adipisci, recusandae?
-
-    </main>
-
+ 
+    </main> -->
+ 
     <!-- Right Sticky Nav -->
-    <nav>
+    <header>
       <div class="sticky-nav">
+        <p>In this Article</p>
         <div class="nav-buttons">
-          <button>📄 Download PDF</button>
-          <a href="#">🔗 Copy Article link</a>
+          <a href="#"><button><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11.6668 1.89128V5.3334C11.6668 5.80011 11.6668 6.03346 11.7577 6.21172C11.8376 6.36853 11.965 6.49601 12.1218 6.5759C12.3001 6.66673 12.5335 6.66673 13.0002 6.66673H16.4423M13.3335 10.8333H6.66683M13.3335 14.1667H6.66683M8.3335 7.50001H6.66683M11.6668 1.66667H7.3335C5.93336 1.66667 5.2333 1.66667 4.69852 1.93916C4.22811 2.17884 3.84566 2.56129 3.60598 3.0317C3.3335 3.56647 3.3335 4.26654 3.3335 5.66667V14.3333C3.3335 15.7335 3.3335 16.4335 3.60598 16.9683C3.84566 17.4387 4.22811 17.8212 4.69852 18.0609C5.2333 18.3333 5.93336 18.3333 7.3335 18.3333H12.6668C14.067 18.3333 14.767 18.3333 15.3018 18.0609C15.7722 17.8212 16.1547 17.4387 16.3943 16.9683C16.6668 16.4335 16.6668 15.7335 16.6668 14.3333V6.66667L11.6668 1.66667Z" stroke="#A4A7AE" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg> Download PDF</button></a>
+          <!-- <a href="#">🔗 Copy Article link</a> -->
         </div>
         <ol>
-          <li><a href="#description">Description</a></li>
-          <li><a href="#prerequisites">Prerequisites</a></li>
-          <li><a href="#workflow">Workflow</a></li>
-          <li><a href="#results">Results</a></li>
+          <li><a href="https://rmgsegypt.sharepoint.com/sites/PalantyrKB/SitePages/Employee-KPIs-Access.aspx#where-can-employees-access-and-view-their-key-performance-indicators-(kpis)">Where can employees access and view their key performance indicators (KPIs)? </a></li>
+          <li><a href="https://rmgsegypt.sharepoint.com/sites/PalantyrKB/SitePages/Employee-KPIs-Access.aspx#view-kpis-steps">View KPIs Steps</a></li>
+          <li><a href="https://rmgsegypt.sharepoint.com/sites/PalantyrKB/SitePages/Employee-KPIs-Access.aspx#details">Details</a></li>
         </ol>
       </div>
-    </nav>
+    </header>
   </div>
-
+ 
 </body>
 </html>
