@@ -8,6 +8,7 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
+      background-color: #ffffff;
     }
 
     .nav-container {
@@ -30,6 +31,7 @@
     }
 
     .nav-square {
+      background-color: white;
       border: 1.5px solid #e5e7eb;
       border-radius: 8px;
       padding: 10px;
@@ -38,6 +40,15 @@
       display: flex;
       align-items: center;
       justify-content: center;
+
+        /* Add subtle box-shadow */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.2s ease;
+}
+
+/* Optional: subtly intensify shadow on hover */
+.nav-item:hover .nav-square {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
     }
 
     .nav-item img {
