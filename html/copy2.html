@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chat Widget</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: sans-serif; }
+
+    .chat-toggle {
+      position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 50;
+    }
+
+    .chat-tooltip {
+      position: absolute;
+      bottom: 4.5rem; right: 0;
+      width: 20.5rem; padding: 1.25rem;
+      background: white; border: 1px solid #d5d7da;
+      border-radius: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      color: #181d27; font-size: 0.875rem;
+      opacity: 0; transform: translateY(0.5rem);
+      pointer-events: none; transition: all 0.3s ease-out;
+    }
+
+    .chat-tooltip.active {
+      opacity: 1; transform: translateY(0); pointer-events: auto;
+    }
+
+    .chatbox {
+      position: fixed;
+      bottom: 6rem; right: 1.5rem;
+      width: 480px; height: 640px;
+      background: #F9FBFC;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+      border-radius: 1rem; display: flex; flex-direction: column;
+      overflow: hidden; z-index: 40;
+    }
+
+    .chat-header {
+      padding: 12px 16px; background: white;
+      display: flex; justify-content: space-between;
+      align-items: center; border-bottom: 1px solid #E9EAEB;
+    }
+
+    .chat-header img { height: 32px; }
+
+    .actions {
+      display: flex; gap: 12px; align-items: center;
+    }
+
+    .actions button {
+      background: none; border: none; cursor: pointer;
+      font-size: 0.875rem; color: #181D27; font-weight: 500;
+      display: flex; align-items: center; gap: 4px;
+    }
+
+    .chat-btn {
+      width: 3.5rem; height: 3.5rem;
+      background: #CF3B27; color: white;
+      border-radius: 9999px; border: none;
+      font-size: 1.25rem; cursor: pointer;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
+
+    .welcome {
+      text-align: center; padding: 24px 16px;
+      display: flex; flex-direction: column; align-items: center;
+    }
+
+    .robot-circle {
+      background: #CF3B27;
+      padding: 10px; border-radius: 9999px;
+      color: white; display: flex;
+      align-items: center; justify-content: center;
+      width: 40px; height: 40px;
+    }
+
+    .suggestions {
+      padding: 0 16px;
+    }
+
+    .suggestions .wrap {
+      display: flex; flex-wrap: wrap;
+      gap: 8px; background: #fff;
+      padding: 12px; border-radius: 1rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .suggestions button {
+      font-size: 0.875rem; padding: 8px 12px;
+      border: 1px solid #E9EAEB; background: #F9FBFC;
+      border-radius: 9999px; cursor: pointer;
+      color: #252B37; font-weight: 400;
+      display: flex; align-items: center; gap: 6px;
+      transition: background 0.2s;
+    }
+
+    .suggestions button:hover {
+      background: #F3F4F6;
+    }
+
+    .messages {
+      flex: 1; overflow-y: auto;
+      padding: 12px 16px;
+    }
+
+    .msg-row {
+      display: flex; gap: 8px; margin-bottom: 16px;
+    }
+
+    .msg-row.user { flex-direction: row-reverse; }
+
+    .msg-content { max-width: 75%; }
+
+    .msg-meta {
+      font-size: 0.75rem; color: #535862;
+      margin-bottom: 4px; font-weight: 400;
+    }
+
+    .msg-bubble {
+      background: white; padding: 8px 12px;
+      border-radius: 12px;
+      border: 1px solid #E9EAEB;
+      font-size: 0.875rem;
+      color: #181D27;
+    }
+
+    .msg-bubble.bot {
+      border-left: none; border-top-left-radius: 0;
+    }
+
+    .msg-bubble.user {
+      border-right: none; border-top-right-radius: 0;
+    }
+
+    .typing-indicator {
+      display: flex; gap: 6px;
+      padding: 6px 12px;
+      background: white;
+      border: 1px solid #E9EAEB;
+      border-left: none; border-top-left-radius: 0;
+      border-radius: 12px;
+      width: fit-content;
+    }
+
+    .typing-dot {
+      width: 6px; height: 6px;
+      background: #A4A7AE; border-radius: 50%;
+      animation: typingBounce 1.2s infinite ease-in-out;
+    }
+
+    .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes typingBounce {
+      0%, 80%, 100% { transform: translateY(0); opacity: 0.6; }
+      40% { transform: translateY(-5px); opacity: 1; }
+    }
+
+    .chat-input-area {
+      padding: 16px;
+      border-top: 1px solid #E9EAEB;
+      background: white;
+    }
+
+    .input-box {
+      display: flex; background: #F3F4F6;
+      border-radius: 9999px;
+      padding: 8px 12px;
+      align-items: center;
+    }
+
+    .input-box input {
+      flex: 1; background: transparent;
+      border: none; outline: none;
+      font-size: 0.875rem;
+      padding: 0 8px;
+    }
+
+    .input-box button {
+      background: #CF3B27;
+      color: white;
+      border-radius: 9999px;
+      width: 32px; height: 32px;
+      border: none;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .powered {
+      font-size: 0.75rem;
+      text-align: center;
+      margin-top: 8px;
+      color: #535862;
+    }
+
+    .powered span {
+      font-weight: bold;
+      color: #CF3B27;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="chat-toggle">
+    <div class="chat-tooltip" id="chatTooltip">🤖<br>Lorem ipsum dolor sit amet consectetur adipiscing elit</div>
+    <button class="chat-btn" id="chatBtn">💬</button>
+  </div>
+
+  <div class="chatbox" id="chatBox" style="display: none">
+    <div class="chat-header">
+      <img src="logo.png" alt="Logo" />
+      <div class="actions">
+        <button onclick="startNewChat()">✏️ New chat</button>
+        <button onclick="toggleChat()">✖️</button>
+      </div>
+    </div>
+
+    <div id="welcomeSection" class="welcome">
+      <div class="robot-circle">🤖</div>
+      <h2>How can Folla help you?</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipiscing elit</p>
+    </div>
+
+    <div id="suggestionSection" class="suggestions">
+      <p>Suggest for you</p>
+      <div class="wrap" id="suggestions"></div>
+    </div>
+
+    <div class="messages" id="messages"></div>
+
+    <div class="chat-input-area">
+      <div class="input-box">
+        <input type="text" id="messageInput" placeholder="Message Folla..." />
+        <button onclick="sendMessage()">📤</button>
+      </div>
+      <div class="powered">Powered by <span>FLAIRSTECH</span></div>
+    </div>
+  </div>
+
+    <!-- Optional full-screen image modal -->
+  <div id="imageModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:999;align-items:center;justify-content:center;">
+    <img id="modalImage" style="max-width:90%;max-height:90%;" />
+  </div>
+
+<!-- (Keep your full <head> and <body> as is, then replace the <script> tag with this one below) -->
+  <script>
+    const API_BASE = 'https://e17d79228bcd.ngrok-free.app';
+    const chatBtn = document.getElementById('chatBtn');
+    const chatBox = document.getElementById('chatBox');
+    const tooltip = document.getElementById('chatTooltip');
+    const suggestionsContainer = document.getElementById('suggestions');
+    const messagesContainer = document.getElementById('messages');
+    const input = document.getElementById('messageInput');
+    const welcome = document.getElementById('welcomeSection');
+    const suggestionSection = document.getElementById('suggestionSection');
+    const suggestions = [
+      'KPI types?', 'Evaluation frequency?', 'Mid-year window?',
+      'Disagree with results?', 'Supervisor assessment?', 'Score calculation?'
+    ];
+
+    let isOpen = false;
+    let conversation = [];
+
+    chatBtn.addEventListener('mouseenter', () => tooltip.classList.add('active'));
+    chatBtn.addEventListener('mouseleave', () => tooltip.classList.remove('active'));
+    chatBtn.addEventListener('click', toggleChat);
+    input.addEventListener('keydown', e => { if (e.key === 'Enter') sendMessage(); });
+    window.onclick = e => { if (e.target === document.getElementById('imageModal')) closeModal(); };
+
+    suggestions.forEach(text => {
+      const btn = document.createElement('button');
+      btn.innerHTML = `✏️ <span>${text}</span>`;
+      btn.onclick = () => sendMessage(text);
+      suggestionsContainer.appendChild(btn);
+    });
+
+    function toggleChat() {
+      isOpen = !isOpen;
+      chatBox.style.display = isOpen ? 'flex' : 'none';
+    }
+
+    function startNewChat() {
+      messagesContainer.innerHTML = '';
+      welcome.style.display = 'flex';
+      suggestionSection.style.display = 'block';
+      conversation = [];
+    }
+
+    function appendMessage(sender, text) {
+      welcome.style.display = 'none';
+      suggestionSection.style.display = 'none';
+
+      const msgRow = document.createElement('div');
+      msgRow.className = 'msg-row ' + sender;
+      const avatar = sender === 'bot'
+        ? `<div class="robot-circle">🤖</div>`
+        : `<img src="https://i.pravatar.cc/40?img=3" />`;
+
+      const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+      msgRow.innerHTML = `
+        ${avatar}
+        <div class="msg-content">
+          <div class="msg-meta">${sender === 'bot' ? 'Folla' : 'You'} <span>${time}</span></div>
+          <div class="msg-bubble ${sender}">${text}</div>
+        </div>
+      `;
+
+      messagesContainer.appendChild(msgRow);
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    async function sendMessage(userInput = input.value.trim()) {
+      if (!userInput) return;
+      appendMessage('user', userInput);
+      conversation.push({ role: 'user', content: userInput });
+      input.value = '';
+
+      const typing = document.createElement('div');
+      typing.className = 'msg-row bot';
+      const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      typing.innerHTML = `
+        <div class="robot-circle">🤖</div>
+        <div class="msg-content">
+          <div class="msg-meta">Folla <span>${time}</span></div>
+          <div class="typing-indicator">
+            <span class="typing-dot"></span>
+            <span class="typing-dot"></span>
+            <span class="typing-dot"></span>
+          </div>
+        </div>
+      `;
+      messagesContainer.appendChild(typing);
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+      try {
+        const response = await fetch(`${API_BASE}/api/chat/stream`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            conversation: conversation,
+            stream: true,
+            max_tokens: 2048,
+            temperature: 0.1
+          })
+        });
+
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder();
+        let buffer = '';
+        let fullContent = '';
+
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+
+          buffer += decoder.decode(value, { stream: true });
+          const lines = buffer.split('\n');
+          buffer = lines.pop();
+
+          for (const line of lines) {
+            if (line.startsWith('data: ')) {
+              const parsed = JSON.parse(line.slice(6));
+              if (parsed.type === 'content') {
+                fullContent += parsed.content;
+                updateTypingContent(typing, fullContent);
+              } else if (parsed.type === 'complete') {
+                messagesContainer.removeChild(typing);
+                appendMessage('bot', renderMarkdown(fullContent));
+                conversation.push({ role: 'assistant', content: fullContent });
+              }
+            }
+          }
+        }
+      } catch (err) {
+        messagesContainer.removeChild(typing);
+        appendMessage('bot', '⚠️ Error: ' + err.message);
+      }
+    }
+
+    function updateTypingContent(typingEl, raw) {
+      const bubble = typingEl.querySelector('.typing-indicator');
+      if (bubble) bubble.outerHTML = `<div class="msg-bubble bot">${renderMarkdown(raw)}</div>`;
+      setupImageHandlers();
+    }
+
+    function renderMarkdown(text) {
+      return text
+        .replace(/!\[([^\]]*)\]\((data:image\/[^)]+)\)/g,
+          '<img src="$2" alt="$1" onclick="openModal(this.src)" style="cursor:pointer;max-width:100%;" />')
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.*?)\*/g, '<em>$1</em>')
+        .replace(/`([^`]+)`/g, '<code>$1</code>')
+        .replace(/\n/g, '<br>');
+    }
+
+    function setupImageHandlers() {
+      document.querySelectorAll('img').forEach(img => {
+        img.onclick = () => openModal(img.src);
+      });
+    }
+
+    function openModal(src) {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImage');
+      modal.style.display = 'flex';
+      modalImg.src = src;
+    }
+
+    function closeModal() {
+      document.getElementById('imageModal').style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>

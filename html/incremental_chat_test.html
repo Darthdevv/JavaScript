@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀 Incremental Token Streaming Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            min-height: 600px;
+        }
+
+        .chat-panel, .response-panel {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-panel {
+            background: #f8fafc;
+            border-right: 1px solid #e2e8f0;
+        }
+
+        .response-panel {
+            background: #ffffff;
+        }
+
+        .panel-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .input-section {
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            font-weight: 500;
+            color: #4a5568;
+            margin-bottom: 5px;
+            font-size: 0.9em;
+        }
+
+        .input-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 14px;
+            font-family: inherit;
+            resize: vertical;
+            min-height: 80px;
+            transition: border-color 0.3s;
+        }
+
+        .input-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .controls {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 15px;
+            align-items: end;
+        }
+
+        .params {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .param-input {
+            padding: 8px 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 13px;
+            transition: border-color 0.3s;
+        }
+
+        .param-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .send-btn {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .send-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .send-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .quick-tests {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .quick-test-btn {
+            padding: 10px 15px;
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.85em;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .quick-test-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 5px 15px rgba(72, 187, 120, 0.3);
+        }
+
+        .status {
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-weight: 500;
+            font-size: 0.9em;
+        }
+
+        .status.loading {
+            background: #fef5e7;
+            color: #d69e2e;
+            border-left: 4px solid #ed8936;
+        }
+
+        .status.success {
+            background: #f0fff4;
+            color: #2f855a;
+            border-left: 4px solid #48bb78;
+        }
+
+        .status.error {
+            background: #fed7d7;
+            color: #c53030;
+            border-left: 4px solid #e53e3e;
+        }
+
+        .response-content {
+            flex: 1;
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            overflow-y: auto;
+            font-size: 15px;
+            line-height: 1.6;
+            min-height: 400px;
+        }
+
+        /* Enhanced Markdown Styling */
+        .response-content h1, .response-content h2, .response-content h3, .response-content h4 {
+            color: #2d3748;
+            margin: 20px 0 10px 0;
+            font-weight: 600;
+        }
+
+        .response-content h1 { font-size: 1.8em; }
+        .response-content h2 { font-size: 1.5em; }
+        .response-content h3 { font-size: 1.3em; }
+        .response-content h4 { font-size: 1.1em; }
+
+        .response-content p {
+            margin: 15px 0;
+            color: #4a5568;
+        }
+
+        .response-content strong {
+            color: #2d3748;
+            font-weight: 600;
+        }
+
+        .response-content em {
+            color: #667eea;
+            font-style: italic;
+        }
+
+        .response-content code {
+            background: #edf2f7;
+            color: #d53f8c;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-family: 'SF Mono', 'Monaco', 'Cascadia Code', monospace;
+            font-size: 0.9em;
+        }
+
+        .response-content ul, .response-content ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+
+        .response-content li {
+            margin: 8px 0;
+            color: #4a5568;
+        }
+
+        .response-content ul {
+            list-style-type: disc;
+        }
+
+        .response-content ol {
+            list-style-type: decimal;
+        }
+
+        .response-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin: 20px 0;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .response-content img:hover {
+            transform: scale(1.02);
+        }
+
+        .response-content blockquote {
+            border-left: 4px solid #667eea;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #4a5568;
+            font-style: italic;
+            background: #f7fafc;
+            padding: 15px 20px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+            padding: 20px;
+            background: #f7fafc;
+            border-radius: 12px;
+        }
+
+        .metric {
+            text-align: center;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .metric-value {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .metric-label {
+            color: #718096;
+            font-size: 0.8em;
+            font-weight: 500;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            display: block;
+            margin: auto;
+            max-width: 90%;
+            max-height: 90%;
+            margin-top: 2%;
+            border-radius: 12px;
+        }
+
+        .close {
+            position: absolute;
+            top: 30px;
+            right: 50px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .close:hover {
+            color: #667eea;
+        }
+
+        /* Loading Animation */
+        .typing-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #667eea;
+            font-style: italic;
+        }
+
+        .typing-dots {
+            display: inline-flex;
+            gap: 3px;
+        }
+
+        .typing-dots span {
+            width: 6px;
+            height: 6px;
+            background: #667eea;
+            border-radius: 50%;
+            animation: typing 1.4s infinite ease-in-out;
+        }
+
+        .typing-dots span:nth-child(1) { animation-delay: -0.32s; }
+        .typing-dots span:nth-child(2) { animation-delay: -0.16s; }
+
+        @keyframes typing {
+            0%, 80%, 100% { transform: scale(0.8); opacity: 0.5; }
+            40% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+            
+            .chat-panel {
+                border-right: none;
+                border-bottom: 1px solid #e2e8f0;
+            }
+            
+            .controls {
+                grid-template-columns: 1fr;
+            }
+            
+            .params {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Incremental Token Streaming Test</h1>
+            <p>Testing real-time token accumulation with image buffering</p>
+        </div>
+
+        <div class="content">
+            <div class="chat-panel">
+                <h3 class="panel-title">💬 Chat Input</h3>
+                
+                <div class="quick-tests">
+                    <button class="quick-test-btn" onclick="testBasicQuestion()">👋 Basic Test</button>
+                    <button class="quick-test-btn" onclick="testImageRequest()">🖼️ Image Test</button>
+                    <button class="quick-test-btn" onclick="testMultipleImages()">📸 Multi-Image</button>
+                    <button class="quick-test-btn" onclick="checkHealth()">🏥 Health Check</button>
+                </div>
+
+                <div class="input-section">
+                    <div class="input-group">
+                        <label for="messageInput">Your Message:</label>
+                        <textarea id="messageInput" placeholder="Type your message here...">How do I assign KPIs to employees? Please show me the interface.</textarea>
+                    </div>
+
+                    <div class="controls">
+                        <div class="params">
+                            <input type="number" id="maxTokens" class="param-input" value="500" min="50" max="2048" placeholder="Max Tokens">
+                            <input type="number" id="temperature" class="param-input" value="0.1" min="0" max="2" step="0.1" placeholder="Temperature">
+                        </div>
+                        <button onclick="sendMessage()" id="sendBtn" class="send-btn">🚀 Send Message</button>
+                    </div>
+                </div>
+
+                <div id="statusArea"></div>
+
+                <div class="metrics" id="metricsArea" style="display: none;">
+                    <div class="metric">
+                        <div class="metric-value" id="ttftValue">-</div>
+                        <div class="metric-label">TTFT (s)</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="totalTimeValue">-</div>
+                        <div class="metric-label">Total (s)</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="tokensValue">-</div>
+                        <div class="metric-label">Tokens</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="speedValue">-</div>
+                        <div class="metric-label">Tok/s</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="response-panel">
+                <h3 class="panel-title">🤖 AI Response</h3>
+                <div id="responseContent" class="response-content">
+                    <p class="typing-indicator">Ready to receive incremental tokens... 
+                        <span class="typing-dots"><span></span><span></span><span></span></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for full-screen images -->
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+        const API_BASE = 'https://13a454fcf0d2.ngrok-free.app';
+        
+        // State management
+        let accumulatedContent = '';
+        let isReceivingResponse = false;
+        let tokenCount = 0;
+
+        function showStatus(message, type) {
+            const statusArea = document.getElementById('statusArea');
+            statusArea.innerHTML = `<div class="status ${type}">${message}</div>`;
+        }
+
+        function updateMetrics(ttft, totalTime, tokens, speed) {
+            document.getElementById('ttftValue').textContent = ttft.toFixed(3);
+            document.getElementById('totalTimeValue').textContent = totalTime.toFixed(2);
+            document.getElementById('tokensValue').textContent = tokens;
+            document.getElementById('speedValue').textContent = speed.toFixed(1);
+            document.getElementById('metricsArea').style.display = 'grid';
+        }
+
+        function renderMarkdownToHTML(content) {
+            // Enhanced markdown to HTML conversion
+            let html = content
+                // Handle images first (they come as base64 from backend)
+                .replace(/!\[([^\]]*)\]\(data:image\/[^;]+;base64,([^)]+)\)/g, 
+                    '<img src="data:image/png;base64,$2" alt="$1" onclick="openModal(this.src)" />')
+                
+                // Headers
+                .replace(/^#### (.*$)/gim, '<h4>$1</h4>')
+                .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+                .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+                .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+                
+                // Bold and italic
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                
+                // Code blocks (inline)
+                .replace(/`([^`]+)`/g, '<code>$1</code>')
+                
+                // Lists (numbered and bulleted)
+                .replace(/^\d+\.\s+(.*)$/gim, '<li>$1</li>')
+                .replace(/^[-*+]\s+(.*)$/gim, '<li>$1</li>')
+                
+                // Blockquotes
+                .replace(/^>\s+(.*)$/gim, '<blockquote>$1</blockquote>')
+                
+                // Line breaks
+                .replace(/\n\n/g, '</p><p>')
+                .replace(/\n/g, '<br>');
+
+            // Wrap in paragraphs and fix lists
+            html = '<p>' + html + '</p>';
+            
+            // Fix list formatting
+            html = html.replace(/<\/p><p>(<li>.*?<\/li>)/g, '<ul>$1');
+            html = html.replace(/(<li>.*?<\/li>)<\/p><p>/g, '$1</ul><p>');
+            html = html.replace(/(<\/li>)<br>(<li>)/g, '$1$2');
+            
+            // Clean up empty paragraphs and multiple breaks
+            html = html.replace(/<p><\/p>/g, '');
+            html = html.replace(/<p><br><\/p>/g, '');
+            html = html.replace(/<br><br>/g, '<br>');
+            html = html.replace(/<p>\s*<\/p>/g, '');
+
+            return html;
+        }
+
+        function updateResponseDisplay() {
+            const responseContent = document.getElementById('responseContent');
+            const renderedHTML = renderMarkdownToHTML(accumulatedContent);
+            responseContent.innerHTML = renderedHTML;
+            
+            // Setup image click handlers
+            setupImageHandlers();
+            
+            // Auto-scroll to bottom
+            responseContent.scrollTop = responseContent.scrollHeight;
+        }
+
+        async function sendMessage() {
+            const messageInput = document.getElementById('messageInput');
+            const maxTokens = parseInt(document.getElementById('maxTokens').value);
+            const temperature = parseFloat(document.getElementById('temperature').value);
+            const sendBtn = document.getElementById('sendBtn');
+            
+            const message = messageInput.value.trim();
+            if (!message) {
+                showStatus('Please enter a message', 'error');
+                return;
+            }
+
+            // Reset state
+            accumulatedContent = '';
+            tokenCount = 0;
+            isReceivingResponse = true;
+            
+            // Update UI
+            sendBtn.disabled = true;
+            sendBtn.textContent = '⏳ Generating...';
+
+            const responseContent = document.getElementById('responseContent');
+            responseContent.innerHTML = '<p class="typing-indicator"><svg xmlns="http://www.w3.org/2000/svg" fill="#CF3B27" data-name="Layer 1" viewBox="0 0 100 125" x="0px" y="0px"><title>AIbots</title><path d="M24,42.35A2,2,0,1,1,26.35,44,2,2,0,0,1,24,42.35ZM42.35,41A2,2,0,1,0,40,39.35,2,2,0,0,0,42.35,41ZM58,76v5a3,3,0,0,1-3,3H13a3,3,0,0,1-3-3V76a6,6,0,0,1,6-6h7V67.22l-.67.12a6.41,6.41,0,0,1-1.06.09,6,6,0,0,1-5.89-5L13.72,53.1A8.84,8.84,0,0,1,11.3,39.34l-1.13-6.41A6,6,0,0,1,15,26l10.84-1.91-1.22-6.9a1,1,0,0,1,2-.34l1.22,6.89,10.83-1.91a6,6,0,0,1,6.95,4.87l1.13,6.41a8.84,8.84,0,0,1,2.43,13.76l1.65,9.37a6,6,0,0,1-4.87,7l-1,.17V70h7A6,6,0,0,1,58,76ZM47.24,35.84l1.45,8.26a6.82,6.82,0,0,0,.68-4.38A6.93,6.93,0,0,0,47.24,35.84Zm-35.1-3.26,1.21,6.89h0l1.89,10.69L31,47.43a1,1,0,0,1,.67.12l6.15,3.6,4.5-5.32a1,1,0,0,1,.58-.34l3.86-.73L43.65,27a4,4,0,0,0-3.93-3.3,4.14,4.14,0,0,0-.7.06L27.2,25.86h0L15.38,28A4,4,0,0,0,12.14,32.58Zm1.1,17.77-1.46-8.26a6.89,6.89,0,0,0-.67,4.38A6.81,6.81,0,0,0,13.24,50.35ZM23.6,65.08A1.06,1.06,0,0,1,24,65h0L45.62,61.2a4,4,0,0,0,3.24-4.63l-1.73-9.84-3.49.66-4.82,5.69a1,1,0,0,1-1.26.22L31,49.46,15.58,52.13l0,.15h0l1.74,9.84A4,4,0,0,0,22,65.37ZM25,70H43V63.69L25,66.87ZM37.92,82a4,4,0,0,0-7.84,0ZM56,76a4,4,0,0,0-4-4H16a4,4,0,0,0-4,4v5a1,1,0,0,0,1,1H28.05A6,6,0,0,1,40,82H55a1,1,0,0,0,1-1Zm-5-2H47a1,1,0,0,0,0,2h4a1,1,0,0,1,1,1v3a1,1,0,0,0,2,0V77A3,3,0,0,0,51,74ZM63,56.5A4.5,4.5,0,1,1,58.5,52,4.51,4.51,0,0,1,63,56.5Zm-2,0A2.5,2.5,0,1,0,58.5,59,2.5,2.5,0,0,0,61,56.5Zm15-7A6.5,6.5,0,1,1,69.5,43,6.51,6.51,0,0,1,76,49.5Zm-2,0A4.5,4.5,0,1,0,69.5,54,4.51,4.51,0,0,0,74,49.5ZM73.5,36A6.51,6.51,0,0,1,67,29.5a1,1,0,0,0-2,0A8.51,8.51,0,0,0,73.5,38a1,1,0,0,0,0-2Zm14.56-1.94a7.29,7.29,0,0,1-11,7.59,12.54,12.54,0,0,1-3.15.4A12.9,12.9,0,1,1,81,18.4c.33,0,.63,0,.93,0a9,9,0,0,1,6.11,15.71ZM89,27.4a7.06,7.06,0,0,0-7-7,8.41,8.41,0,0,0-1,.08,1,1,0,0,1-.72-.17A10.9,10.9,0,1,0,73.9,40.05a11,11,0,0,0,3-.44.9.9,0,0,1,.28,0,1,1,0,0,1,.58.18,5.23,5.23,0,0,0,3.09,1A5.26,5.26,0,0,0,86,34a1,1,0,0,1,.34-1.06A7,7,0,0,0,89,27.4Z"/></svg> Thinking... <span class="typing-dots"><span></span><span></span><span></span></span></p>';
+
+            showStatus('🚀 Sending request to API...', 'loading');
+
+            try {
+                const response = await fetch(`${API_BASE}/api/chat/stream`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        conversation: [
+                            {role: 'user', content: message}
+                        ],
+                        stream: true,
+                        max_tokens: maxTokens,
+                        temperature: temperature
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+
+                // Handle streaming response
+                const reader = response.body.getReader();
+                const decoder = new TextDecoder();
+                let buffer = '';
+                let metrics = {};
+                let startTime = Date.now();
+
+                while (true) {
+                    const { done, value } = await reader.read();
+                    if (done) break;
+
+                    buffer += decoder.decode(value, { stream: true });
+                    const lines = buffer.split('\n');
+                    buffer = lines.pop(); // Keep incomplete line in buffer
+
+                    for (const line of lines) {
+                        if (line.startsWith('data: ')) {
+                            try {
+                                const data = JSON.parse(line.slice(6));
+                                
+                                if (data.type === 'token') {
+                                    // Append new token to accumulated content
+                                    accumulatedContent += data.content;
+                                    tokenCount++;
+                                    updateResponseDisplay();
+                                    
+                                    // Show live stats
+                                    const currentTime = (Date.now() - startTime) / 1000;
+                                    showStatus(`📡 Streaming... ${tokenCount} tokens in ${currentTime.toFixed(1)}s`, 'loading');
+                                    
+                                } else if (data.type === 'image') {
+                                    // Append processed image content
+                                    accumulatedContent += data.content;
+                                    updateResponseDisplay();
+                                    showStatus(`🖼️ Image processed and rendered!`, 'success');
+                                    
+                                } else if (data.type === 'ttft') {
+                                    metrics.ttft = data.value;
+                                    showStatus(`⚡ First token: ${data.value.toFixed(3)}s`, 'success');
+                                    
+                                } else if (data.type === 'complete') {
+                                    metrics = { ...metrics, ...data };
+                                    updateMetrics(metrics.ttft, data.total_time, data.tokens_generated, data.tokens_per_second);
+                                    isReceivingResponse = false;
+                                    showStatus(`✅ Complete! ${data.tokens_generated} tokens in ${data.total_time.toFixed(2)}s (${data.tokens_per_second.toFixed(1)} tok/s)`, 'success');
+                                    
+                                } else if (data.type === 'error') {
+                                    throw new Error(data.error);
+                                }
+                            } catch (e) {
+                                console.warn('Failed to parse SSE data:', line);
+                            }
+                        }
+                    }
+                }
+
+            } catch (error) {
+                showStatus(`❌ Error: ${error.message}`, 'error');
+                console.error('Chat error:', error);
+                isReceivingResponse = false;
+            } finally {
+                sendBtn.disabled = false;
+                sendBtn.textContent = '🚀 Send Message';
+            }
+        }
+
+        function setupImageHandlers() {
+            document.querySelectorAll('#responseContent img').forEach(img => {
+                img.onclick = () => openModal(img.src);
+            });
+        }
+
+        function openModal(src) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            modal.style.display = 'block';
+            modalImg.src = src;
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+
+        // Quick test functions
+        function testBasicQuestion() {
+            document.getElementById('messageInput').value = 'Hello! Can you introduce yourself and explain what you can help me with?';
+        }
+
+        function testImageRequest() {
+            document.getElementById('messageInput').value = 'How do I assign KPIs to employees? Please show me the interface.';
+        }
+
+        function testMultipleImages() {
+            document.getElementById('messageInput').value = 'Walk me through the complete KPI process: assignment, assessment, and appeals. Show me all the relevant interfaces.';
+        }
+
+        async function checkHealth() {
+            try {
+                showStatus('🏥 Checking API health...', 'loading');
+                const response = await fetch(`${API_BASE}/health`);
+                const data = await response.json();
+                
+                accumulatedContent = `# 🏥 Health Check Results
+
+**Status:** ${data.status}
+**Model Loaded:** ${data.model_loaded ? '✅ Yes' : '❌ No'}
+**Uptime:** ${Math.round(data.uptime_seconds)}s
+**Hardware:** ${data.hardware_info.cpu_threads} threads, ${data.hardware_info.total_ram_gb}GB RAM
+**Profile:** ${data.hardware_info.profile}
+**Total Requests:** ${data.performance_stats.total_requests}
+**Average TTFT:** ${data.performance_stats.average_ttft}s`;
+
+                updateResponseDisplay();
+                showStatus(`✅ Health check complete - Status: ${data.status}`, 'success');
+            } catch (error) {
+                showStatus(`❌ Health check failed: ${error.message}`, 'error');
+            }
+        }
+
+        // Enter key handler
+        document.getElementById('messageInput').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('imageModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Initialize
+        showStatus('🚀 Incremental streaming test ready! Try the image test to see buffering in action.', 'success');
+    </script>
+</body>
+</html>

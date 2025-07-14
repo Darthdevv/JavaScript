@@ -50,12 +50,10 @@
     .robot-wrapper {
       position: absolute;
       top: -30px;
-      /* half of SVG height to center on top edge */
       left: 50%;
       transform: translateX(-50%);
       border-radius: 50%;
       padding: 2px;
-      /* optional: gives it space if overlapping border */
     }
 
     .robot {
@@ -64,9 +62,7 @@
 
     .tooltip-text {
       margin-top: 0.5rem;
-      /* to avoid overlap with robot */
     }
-
 
     .chat-tooltip.active {
       opacity: 1;
@@ -147,6 +143,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-shrink: 0;
     }
 
     .suggestions {
@@ -216,11 +213,16 @@
       border: 1px solid #E9EAEB;
       font-size: 0.875rem;
       color: #181D27;
+      line-height: 1.5;
     }
 
     .msg-bubble.bot {
       border-left: none;
       border-top-left-radius: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1px;
     }
 
     .msg-bubble.user {
@@ -228,12 +230,107 @@
       border-top-right-radius: 0;
     }
 
+    /* Enhanced Markdown Styling */
+    .msg-bubble h1, .msg-bubble h2, .msg-bubble h3, .msg-bubble h4 {
+      color: #2d3748;
+      margin: 15px 0 8px 0;
+      font-weight: 600;
+    }
+
+    .msg-bubble h1 { font-size: 1.4em; }
+    .msg-bubble h2 { font-size: 1.3em; }
+    .msg-bubble h3 { font-size: 1.2em; }
+    .msg-bubble h4 { font-size: 1.1em; }
+
+    .msg-bubble p {
+      margin: 8px 0;
+      color: #4a5568;
+    }
+
+    .msg-bubble strong {
+      color: #2d3748;
+      font-weight: 600;
+    }
+
+    .msg-bubble em {
+      color: #CF3B27;
+      font-style: italic;
+    }
+
+    .msg-bubble code {
+      background: #f8f9fa;
+      color: #d53f8c;
+      padding: 2px 4px;
+      border-radius: 3px;
+      font-family: 'SF Mono', 'Monaco', 'Cascadia Code', monospace;
+      font-size: 0.85em;
+    }
+
+    .msg-bubble ul, .msg-bubble ol {
+      margin: 10px 0;
+      padding-left: 20px;
+    }
+
+    .msg-bubble li {
+      margin: 4px 0;
+      color: #4a5568;
+    }
+
+    .msg-bubble img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 10px 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .msg-bubble img:hover {
+      transform: scale(1.02);
+    }
+
+    .msg-bubble blockquote {
+      border-left: 3px solid #CF3B27;
+      padding-left: 12px;
+      margin: 12px 0;
+      color: #4a5568;
+      font-style: italic;
+      background: #f8f9fa;
+      padding: 8px 12px;
+      border-radius: 0 6px 6px 0;
+    }
+
+    /* Table Styling */
+    .msg-bubble table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 15px 0;
+      font-size: 0.85em;
+    }
+
+    .msg-bubble th, .msg-bubble td {
+      border: 1px solid #e2e8f0;
+      padding: 8px 12px;
+      text-align: left;
+    }
+
+    .msg-bubble th {
+      background-color: #f7fafc;
+      font-weight: 600;
+      color: #2d3748;
+    }
+
+    .msg-bubble tr:nth-child(even) {
+      background-color: #f9fafb;
+    }
+
     .typing-indicator {
       display: flex;
       gap: 6px;
-      padding: 6px 12px;
-      background: white;
-      border: 1px solid #E9EAEB;
+      padding: 6px 6px;
+      background: transparent;
+      border: 1px solid transparent;
       border-left: none;
       border-top-left-radius: 0;
       border-radius: 12px;
@@ -256,21 +353,11 @@
       animation-delay: 0.4s;
     }
 
-    .message-bubble {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
     @keyframes typingBounce {
-
-      0%,
-      80%,
-      100% {
+      0%, 80%, 100% {
         transform: translateY(0);
         opacity: 0.6;
       }
-
       40% {
         transform: translateY(-5px);
         opacity: 1;
@@ -317,10 +404,8 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      ;
       font-size: 0.75rem;
       text-align: center;
-      margin-top: 8px;
       margin-top: 16px;
       color: #535862;
     }
@@ -330,14 +415,8 @@
       color: #CF3B27;
     }
 
-    .powered img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
     .user>img {
-      border-radius: 101%;
+      border-radius: 50%;
       width: 32px;
       height: 32px;
     }
@@ -358,12 +437,10 @@
       pointer-events: none;
     }
 
-
     .blur-top-left {
       top: 10px;
       left: 99px;
     }
-
 
     .blur-bottom-right {
       inset: 0;
@@ -373,6 +450,88 @@
 
     .help {
       margin: 0;
+      color: #181D27;
+      font-size: var(--Font-size-text-xl, 20px);
+      font-style: normal;
+      font-weight: 600;
+    }
+
+    .assist{
+      width: 320px;
+      color: var(--colors-text-text-tertiary-600, #535862);
+      text-align: center;
+      /* Text sm/Regular */
+      font-family: var(--Font-family-font-family-body, Inter);
+      font-size: var(--Font-size-text-sm, 14px);
+      font-style: normal;
+      font-weight: 400;
+      line-height: var(--Line-height-text-sm, 20px); /* 142.857% */
+    }
+
+    .suggested-for-you{
+      color: var(--colors-text-text-primary-900, #181D27);
+      text-align: start;
+      /* Text md/Medium */
+      font-family: var(--Font-family-font-family-body, Inter);
+      font-size: var(--Font-size-text-md, 16px);
+      font-style: normal;
+      font-weight: 500;
+      line-height: var(--Line-height-text-md, 24px); /* 150% */
+    }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.9);
+      backdrop-filter: blur(5px);
+    }
+
+    .modal-content {
+      display: block;
+      margin: auto;
+      max-width: 90%;
+      max-height: 90%;
+      margin-top: 2%;
+      border-radius: 12px;
+    }
+
+    .close {
+      position: absolute;
+      top: 30px;
+      right: 50px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .close:hover {
+      color: #CF3B27;
+    }
+
+    /* Status indicator */
+    .status-indicator {
+      font-size: 0.7rem;
+      color: #CF3B27;
+      font-weight: 500;
+      margin-top: 4px;
+    }
+
+    /* Responsive design */
+    @media (max-width: 640px) {
+      .chatbox {
+        width: calc(100vw - 2rem);
+        height: calc(100vh - 8rem);
+        right: 1rem;
+        bottom: 6rem;
+      }
     }
   </style>
 </head>
@@ -398,7 +557,7 @@
         </svg>
       </div>
       <div class="tooltip-text">
-        Lorem ipsum dolor sit amet consectetur adipiscing elit
+        Hi! I'm Folla, your AI assistant. I can help you with KPIs, assessments, and performance management questions.
       </div>
     </div>
 
@@ -408,11 +567,8 @@
           d="M13.3332 20L9.23283 24.1516C8.66088 24.7307 8.37491 25.0203 8.12911 25.0407C7.91585 25.0584 7.70706 24.9727 7.56778 24.8102C7.40724 24.623 7.40724 24.216 7.40724 23.4021V21.3222C7.40724 20.592 6.80927 20.0636 6.08678 19.9578V19.9578C4.33816 19.7017 2.96487 18.3284 2.70874 16.5797C2.6665 16.2914 2.6665 15.9474 2.6665 15.2593V9.06669C2.6665 6.82648 2.6665 5.70637 3.10248 4.85073C3.48597 4.09808 4.09789 3.48615 4.85054 3.10266C5.70619 2.66669 6.82629 2.66669 9.0665 2.66669H18.9332C21.1734 2.66669 22.2935 2.66669 23.1491 3.10266C23.9018 3.48615 24.5137 4.09808 24.8972 4.85073C25.3332 5.70637 25.3332 6.82648 25.3332 9.06669V14.6667M25.3332 29.3334L22.4313 27.3159C22.0234 27.0323 21.8194 26.8905 21.5974 26.7899C21.4004 26.7007 21.1933 26.6358 20.9806 26.5966C20.741 26.5524 20.4925 26.5524 19.9957 26.5524H17.5998C16.1064 26.5524 15.3596 26.5524 14.7892 26.2618C14.2874 26.0061 13.8795 25.5981 13.6238 25.0964C13.3332 24.5259 13.3332 23.7792 13.3332 22.2857V18.9334C13.3332 17.4399 13.3332 16.6931 13.6238 16.1227C13.8795 15.6209 14.2874 15.213 14.7892 14.9573C15.3596 14.6667 16.1064 14.6667 17.5998 14.6667H25.0665C26.56 14.6667 27.3067 14.6667 27.8771 14.9573C28.3789 15.213 28.7869 15.6209 29.0425 16.1227C29.3332 16.6931 29.3332 17.4399 29.3332 18.9334V22.5524C29.3332 23.7949 29.3332 24.4162 29.1302 24.9062C28.8595 25.5596 28.3404 26.0788 27.687 26.3494C27.1969 26.5524 26.5757 26.5524 25.3332 26.5524V29.3334Z"
           stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
       </svg>
-
     </button>
   </div>
-
-
 
   <div class="chatbox" id="chatBox" style="display: none">
     <div class="chat-header">
@@ -442,8 +598,8 @@
       </svg>
 
       <div class="actions">
-        <button onclick="startNewChat()"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-            xmlns="http://www.w3.org/2000/svg">
+        <button onclick="startNewChat()">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clip-path="url(#clip0_15_63)">
               <path
                 d="M9.1665 3.33333H5.6665C4.26637 3.33333 3.56631 3.33333 3.03153 3.60582C2.56112 3.8455 2.17867 4.22795 1.93899 4.69836C1.6665 5.23314 1.6665 5.9332 1.6665 7.33333V14.3333C1.6665 15.7335 1.6665 16.4335 1.93899 16.9683C2.17867 17.4387 2.56112 17.8212 3.03153 18.0609C3.56631 18.3333 4.26637 18.3333 5.6665 18.3333H12.6665C14.0666 18.3333 14.7667 18.3333 15.3015 18.0609C15.7719 17.8212 16.1543 17.4387 16.394 16.9683C16.6665 16.4335 16.6665 15.7335 16.6665 14.3333V10.8333M6.66648 13.3333H8.06193C8.46959 13.3333 8.67341 13.3333 8.86522 13.2873C9.03528 13.2465 9.19786 13.1791 9.34698 13.0877C9.51517 12.9847 9.6593 12.8405 9.94755 12.5523L17.9165 4.58334C18.6069 3.89298 18.6069 2.77369 17.9165 2.08333C17.2261 1.39298 16.1069 1.39298 15.4165 2.08333L7.44753 10.0523C7.15928 10.3405 7.01515 10.4847 6.91208 10.6529C6.8207 10.802 6.75336 10.9646 6.71253 11.1346C6.66648 11.3264 6.66648 11.5303 6.66648 11.9379V13.3333Z"
@@ -455,9 +611,10 @@
               </clipPath>
             </defs>
           </svg>
-          New chat</button>
-        <button onclick="toggleChat()"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-            xmlns="http://www.w3.org/2000/svg">
+          New chat
+        </button>
+        <button onclick="toggleChat()">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M13.4263 12.0123L18.7193 6.71928C18.8148 6.62703 18.891 6.51669 18.9434 6.39468C18.9958 6.27268 19.0234 6.14146 19.0245 6.00868C19.0257 5.8759 19.0004 5.74422 18.9501 5.62132C18.8998 5.49843 18.8256 5.38677 18.7317 5.29288C18.6378 5.19899 18.5261 5.12474 18.4032 5.07445C18.2803 5.02417 18.1487 4.99887 18.0159 5.00003C17.8831 5.00118 17.7519 5.02877 17.6299 5.08118C17.5079 5.13358 17.3975 5.20977 17.3053 5.30528L12.0123 10.5983L6.71929 5.30528C6.53069 5.12312 6.27808 5.02232 6.01589 5.0246C5.75369 5.02688 5.50288 5.13205 5.31747 5.31746C5.13206 5.50287 5.02689 5.75368 5.02461 6.01588C5.02234 6.27807 5.12313 6.53067 5.30529 6.71928L10.5983 12.0123L5.30529 17.3053C5.20978 17.3975 5.1336 17.5079 5.08119 17.6299C5.02878 17.7519 5.00119 17.8831 5.00004 18.0159C4.99888 18.1487 5.02419 18.2803 5.07447 18.4032C5.12475 18.5261 5.199 18.6378 5.29289 18.7317C5.38679 18.8256 5.49844 18.8998 5.62133 18.9501C5.74423 19.0004 5.87591 19.0257 6.00869 19.0245C6.14147 19.0234 6.27269 18.9958 6.39469 18.9434C6.5167 18.891 6.62704 18.8148 6.71929 18.7193L12.0123 13.4263L17.3053 18.7193C17.4939 18.9014 17.7465 19.0022 18.0087 19C18.2709 18.9977 18.5217 18.8925 18.7071 18.7071C18.8925 18.5217 18.9977 18.2709 19 18.0087C19.0022 17.7465 18.9014 17.4939 18.7193 17.3053L13.4263 12.0123Z"
               fill="#535862" />
@@ -467,75 +624,67 @@
     </div>
 
     <div id="welcomeSection" class="welcome">
-
       <div class="robot-circle">
-        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M40 80C62.0914 80 80 62.0914 80 40C80 17.9086 62.0914 0 40 0C17.9086 0 0 17.9086 0 40C0 62.0914 17.9086 80 40 80Z"
-            fill="#CF3B27" fill-opacity="0.1" />
-          <path
-            d="M40 72C57.6731 72 72 57.6731 72 40C72 22.3269 57.6731 8 40 8C22.3269 8 8 22.3269 8 40C8 57.6731 22.3269 72 40 72Z"
-            fill="#CF3B27" fill-opacity="0.2" />
-          <path
-            d="M40 64C53.2548 64 64 53.2548 64 40C64 26.7451 53.2548 16 40 16C26.7452 16 16 26.7451 16 40C16 53.2548 26.7452 64 40 64Z"
-            fill="#CF3B27" />
-          <path
-            d="M31.8975 30.3997H48.3682C53.5883 30.3997 57.8202 34.6318 57.8203 39.8519C57.8203 45.0721 53.5884 49.304 48.3682 49.304H31.8975C26.6773 49.3039 22.4453 45.072 22.4453 39.8519C22.4455 34.6319 26.6774 30.3999 31.8975 30.3997Z"
-            stroke="white" stroke-width="2.74286" />
-          <path
-            d="M32.9403 42.736C34.4996 42.736 35.7638 41.4719 35.7638 39.9125C35.7638 38.3531 34.4996 37.089 32.9403 37.089C31.3809 37.089 30.1167 38.3531 30.1167 39.9125C30.1167 41.4719 31.3809 42.736 32.9403 42.736Z"
-            fill="white" />
-          <path
-            d="M47.5286 42.736C49.088 42.736 50.3523 41.4719 50.3523 39.9125C50.3523 38.3531 49.088 37.089 47.5286 37.089C45.9693 37.089 44.7051 38.3531 44.7051 39.9125C44.7051 41.4719 45.9693 42.736 47.5286 42.736Z"
-            fill="white" />
-          <rect x="21.0742" y="27.6572" width="2.74286" height="13.1657" rx="1.37143" fill="white" />
-        </svg>
-
-
+<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M40 80C62.0914 80 80 62.0914 80 40C80 17.9086 62.0914 0 40 0C17.9086 0 0 17.9086 0 40C0 62.0914 17.9086 80 40 80Z" fill="#CF3B27" fill-opacity="0.1"/>
+<path d="M40 72C57.6731 72 72 57.6731 72 40C72 22.3269 57.6731 8 40 8C22.3269 8 8 22.3269 8 40C8 57.6731 22.3269 72 40 72Z" fill="#CF3B27" fill-opacity="0.2"/>
+<path d="M40 64C53.2548 64 64 53.2548 64 40C64 26.7451 53.2548 16 40 16C26.7452 16 16 26.7451 16 40C16 53.2548 26.7452 64 40 64Z" fill="#CF3B27"/>
+<path d="M31.8975 30.3997H48.3682C53.5883 30.3997 57.8202 34.6318 57.8203 39.8519C57.8203 45.0721 53.5884 49.304 48.3682 49.304H31.8975C26.6773 49.3039 22.4453 45.072 22.4453 39.8519C22.4455 34.6319 26.6774 30.3999 31.8975 30.3997Z" stroke="white" stroke-width="2.74286"/>
+<path d="M32.9403 42.736C34.4996 42.736 35.7638 41.4719 35.7638 39.9125C35.7638 38.3531 34.4996 37.089 32.9403 37.089C31.3809 37.089 30.1167 38.3531 30.1167 39.9125C30.1167 41.4719 31.3809 42.736 32.9403 42.736Z" fill="white"/>
+<path d="M47.5286 42.736C49.088 42.736 50.3523 41.4719 50.3523 39.9125C50.3523 38.3531 49.088 37.089 47.5286 37.089C45.9693 37.089 44.7051 38.3531 44.7051 39.9125C44.7051 41.4719 45.9693 42.736 47.5286 42.736Z" fill="white"/>
+<rect x="21.0742" y="27.6572" width="2.74286" height="13.1657" rx="1.37143" fill="white"/>
+</svg>
 
       </div>
       <h2 class="help">How can Folla help you?</h2>
-      <p>Lorem ipsum dolor sit amet consectetur adipiscing elit</p>
+      <p class="assist">I can assist you with KPIs, performance assessments, appeals, and any questions about our appraisal system.</p>
     </div>
 
     <div class="messages" id="messages"></div>
 
     <div id="suggestionSection" class="suggestions">
-      <p>Suggest for you</p>
+      <p class="suggested-for-you">Suggested for you</p>
       <div class="wrap" id="suggestions"></div>
     </div>
-
 
     <div class="folla-gradient-blur blur-top-left"></div>
     <div class="folla-gradient-blur blur-bottom-right"></div>
 
     <div class="chat-input-area">
       <div class="input-box">
-        <span class="message-bubble"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-            xmlns="http://www.w3.org/2000/svg">
+        <span class="message-bubble">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M17.5 10C17.5 14.1421 14.1421 17.5 10 17.5C9.00238 17.5 8.05025 17.3052 7.17958 16.9516C7.01294 16.8839 6.92962 16.8501 6.86227 16.835C6.79638 16.8202 6.74763 16.8148 6.68011 16.8148C6.61109 16.8148 6.53591 16.8273 6.38554 16.8524L3.42063 17.3466C3.11015 17.3983 2.95491 17.4242 2.84265 17.376C2.7444 17.3339 2.66611 17.2556 2.62397 17.1573C2.57582 17.0451 2.60169 16.8898 2.65344 16.5794L3.14759 13.6145C3.17265 13.4641 3.18518 13.3889 3.18517 13.3199C3.18516 13.2524 3.17976 13.2036 3.165 13.1377C3.1499 13.0704 3.11606 12.9871 3.04839 12.8204C2.69478 11.9497 2.5 10.9976 2.5 10C2.5 5.85786 5.85786 2.5 10 2.5C14.1421 2.5 17.5 5.85786 17.5 10Z"
               stroke="#717680" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
         </span>
         <input type="text" id="messageInput" placeholder="Message Folla..." />
-        <button onclick="sendMessage()"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-            xmlns="http://www.w3.org/2000/svg">
+        <button onclick="sendMessage()">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M8.74952 11.2501L17.4995 2.50005M8.85584 11.5234L11.0459 17.1551C11.2389 17.6512 11.3353 17.8993 11.4743 17.9717C11.5948 18.0345 11.7384 18.0346 11.859 17.9719C11.998 17.8997 12.0948 17.6517 12.2883 17.1558L17.7803 3.08272C17.955 2.63507 18.0423 2.41124 17.9945 2.26822C17.953 2.14401 17.8556 2.04654 17.7314 2.00504C17.5883 1.95726 17.3645 2.04461 16.9169 2.2193L2.84373 7.71125C2.34784 7.90477 2.09989 8.00153 2.02763 8.14062C1.96499 8.26119 1.96508 8.40474 2.02786 8.52523C2.10028 8.66424 2.34834 8.7607 2.84446 8.95364L8.47613 11.1437C8.57684 11.1829 8.62719 11.2025 8.66959 11.2327C8.70717 11.2595 8.74004 11.2924 8.76685 11.33C8.79709 11.3724 8.81667 11.4227 8.85584 11.5234Z"
               stroke="white" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
         </button>
       </div>
-      <div class="powered">Powered by <span>
-          <img src="../images//flairstech-logo (1).png" alt="logo">
-
-        </span></div>
+      <div class="powered">
+        Powered by <span>Folla</span>
+      </div>
     </div>
   </div>
 
+  <!-- Modal for full-screen images -->
+  <div id="imageModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImage">
+  </div>
+
   <script>
-    const API_BASE = 'https://13a454fcf0d2.ngrok-free.app';
+    // Configuration
+    const API_BASE = 'http://localhost:8000'; // Change this to your API URL
+    
+    // DOM Elements
     const chatBtn = document.getElementById('chatBtn');
     const chatBox = document.getElementById('chatBox');
     const tooltip = document.getElementById('chatTooltip');
@@ -544,29 +693,123 @@
     const input = document.getElementById('messageInput');
     const welcome = document.getElementById('welcomeSection');
     const suggestionSection = document.getElementById('suggestionSection');
-    const suggestions = [
-      'KPI types?', 'Evaluation frequency?', 'Mid-year window?',
-      'Disagree with results?', 'Supervisor assessment?', 'Score calculation?'
-    ];
-
+    
+    // State
     let isOpen = false;
     let conversation = [];
+    let currentResponseContent = '';
+    let isReceivingResponse = false;
+    let currentTypingElement = null;
 
+    // Suggestions
+    const suggestions = [
+      "What are KPIs?",
+      "How to assign KPIs?",
+      "Appeal process?",
+      "Supervisor assessment?",
+      "Score calculation?",
+      "New employee guide?"
+    ];
+
+    // Event Listeners
     chatBtn.addEventListener('mouseenter', () => tooltip.classList.add('active'));
     chatBtn.addEventListener('mouseleave', () => tooltip.classList.remove('active'));
     chatBtn.addEventListener('click', toggleChat);
     input.addEventListener('keydown', e => { if (e.key === 'Enter') sendMessage(); });
     window.onclick = e => { if (e.target === document.getElementById('imageModal')) closeModal(); };
 
+    // Initialize suggestions
     suggestions.forEach(text => {
       const btn = document.createElement('button');
-      btn.innerHTML = `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M17.5 15L16.6666 15.9117C16.2245 16.3951 15.6251 16.6667 15.0001 16.6667C14.3751 16.6667 13.7757 16.3951 13.3337 15.9117C12.891 15.4293 12.2916 15.1584 11.6668 15.1584C11.042 15.1584 10.4426 15.4293 9.99998 15.9117M2.5 16.6667H3.89545C4.3031 16.6667 4.50693 16.6667 4.69874 16.6206C4.8688 16.5798 5.03138 16.5124 5.1805 16.4211C5.34869 16.318 5.49282 16.1739 5.78107 15.8856L16.25 5.41666C16.9404 4.72631 16.9404 3.60702 16.25 2.91666C15.5597 2.22631 14.4404 2.22631 13.75 2.91666L3.28105 13.3856C2.9928 13.6739 2.84867 13.818 2.7456 13.9862C2.65422 14.1353 2.58688 14.2979 2.54605 14.4679C2.5 14.6598 2.5 14.8636 2.5 15.2712V16.6667Z" stroke="#414651" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
- <span>${text}</span>`;
+      btn.innerHTML = `
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.5 15L16.6666 15.9117C16.2245 16.3951 15.6251 16.6667 15.0001 16.6667C14.3751 16.6667 13.7757 16.3951 13.3337 15.9117C12.891 15.4293 12.2916 15.1584 11.6668 15.1584C11.042 15.1584 10.4426 15.4293 9.99998 15.9117M2.5 16.6667H3.89545C4.3031 16.6667 4.50693 16.6667 4.69874 16.6206C4.8688 16.5798 5.03138 16.5124 5.1805 16.4211C5.34869 16.318 5.49282 16.1739 5.78107 15.8856L16.25 5.41666C16.9404 4.72631 16.9404 3.60702 16.25 2.91666C15.5597 2.22631 14.4404 2.22631 13.75 2.91666L3.28105 13.3856C2.9928 13.6739 2.84867 13.818 2.7456 13.9862C2.65422 14.1353 2.58688 14.2979 2.54605 14.4679C2.5 14.6598 2.5 14.8636 2.5 15.2712V16.6667Z" stroke="#414651" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>${text}</span>
+      `;
       btn.onclick = () => sendMessage(text);
       suggestionsContainer.appendChild(btn);
     });
+
+    // Enhanced Markdown to HTML conversion with TABLE support
+    function renderMarkdownToHTML(content) {
+      let html = content;
+      
+      // Process tables FIRST (before other formatting)
+      html = html.replace(/\|(.+)\|\n\|[\s\-\|:]+\|\n((?:\|.+\|\n?)*)/g, function(match, header, rows) {
+        const headerCells = header.split('|').map(cell => cell.trim()).filter(cell => cell);
+        const rowLines = rows.trim().split('\n');
+        
+        let tableHTML = '<table>';
+        
+        // Header
+        tableHTML += '<thead><tr>';
+        headerCells.forEach(cell => {
+          tableHTML += `<th>${cell}</th>`;
+        });
+        tableHTML += '</tr></thead>';
+        
+        // Body
+        tableHTML += '<tbody>';
+        rowLines.forEach(row => {
+          if (row.trim()) {
+            const cells = row.split('|').map(cell => cell.trim()).filter(cell => cell);
+            tableHTML += '<tr>';
+            cells.forEach(cell => {
+              tableHTML += `<td>${cell}</td>`;
+            });
+            tableHTML += '</tr>';
+          }
+        });
+        tableHTML += '</tbody></table>';
+        
+        return tableHTML;
+      });
+      
+      // Handle images (already processed as base64 from backend)
+      html = html.replace(/!\[([^\]]*)\]\(data:image\/[^;]+;base64,([^)]+)\)/g, 
+        '<img src="data:image/png;base64,$2" alt="$1" onclick="openModal(this.src)" />');
+      
+      // Headers
+      html = html.replace(/^#### (.*$)/gim, '<h4>$1</h4>');
+      html = html.replace(/^### (.*$)/gim, '<h3>$1</h3>');
+      html = html.replace(/^## (.*$)/gim, '<h2>$1</h2>');
+      html = html.replace(/^# (.*$)/gim, '<h1>$1</h1>');
+      
+      // Bold and italic
+      html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+      html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+      
+      // Code blocks (inline)
+      html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+      
+      // Lists (numbered and bulleted)
+      html = html.replace(/^\d+\.\s+(.*)$/gim, '<li>$1</li>');
+      html = html.replace(/^[-*+]\s+(.*)$/gim, '<li>$1</li>');
+      
+      // Blockquotes
+      html = html.replace(/^>\s+(.*)$/gim, '<blockquote>$1</blockquote>');
+      
+      // Line breaks
+      html = html.replace(/\n\n/g, '</p><p>');
+      html = html.replace(/\n/g, '<br>');
+
+      // Wrap in paragraphs and fix lists
+      html = '<p>' + html + '</p>';
+      
+      // Fix list formatting
+      html = html.replace(/<\/p><p>(<li>.*?<\/li>)/g, '<ul>$1');
+      html = html.replace(/(<li>.*?<\/li>)<\/p><p>/g, '$1</ul><p>');
+      html = html.replace(/(<\/li>)<br>(<li>)/g, '$1$2');
+      
+      // Clean up empty paragraphs and multiple breaks
+      html = html.replace(/<p><\/p>/g, '');
+      html = html.replace(/<p><br><\/p>/g, '');
+      html = html.replace(/<br><br>/g, '<br>');
+      html = html.replace(/<p>\s*<\/p>/g, '');
+
+      return html;
+    }
 
     function toggleChat() {
       isOpen = !isOpen;
@@ -578,6 +821,9 @@
       welcome.style.display = 'flex';
       suggestionSection.style.display = 'block';
       conversation = [];
+      currentResponseContent = '';
+      isReceivingResponse = false;
+      currentTypingElement = null;
     }
 
     function appendMessage(sender, text) {
@@ -586,17 +832,18 @@
 
       const msgRow = document.createElement('div');
       msgRow.className = 'msg-row ' + sender;
+      
       const avatar = sender === 'bot'
         ? `<div class="robot-circle">
-          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M20 40C31.0457 40 40 31.0457 40 20C40 8.9543 31.0457 0 20 0C8.9543 0 0 8.9543 0 20C0 31.0457 8.9543 40 20 40Z" fill="#CF3B27"/>
-<path d="M13.248 11.9999H26.9736C31.3238 11.9999 34.8506 15.5267 34.8506 19.8769C34.8506 24.2271 31.3239 27.7538 26.9736 27.7538H13.248C8.89787 27.7538 5.37109 24.227 5.37109 19.8769C5.37113 15.5267 8.89789 12 13.248 11.9999Z" stroke="white" stroke-width="2.28571"/>
-<path d="M14.1169 22.2799C15.4163 22.2799 16.4698 21.2265 16.4698 19.927C16.4698 18.6275 15.4163 17.5741 14.1169 17.5741C12.8174 17.5741 11.7639 18.6275 11.7639 19.927C11.7639 21.2265 12.8174 22.2799 14.1169 22.2799Z" fill="white"/>
-<path d="M26.2738 22.2799C27.5733 22.2799 28.6269 21.2265 28.6269 19.927C28.6269 18.6275 27.5733 17.5741 26.2738 17.5741C24.9744 17.5741 23.9209 18.6275 23.9209 19.927C23.9209 21.2265 24.9744 22.2799 26.2738 22.2799Z" fill="white"/>
-<rect x="4.22852" y="9.71436" width="2.28571" height="10.9714" rx="1.14286" fill="white"/>
-</svg>
-</div>`
-        : `<img class='bot-image' src="https://images.unsplash.com/photo-1474176857210-7287d38d27c6?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />`;
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 40C31.0457 40 40 31.0457 40 20C40 8.9543 31.0457 0 20 0C8.9543 0 0 8.9543 0 20C0 31.0457 8.9543 40 20 40Z" fill="#CF3B27"/>
+              <path d="M13.248 11.9999H26.9736C31.3238 11.9999 34.8506 15.5267 34.8506 19.8769C34.8506 24.2271 31.3239 27.7538 26.9736 27.7538H13.248C8.89787 27.7538 5.37109 24.227 5.37109 19.8769C5.37113 15.5267 8.89789 12 13.248 11.9999Z" stroke="white" stroke-width="2.28571"/>
+              <path d="M14.1169 22.2799C15.4163 22.2799 16.4698 21.2265 16.4698 19.927C16.4698 18.6275 15.4163 17.5741 14.1169 17.5741C12.8174 17.5741 11.7639 18.6275 11.7639 19.927C11.7639 21.2265 12.8174 22.2799 14.1169 22.2799Z" fill="white"/>
+              <path d="M26.2738 22.2799C27.5733 22.2799 28.6269 21.2265 28.6269 19.927C28.6269 18.6275 27.5733 17.5741 26.2738 17.5741C24.9744 17.5741 23.9209 18.6275 23.9209 19.927C23.9209 21.2265 24.9744 22.2799 26.2738 22.2799Z" fill="white"/>
+              <rect x="4.22852" y="9.71436" width="2.28571" height="10.9714" rx="1.14286" fill="white"/>
+            </svg>
+           </div>`
+        : `<img class='bot-image' src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0" />`;
 
       const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
@@ -610,36 +857,75 @@
 
       messagesContainer.appendChild(msgRow);
       messagesContainer.scrollTop = messagesContainer.scrollHeight;
+      
+      // Setup image handlers for new content
+      setupImageHandlers();
     }
 
-    async function sendMessage(userInput = input.value.trim()) {
-      if (!userInput) return;
-      appendMessage('user', userInput);
-      conversation.push({ role: 'user', content: userInput });
-      input.value = '';
-
-      const typing = document.createElement('div');
-      typing.className = 'msg-row bot';
+    function createResponseBubble() {
+      const msgRow = document.createElement('div');
+      msgRow.className = 'msg-row bot';
       const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-      typing.innerHTML = `
-        <div class="robot-circle"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M20 40C31.0457 40 40 31.0457 40 20C40 8.9543 31.0457 0 20 0C8.9543 0 0 8.9543 0 20C0 31.0457 8.9543 40 20 40Z" fill="#CF3B27"/>
-<path d="M13.248 11.9999H26.9736C31.3238 11.9999 34.8506 15.5267 34.8506 19.8769C34.8506 24.2271 31.3239 27.7538 26.9736 27.7538H13.248C8.89787 27.7538 5.37109 24.227 5.37109 19.8769C5.37113 15.5267 8.89789 12 13.248 11.9999Z" stroke="white" stroke-width="2.28571"/>
-<path d="M14.1169 22.2799C15.4163 22.2799 16.4698 21.2265 16.4698 19.927C16.4698 18.6275 15.4163 17.5741 14.1169 17.5741C12.8174 17.5741 11.7639 18.6275 11.7639 19.927C11.7639 21.2265 12.8174 22.2799 14.1169 22.2799Z" fill="white"/>
-<path d="M26.2738 22.2799C27.5733 22.2799 28.6269 21.2265 28.6269 19.927C28.6269 18.6275 27.5733 17.5741 26.2738 17.5741C24.9744 17.5741 23.9209 18.6275 23.9209 19.927C23.9209 21.2265 24.9744 22.2799 26.2738 22.2799Z" fill="white"/>
-<rect x="4.22852" y="9.71436" width="2.28571" height="10.9714" rx="1.14286" fill="white"/>
-</svg>
-</div>
+      
+      msgRow.innerHTML = `
+        <div class="robot-circle">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 40C31.0457 40 40 31.0457 40 20C40 8.9543 31.0457 0 20 0C8.9543 0 0 8.9543 0 20C0 31.0457 8.9543 40 20 40Z" fill="#CF3B27"/>
+            <path d="M13.248 11.9999H26.9736C31.3238 11.9999 34.8506 15.5267 34.8506 19.8769C34.8506 24.2271 31.3239 27.7538 26.9736 27.7538H13.248C8.89787 27.7538 5.37109 24.227 5.37109 19.8769C5.37113 15.5267 8.89789 12 13.248 11.9999Z" stroke="white" stroke-width="2.28571"/>
+            <path d="M14.1169 22.2799C15.4163 22.2799 16.4698 21.2265 16.4698 19.927C16.4698 18.6275 15.4163 17.5741 14.1169 17.5741C12.8174 17.5741 11.7639 18.6275 11.7639 19.927C11.7639 21.2265 12.8174 22.2799 14.1169 22.2799Z" fill="white"/>
+            <path d="M26.2738 22.2799C27.5733 22.2799 28.6269 21.2265 28.6269 19.927C28.6269 18.6275 27.5733 17.5741 26.2738 17.5741C24.9744 17.5741 23.9209 18.6275 23.9209 19.927C23.9209 21.2265 24.9744 22.2799 26.2738 22.2799Z" fill="white"/>
+            <rect x="4.22852" y="9.71436" width="2.28571" height="10.9714" rx="1.14286" fill="white"/>
+          </svg>
+        </div>
         <div class="msg-content">
           <div class="msg-meta">Folla <span>${time}</span></div>
+          <div class="msg-bubble bot" id="streaming-bubble"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 125 125" fill="#CF3B27">
+  <path
+    d="M24,42.35A2,2,0,1,1,26.35,44,2,2,0,0,1,24,42.35ZM42.35,41A2,2,0,1,0,40,39.35,2,2,0,0,0,42.35,41ZM58,76v5a3,3,0,0,1-3,3H13a3,3,0,0,1-3-3V76a6,6,0,0,1,6-6h7V67.22l-.67.12a6.41,6.41,0,0,1-1.06.09,6,6,0,0,1-5.89-5L13.72,53.1A8.84,8.84,0,0,1,11.3,39.34l-1.13-6.41A6,6,0,0,1,15,26l10.84-1.91-1.22-6.9a1,1,0,0,1,2-.34l1.22,6.89,10.83-1.91a6,6,0,0,1,6.95,4.87l1.13,6.41a8.84,8.84,0,0,1,2.43,13.76l1.65,9.37a6,6,0,0,1-4.87,7l-1,.17V70h7A6,6,0,0,1,58,76ZM47.24,35.84l1.45,8.26a6.82,6.82,0,0,0,.68-4.38A6.93,6.93,0,0,0,47.24,35.84Zm-35.1-3.26,1.21,6.89h0l1.89,10.69L31,47.43a1,1,0,0,1,.67.12l6.15,3.6,4.5-5.32a1,1,0,0,1,.58-.34l3.86-.73L43.65,27a4,4,0,0,0-3.93-3.3,4.14,4.14,0,0,0-.7.06L27.2,25.86h0L15.38,28A4,4,0,0,0,12.14,32.58Zm1.1,17.77-1.46-8.26a6.89,6.89,0,0,0-.67,4.38A6.81,6.81,0,0,0,13.24,50.35ZM23.6,65.08A1.06,1.06,0,0,1,24,65h0L45.62,61.2a4,4,0,0,0,3.24-4.63l-1.73-9.84-3.49.66-4.82,5.69a1,1,0,0,1-1.26.22L31,49.46,15.58,52.13l0,.15h0l1.74,9.84A4,4,0,0,0,22,65.37ZM25,70H43V63.69L25,66.87ZM37.92,82a4,4,0,0,0-7.84,0ZM56,76a4,4,0,0,0-4-4H16a4,4,0,0,0-4,4v5a1,1,0,0,0,1,1H28.05A6,6,0,0,1,40,82H55a1,1,0,0,0,1-1Zm-5-2H47a1,1,0,0,0,0,2h4a1,1,0,0,1,1,1v3a1,1,0,0,0,2,0V77A3,3,0,0,0,51,74ZM63,56.5A4.5,4.5,0,1,1,58.5,52,4.51,4.51,0,0,1,63,56.5Zm-2,0A2.5,2.5,0,1,0,58.5,59,2.5,2.5,0,0,0,61,56.5Zm15-7A6.5,6.5,0,1,1,69.5,43,6.51,6.51,0,0,1,76,49.5Zm-2,0A4.5,4.5,0,1,0,69.5,54,4.51,4.51,0,0,0,74,49.5ZM73.5,36A6.51,6.51,0,0,1,67,29.5a1,1,0,0,0-2,0A8.51,8.51,0,0,0,73.5,38a1,1,0,0,0,0-2Zm14.56-1.94a7.29,7.29,0,0,1-11,7.59,12.54,12.54,0,0,1-3.15.4A12.9,12.9,0,1,1,81,18.4c.33,0,.63,0,.93,0a9,9,0,0,1,6.11,15.71ZM89,27.4a7.06,7.06,0,0,0-7-7,8.41,8.41,0,0,0-1,.08,1,1,0,0,1-.72-.17A10.9,10.9,0,1,0,73.9,40.05a11,11,0,0,0,3-.44.9.9,0,0,1,.28,0,1,1,0,0,1,.58.18,5.23,5.23,0,0,0,3.09,1A5.26,5.26,0,0,0,86,34a1,1,0,0,1,.34-1.06A7,7,0,0,0,89,27.4Z"
+    stroke="#CF3B27"
+    stroke-width="1.5"
+  />
+</svg>
           <div class="typing-indicator">
             <span class="typing-dot"></span>
             <span class="typing-dot"></span>
             <span class="typing-dot"></span>
           </div>
         </div>
+        </div>
       `;
-      messagesContainer.appendChild(typing);
+      
+      return msgRow;
+    }
+
+    function updateStreamingBubble(content) {
+      // Simple direct innerHTML update - exactly like our test page!
+      const bubble = document.getElementById('streaming-bubble');
+      if (bubble) {
+        const renderedHTML = renderMarkdownToHTML(content);
+        bubble.innerHTML = renderedHTML;
+        setupImageHandlers();
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+      }
+    }
+
+    async function sendMessage(userInput = input.value.trim()) {
+      if (!userInput || isReceivingResponse) return;
+      
+      // Add user message
+      appendMessage('user', userInput);
+      conversation.push({ role: 'user', content: userInput });
+      input.value = '';
+
+      // Reset response state
+      currentResponseContent = '';
+      isReceivingResponse = true;
+
+      // Add response bubble (like our test page)
+      currentTypingElement = createResponseBubble();
+      welcome.style.display = 'none';
+      suggestionSection.style.display = 'none';
+      messagesContainer.appendChild(currentTypingElement);
       messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
       try {
@@ -654,10 +940,14 @@
           })
         });
 
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+
         const reader = response.body.getReader();
         const decoder = new TextDecoder();
         let buffer = '';
-        let fullContent = '';
+        let tokenCount = 0;
 
         while (true) {
           const { done, value } = await reader.read();
@@ -669,42 +959,57 @@
 
           for (const line of lines) {
             if (line.startsWith('data: ')) {
-              const parsed = JSON.parse(line.slice(6));
-              if (parsed.type === 'content') {
-                fullContent += parsed.content;
-                updateTypingContent(typing, fullContent);
-              } else if (parsed.type === 'complete') {
-                messagesContainer.removeChild(typing);
-                appendMessage('bot', renderMarkdown(fullContent));
-                conversation.push({ role: 'assistant', content: fullContent });
+              try {
+                const data = JSON.parse(line.slice(6));
+                
+                if (data.type === 'token') {
+                  // Append new token to accumulated content
+                  currentResponseContent += data.content;
+                  tokenCount++;
+                  // Simple update - exactly like our test page!
+                  updateStreamingBubble(currentResponseContent);
+                  
+                } else if (data.type === 'image') {
+                  // Append processed image content
+                  currentResponseContent += data.content;
+                  // Simple update - exactly like our test page!
+                  updateStreamingBubble(currentResponseContent);
+                  
+                } else if (data.type === 'ttft') {
+                  // First token received
+                  console.log(`First token in ${data.value.toFixed(3)}s`);
+                  
+                } else if (data.type === 'complete') {
+                  // Response complete - just add to conversation, no need to re-render
+                  conversation.push({ role: 'assistant', content: currentResponseContent });
+                  
+                  isReceivingResponse = false;
+                  currentTypingElement = null;
+                  
+                  console.log(`Complete! ${data.tokens_generated} tokens in ${data.total_time.toFixed(2)}s`);
+                  
+                } else if (data.type === 'error') {
+                  throw new Error(data.error);
+                }
+              } catch (e) {
+                console.warn('Failed to parse SSE data:', line);
               }
             }
           }
         }
-      } catch (err) {
-        messagesContainer.removeChild(typing);
-        appendMessage('bot', '❌ Error: ' + err.message);
+
+      } catch (error) {
+        if (currentTypingElement) {
+          messagesContainer.removeChild(currentTypingElement);
+        }
+        appendMessage('bot', '❌ Sorry, there was an error: ' + error.message);
+        isReceivingResponse = false;
+        currentTypingElement = null;
       }
     }
 
-    function updateTypingContent(typingEl, raw) {
-      const bubble = typingEl.querySelector('.typing-indicator');
-      if (bubble) bubble.outerHTML = `<div class="msg-bubble bot">${renderMarkdown(raw)}</div>`;
-      setupImageHandlers();
-    }
-
-    function renderMarkdown(text) {
-      return text
-        .replace(/!\[([^\]]*)\]\((data:image\/[^)]+)\)/g,
-          '<img src="$2" alt="$1" onclick="openModal(this.src)" style="cursor:pointer;max-width:100%;" />')
-        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-        .replace(/\*(.*?)\*/g, '<em>$1</em>')
-        .replace(/`([^`]+)`/g, '<code>$1</code>')
-        .replace(/\n/g, '<br>');
-    }
-
     function setupImageHandlers() {
-      document.querySelectorAll('img').forEach(img => {
+      document.querySelectorAll('.msg-bubble img').forEach(img => {
         img.onclick = () => openModal(img.src);
       });
     }
@@ -712,7 +1017,7 @@
     function openModal(src) {
       const modal = document.getElementById('imageModal');
       const modalImg = document.getElementById('modalImage');
-      modal.style.display = 'flex';
+      modal.style.display = 'block';
       modalImg.src = src;
     }
 
