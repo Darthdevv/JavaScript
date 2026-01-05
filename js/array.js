@@ -313,4 +313,3 @@ console.log(text.charAt(text.length - 1))
 
 
 
-console.log('hello world');
