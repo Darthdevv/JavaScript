@@ -28,7 +28,26 @@ body{
 }
 
 abbr {
-  color: #a60000;
+    color: #a60000;
+}
+
+.item{
+    padding: 2rem;
+    background-color: antiquewhite;
+    color: #121212;
+    border-radius: 8px;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+
+.grid-container{
+    display: grid;
+    /* grid-template-columns: 200px 200px 200px 200px;
+    grid-template-rows: 200px 200px; */
+    grid-auto-columns: 200px;
+    grid-auto-rows: 200px;
+    gap: 1em;
 }
 
 
